@@ -25,39 +25,35 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-# class Song(ndb.Model):
-#     source = ndb.StringProperty(required=True)
-#     title = ndb.StringProperty(required=True)
-#     artist = nbd.StringProperty(required=True)
+class Song(ndb.Model):
+    source = ndb.StringProperty(required=True)
+    title = ndb.StringProperty(required=True)
+    artist = ndb.StringProperty(required=True)
 
-song_source="Fashion Killa.mp3"
-song_title="Fashion Killa"
-song_artist="A$AP ROCKIE"
+hip_hop_songs=[Song(source="songs/Fashion Killa.mp3", title="Fashion Killa", artist="A$AP ROCKY")]
 
-#create an array by genre
-#randomize array
-#compare user's input to the song name and artist
-# so if input = intended name then add to correct answers
-# correct = 1
-# hip_hop[[  "A$AP Rocky"       ][ "Fashion Killa"     ]]
-# if artist_answer && song_answer = hip_hop[0][0]:
-#     correct += 1
-# else:
-#     corect = correct
+
+class MainHandler(webapp2.RequestHandler):
+    def get(self):
+        template = JINJA_ENVIRONMENT.get_template('templates/setup.html')
+        self.response.write(template.render())
 
 
 class QuizHandler(webapp2.RequestHandler):
-    def get(self):
-        template_values = {"song1_source": song_source}
+    def post(self):
+        genre=self.request.get("genre")
+        if genre=="hiphop":
+            template_values = {"songs":hip_hop_songs}
+
         template = JINJA_ENVIRONMENT.get_template('templates/quiz.html')
         self.response.write(template.render(template_values))
 
 class ResultsHandler(webapp2.RequestHandler):
     def post(self):
         amount_right=0
-        artist_answer= self.request.get("artist")
+        artist_answer=self.request.get("artist")
         song_answer=self.request.get("song_title")
-        if (artist_answer==song_artist and song_answer==song_title):
+        if (artist_answer==hip_hop_songs[0].artist and song_answer==hip_hop_songs[0].title):
             amount_right+=1
 
         template_values = {"amount_right": amount_right}
@@ -65,6 +61,7 @@ class ResultsHandler(webapp2.RequestHandler):
         self.response.write(template.render(template_values))
 
 app = webapp2.WSGIApplication([
+    ('/', MainHandler),
     ('/quiz', QuizHandler),
     ('/results', ResultsHandler)
 ], debug=True)

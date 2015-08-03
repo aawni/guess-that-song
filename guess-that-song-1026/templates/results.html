@@ -6,7 +6,11 @@
 </head>
   <body>
     <h1>Your Results</h1>
-    <p> You got {{amount_right}} questions correct!
+    {%if 2!=1%}
+    <p> You got {{amount_right}} questions correct! </p>
+    {%else%}
+    <p> You got {{amount_right}} question correct! </p>
+    {%endif%}
     </form>
   </body>
 </html>
