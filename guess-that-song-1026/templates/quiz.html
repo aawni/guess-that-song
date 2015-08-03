@@ -4,25 +4,25 @@
 <head>
   <title>Guess That Song Quiz</title>
 <link rel="stylesheet" type="text/css" href="stylesheets/script.css">
-
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-
 </head>
   <body>
     <h1>Guess That Song Quiz</h1>
 
     <form action="/results" method="post">
     <p>
-      {%for song in songs%}
-        {%counter=0%}
-          Question {%counter%}+1</br>
+      {% set counter=1 %}
+      {% for song in songs %}
+          Question {{counter}}</br>
           <audio controls>
             <source src="{{song.source}}" type="audio/mpeg">
           </audio>
-            <div>Artist: <input name="artist"+{{counter}}></input></div>
-            <div>Song Title: <input name="song_title"+{{counter}}></input></div>
-        {%counter+=1%}
-      {%endfor%}
+            <div>Artist: <input name="artist{{counter}}"></input></div>
+            <div>Song Title: <input name="song_title{{counter}}"></input></div>
+        {% set counter=counter+1 %}
+      {% endfor %}
+        <input name="genre" type="hidden" value={{genre}}>
+        </input>
       <div><input type="submit" value="Submit Quiz"></div>
 
     </p>

@@ -30,8 +30,8 @@ class Song(ndb.Model):
     title = ndb.StringProperty(required=True)
     artist = ndb.StringProperty(required=True)
 
-hip_hop_songs=[Song(source="songs/Fashion Killa.mp3", title="Fashion Killa", artist="A$AP ROCKY")]
-
+hiphop_songs=[Song(source="songs/Fashion Killa.mp3", title="Fashion Killa", artist="A$AP ROCKY")]
+genres={"hiphop":hiphop_songs}
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
@@ -42,8 +42,7 @@ class MainHandler(webapp2.RequestHandler):
 class QuizHandler(webapp2.RequestHandler):
     def post(self):
         genre=self.request.get("genre")
-        if genre=="hiphop":
-            template_values = {"songs":hip_hop_songs}
+        template_values = {"songs":genres[genre],"genre":genre}
 
         template = JINJA_ENVIRONMENT.get_template('templates/quiz.html')
         self.response.write(template.render(template_values))
@@ -52,11 +51,13 @@ class ResultsHandler(webapp2.RequestHandler):
     def post(self):
         amount_right=0
         genre=self.request.get("genre")
-        counter=0
-        for song in genre+"songs":
-            artist_answer=self.request.get("artist"+counter)
-            song_answer=self.request.get("song_title"+counter)
-            if (artist_answer==hip_hop_songs[counter].artist and song_answer==hip_hop_songs[counter].title):
+        counter=1
+        print genres[genre]
+        for song in genres[genre]:
+
+            artist_answer=self.request.get("artist"+str(counter)).lower()
+            song_answer=self.request.get("song_title"+str(counter)).lower()
+            if artist_answer==genres[genre][counter-1].artist.lower() and song_answer==genres[genre][counter-1].title.lower():
                 amount_right+=1
 
         template_values = {"amount_right": amount_right}
