@@ -25,20 +25,30 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
+# class Song(ndb.Model):
+#     source = ndb.StringProperty(required=True)
+#     title = ndb.StringProperty(required=True)
+#     artist = nbd.StringProperty(required=True)
+
+song_source="Fashion Killa.mp3"
+song_title="Fashion Killa"
+song_artist="A$AP ROCKIE"
+
 class QuizHandler(webapp2.RequestHandler):
     def get(self):
-        template_values = {}
+        template_values = {"song1_source": song_source}
         template = JINJA_ENVIRONMENT.get_template('templates/quiz.html')
         self.response.write(template.render(template_values))
-        
+
 class ResultsHandler(webapp2.RequestHandler):
     def post(self):
+        amount_right=0
         artist_answer= self.request.get("artist")
         song_answer=self.request.get("song_title")
-        self.response.write(artist_answer + ", " + song_answer)
-        # if (artist_answer==correct_artist_song)
+        if (artist_answer==song_artist and song_answer==song_title):
+            amount_right+=1
 
-        template_values = {}
+        template_values = {"amount_right": amount_right}
         template = JINJA_ENVIRONMENT.get_template('templates/results.html')
         self.response.write(template.render(template_values))
 app = webapp2.WSGIApplication([
