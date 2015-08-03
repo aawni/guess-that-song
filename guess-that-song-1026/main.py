@@ -51,10 +51,13 @@ class QuizHandler(webapp2.RequestHandler):
 class ResultsHandler(webapp2.RequestHandler):
     def post(self):
         amount_right=0
-        artist_answer=self.request.get("artist")
-        song_answer=self.request.get("song_title")
-        if (artist_answer==hip_hop_songs[0].artist and song_answer==hip_hop_songs[0].title):
-            amount_right+=1
+        genre=self.request.get("genre")
+        counter=0
+        for song in genre+"songs":
+            artist_answer=self.request.get("artist"+counter)
+            song_answer=self.request.get("song_title"+counter)
+            if (artist_answer==hip_hop_songs[counter].artist and song_answer==hip_hop_songs[counter].title):
+                amount_right+=1
 
         template_values = {"amount_right": amount_right}
         template = JINJA_ENVIRONMENT.get_template('templates/results.html')

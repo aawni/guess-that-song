@@ -14,12 +14,14 @@
     <form action="/results" method="post">
     <p>
       {%for song in songs%}
-          Question 1 </br>
+        {%counter=0%}
+          Question {%counter%}+1</br>
           <audio controls>
             <source src="{{song.source}}" type="audio/mpeg">
           </audio>
-            <div>Artist: <input name="artist"></input></div>
-            <div>Song Title: <input name="song_title"></input></div>
+            <div>Artist: <input name="artist"+{{counter}}></input></div>
+            <div>Song Title: <input name="song_title"+{{counter}}></input></div>
+        {%counter+=1%}
       {%endfor%}
       <div><input type="submit" value="Submit Quiz"></div>
 
