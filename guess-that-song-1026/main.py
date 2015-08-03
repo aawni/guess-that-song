@@ -34,6 +34,18 @@ song_source="Fashion Killa.mp3"
 song_title="Fashion Killa"
 song_artist="A$AP ROCKIE"
 
+#create an array by genre
+#randomize array
+#compare user's input to the song name and artist
+# so if input = intended name then add to correct answers
+# correct = 1
+# hip_hop[[  "A$AP Rocky"       ][ "Fashion Killa"     ]]
+# if artist_answer && song_answer = hip_hop[0][0]:
+#     correct += 1
+# else:
+#     corect = correct
+
+
 class QuizHandler(webapp2.RequestHandler):
     def get(self):
         template_values = {"song1_source": song_source}
@@ -51,6 +63,7 @@ class ResultsHandler(webapp2.RequestHandler):
         template_values = {"amount_right": amount_right}
         template = JINJA_ENVIRONMENT.get_template('templates/results.html')
         self.response.write(template.render(template_values))
+
 app = webapp2.WSGIApplication([
     ('/quiz', QuizHandler),
     ('/results', ResultsHandler)
