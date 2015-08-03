@@ -14,12 +14,34 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
+import os
 import webapp2
+import jinja2
+from google.appengine.ext import ndb
 
-class MainHandler(webapp2.RequestHandler):
+
+JINJA_ENVIRONMENT = jinja2.Environment(
+    loader=jinja2.FileSystemLoader(os.path.dirname(__file__)),
+    extensions=['jinja2.ext.autoescape'],
+    autoescape=True)
+
+class QuizHandler(webapp2.RequestHandler):
     def get(self):
-        self.response.write('Hello world!')
+        template_values = {}
+        template = JINJA_ENVIRONMENT.get_template('templates/quiz.html')
+        self.response.write(template.render(template_values))
+        
+class ResultsHandler(webapp2.RequestHandler):
+    def post(self):
+        artist_answer= self.request.get("artist")
+        song_answer=self.request.get("song_title")
+        self.response.write(artist_answer + ", " + song_answer)
+        # if (artist_answer==correct_artist_song)
 
+        template_values = {}
+        template = JINJA_ENVIRONMENT.get_template('templates/results.html')
+        self.response.write(template.render(template_values))
 app = webapp2.WSGIApplication([
-    ('/', MainHandler)
+    ('/quiz', QuizHandler),
+    ('/results', ResultsHandler)
 ], debug=True)
