@@ -1,15 +1,28 @@
-head {
+@import url(http://fonts.googleapis.com/css?family=Poiret+One);
+@import url(http://fonts.googleapis.com/css?family=Lobster);
+
+
+body {
+  background-image: url("tumblr-backgrounds-design-ideas-9.jpg");
+  background-size: 1400px;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  font-family: 'Lobster', cursive;
+  /*background-color: white;*/
+
+  font-size: 20px;
+  width: 500px;
+  height: 50px;
+  color: black;
+  padding: 20px 20px 30px 400px;
 
 }
 
 h1 {
+  font-family: 'Lobster', cursive;
+  font-size: 60px;
+  /*border: 4px solid black;
+  padding: 20px 10px 20px 20px;*/
 
-}
-
-p {
-
-}
-
-body{
-  
 }
