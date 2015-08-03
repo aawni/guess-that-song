@@ -31,6 +31,7 @@ class Song(ndb.Model):
     artist = ndb.StringProperty(required=True)
 
 hiphop_songs=[Song(source="songs/Fashion Killa.mp3", title="Fashion Killa", artist="A$AP ROCKY")]
+pop_songs=[Song]
 genres={"hiphop":hiphop_songs}
 
 class MainHandler(webapp2.RequestHandler):
