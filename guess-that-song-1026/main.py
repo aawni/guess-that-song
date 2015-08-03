@@ -25,22 +25,45 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
+#create an array by genre
+#randomize array
+#compare user's input to the song name and artist
+# so if input = intended name then add to correct answers
+# correct = 1
+# hip_hop[[  "A$AP Rocky"       ][ "Fashion Killa"     ]]
+# if artist_answer && song_answer = hip_hop[0][0]:
+#     correct += 1
+# else:
+#     corect = correct
+
+
 class QuizHandler(webapp2.RequestHandler):
     def get(self):
         template_values = {}
         template = JINJA_ENVIRONMENT.get_template('templates/quiz.html')
         self.response.write(template.render(template_values))
-        
+
 class ResultsHandler(webapp2.RequestHandler):
     def post(self):
+        # template_values = {}
+        # template = JINJA_ENVIRONMENT.get_template('templates/results.html')
+        # self.response.write(template.render(template_values))
         artist_answer= self.request.get("artist")
         song_answer=self.request.get("song_title")
-        self.response.write(artist_answer + ", " + song_answer)
+        correct = 0
+
+
+        hip_hop = [[  "A$AP Rocky"  ],[ "Fashion Killa" ]]
+        if artist_answer and  song_answer == hip_hop[0][0]:
+            correct += 1
+        else:
+            correct = correct
+        self.response.write("you got " + str(correct) + " out of 1 answers right")
+
+        # self.response.write(artist_answer + ", " + song_answer)
         # if (artist_answer==correct_artist_song)
 
-        template_values = {}
-        template = JINJA_ENVIRONMENT.get_template('templates/results.html')
-        self.response.write(template.render(template_values))
+
 app = webapp2.WSGIApplication([
     ('/quiz', QuizHandler),
     ('/results', ResultsHandler)
