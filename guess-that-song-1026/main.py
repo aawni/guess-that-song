@@ -30,9 +30,18 @@ class Song(ndb.Model):
     title = ndb.StringProperty(required=True)
     artist = ndb.StringProperty(required=True)
 
-hiphop_songs=[Song(source="songs/Fashion Killa.mp3", title="Fashion Killa", artist="A$AP ROCKY")]
-pop_songs=[Song()]
+hip_hop_songs=[Song(source="songs/Fashion Killa.mp3", title="Fashion Killa", artist="A$AP ROCKY"),
+               Song(source="songs/Alright.mp3", title="Alright", artist="Kendrick Lamar"),
+               Song(source="songs/Commas.mp3", title="Commas", artist="Future"),
+               Song(source="songs/Good Life.mp3", title="Good Life", artist="Kanye West"),
+               Song(source="songs/Love Sosa.mp3", title="Love Sosa", artist="Chief Keef"),
+               Song(source="songs/Forbidden Fruit.mp3", title="Forbidden Fruit", artist="Kendrick Lamar"),
+               Song(source="songs/My Way.mp3", title="My Way", artist="Fetty Wap")
+               Song(source="songs/Planes.mp3", title="Planes", artist="Jeremih")
+               Song(source="songs/Versace.mp3", title="Versace", artist="Migos")
+                ]
 genres={"hiphop":hiphop_songs}
+
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
