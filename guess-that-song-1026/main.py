@@ -39,9 +39,9 @@ class Song(ndb.Model):
     title = ndb.StringProperty(required=True)
     artist = ndb.StringProperty(required=True)
 
-
 hiphop_songs=[Song(youtube_ID="SADoyWxGRV4", title="Diamonds", artist="Rihanna")]
 pop_songs=[]
+
 genres={"hiphop":hiphop_songs, "pop":pop_songs}
 
 
@@ -62,6 +62,8 @@ class MainHandler(webapp2.RequestHandler):
 
         else:
             self.redirect(users.create_login_url(self.request.uri))
+
+
 
 class QuizHandler(webapp2.RequestHandler):
     def post(self):
