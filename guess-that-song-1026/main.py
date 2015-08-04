@@ -65,7 +65,6 @@ pop_songs=[Song(source="songs/pop/Bad_Blood.mp3", title="Bad Blood", artist="Tay
 genres={"hiphop":hiphop_songs, "pop":pop_songs}
 
 
-
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
@@ -78,15 +77,12 @@ class MainHandler(webapp2.RequestHandler):
             else:
                 current_user = UserModel(currentUserID = user.user_id(), questions_played=0,questions_correct=0, is_new_user=True)
             current_user.put()
+            template_vars={"nickname": user.nickname(),"logout_url":users.create_logout_url('/')}
+            template = JINJA_ENVIRONMENT.get_template('templates/setup.html')
+            self.response.write(template.render(template_vars))
+
         else:
             self.redirect(users.create_login_url(self.request.uri))
-
-        template_vars={"nickname": user.nickname(),"logout_url":users.create_logout_url('/')}
-        template = JINJA_ENVIRONMENT.get_template('templates/setup.html')
-        self.response.write(template.render())
-
-
-
 
 class QuizHandler(webapp2.RequestHandler):
     def post(self):
