@@ -60,11 +60,11 @@ hiphop_songs=[Song(youtube_ID="Z-48u_uWMHY", title="Alright", artist="Kendrick L
                Song(youtube_ID="r_dh16HQkqQ", title="Hustle Hard", artist="Ace Hood"),
                Song(youtube_ID="8UFIYGkROII", title="Crank Thank Soulja Boy", artist="Soulja Boy"),
                Song(youtube_ID="LDZX4ooRsWs", title="Nicki Minaj", artist="Nicki Minaj"),
-               Song(youtube_ID="hGKK8eGQQEk", title="Nasty Freestyle", artist="T-Wayne")
-               Song(youtube_ID="avFq9errZCk", title="Tuesday", artist="ILOVEMAKONNEN")
+               Song(youtube_ID="hGKK8eGQQEk", title="Nasty Freestyle", artist="T-Wayne"),
+               Song(youtube_ID="avFq9errZCk", title="Tuesday", artist="ILOVEMAKONNEN"),
                Song(youtube_ID="LDZX4ooRsWs", title="Nicki Minaj", artist="Nicki Minaj"),
-               Song(youtube_ID="hGKK8eGQQEk", title="Nasty Freestyle", artist="T-Wayne")
-               Song(youtube_ID="RAzzv6Ks9nc", title="Check", artist="Young Thug")
+               Song(youtube_ID="hGKK8eGQQEk", title="Nasty Freestyle", artist="T-Wayne"),
+               Song(youtube_ID="RAzzv6Ks9nc", title="Check", artist="Young Thug")]
 
 pop_songs=[]
 
@@ -79,7 +79,7 @@ Song(youtube_ID="vD3iXpv4h-o", title="The Wolf", artist="Mumford & Sons"),
 Song(youtube_ID="mqiH0ZSkM9I", title="Hold Back The River", artist="James Bay")]
 
 genres={"hiphop":hiphop_songs, "pop":pop_songs, "rock":rock_songs}
-
+users_current_songs={}
 
 
 class MainHandler(webapp2.RequestHandler):
@@ -115,6 +115,8 @@ class QuizHandler(webapp2.RequestHandler):
                 song_indexs.append(rand_ind)
                 count+=1
         template_values = {"songs":selected_songs,"genre":genre, "song_indexs":song_indexs}
+        user=users.get_current_user()
+        users_current_songs[user.user_id()]=selected_songs
 
         template = JINJA_ENVIRONMENT.get_template('templates/quiz.html')
         self.response.write(template.render(template_values))
@@ -124,11 +126,10 @@ class ResultsHandler(webapp2.RequestHandler):
         amount_right=0
         genre=self.request.get("genre")
         song_indexs=self.request.get("song_indexs")
-        logging.info(song_indexs)
         counter=1
-        selected_songs=[]
-        for ind in song_indexs:
-            selected_songs.append(genres[genre][ind])
+        user=users.get_current_user()
+        selected_songs=users_current_songs[user.user_id()]
+
 
         for song in selected_songs:
             artist_answer=self.request.get("artist"+str(counter)).lower()
@@ -137,7 +138,7 @@ class ResultsHandler(webapp2.RequestHandler):
                 if artist_answer==selected_songs[counter-1].artist.lower() and song_answer==selected_songs[counter-1].title.lower():
                     amount_right+=1
             counter+=1
-        user=users.get_current_user()
+
         user_query=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()
         user_in_datastore=user_query[0]
         user_in_datastore.questions_played+=len(selected_songs)
