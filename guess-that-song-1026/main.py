@@ -48,7 +48,17 @@ hiphop_songs=[Song(youtube_ID="Z-48u_uWMHY", title="Alright", artist="Kendrick L
                Song(youtube_ID="vKzwbsI7ISQ", title="We Dem Boyz", artist="Wiz Khalifa"),
                Song(youtube_ID="Bo0WMtwoqtY", title="Blessed", artist="Big Sean"),
                Song(youtube_ID="Cvu0Q4Cl7pU", title="My Way", artist="Fetty Wap"),
-               Song(youtube_ID="pVhYGC2CdJo", title="Back to Back", artist="Drake")
+               Song(youtube_ID="pVhYGC2CdJo", title="Back to Back", artist="Drake"), Song(youtube_ID="Z-48u_uWMHY", title="Alright", artist="Kendrick Lamar"),
+                              Song(youtube_ID="_JZom_gVfuw", title="Juicy", artist="Biggie"),
+                              Song(youtube_ID="RubBzkZzpUA", title="Started From The Bottom", artist="Drake"),
+                              Song(youtube_ID="ucoK6KN1dzU", title="Nothing But A G Thang", artist="Snoop Dogg"),
+                              Song(youtube_ID="fPTJLHjzyEo", title="Where Ya At", artist="Future"),
+                              Song(youtube_ID="6vwNcNOTVzY", title="Gold Digger", artist="Kanye West"),
+                              Song(youtube_ID="r_dh16HQkqQ", title="Hustle Hard", artist="Ace Hood"),
+                              Song(youtube_ID="8UFIYGkROII", title="Crank Thank Soulja Boy", artist="Soulja Boy"),
+                              Song(youtube_ID="LDZX4ooRsWs", title="Nicki Minaj", artist="Nicki Minaj"),
+                              Song(youtube_ID="hGKK8eGQQEk", title="Nasty Freestyle", artist="T-Wayne")
+                              Song(youtube_ID="RAzzv6Ks9nc", title="Check", artist="Young Thug")
                ]
 
 pop_songs=[]
