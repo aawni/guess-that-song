@@ -51,9 +51,11 @@ hiphop_songs=[Song(youtube_ID="Z-48u_uWMHY", title="Alright", artist="Kendrick L
                Song(youtube_ID="pVhYGC2CdJo", title="Back to Back", artist="Drake")
                ]
 
-pop_songs=[]
+pop_songs=[Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato")]
+country_songs=[]
 
-genres={"hiphop":hiphop_songs, "pop":pop_songs}
+
+genres={"hiphop":hiphop_songs, "pop":pop_songs , "country":country_songs}
 
 
 class MainHandler(webapp2.RequestHandler):
