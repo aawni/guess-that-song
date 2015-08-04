@@ -50,6 +50,7 @@ hiphop_songs=[Song(source="songs/hiphop/Fashion_Killa.mp3", title="Fashion Killa
 genres={"hiphop":hiphop_songs}
 
 
+
 class MainHandler(webapp2.RequestHandler):
     def get(self):
         template = JINJA_ENVIRONMENT.get_template('templates/setup.html')
