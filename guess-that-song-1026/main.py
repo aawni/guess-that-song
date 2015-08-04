@@ -19,6 +19,8 @@ import webapp2
 import jinja2
 from google.appengine.ext import ndb
 from google.appengine.api import users
+import random
+import logging
 
 
 
@@ -48,11 +50,9 @@ hiphop_songs=[Song(youtube_ID="Z-48u_uWMHY", title="Alright", artist="Kendrick L
                Song(youtube_ID="vKzwbsI7ISQ", title="We Dem Boyz", artist="Wiz Khalifa"),
                Song(youtube_ID="Bo0WMtwoqtY", title="Blessed", artist="Big Sean"),
                Song(youtube_ID="Cvu0Q4Cl7pU", title="My Way", artist="Fetty Wap"),
-               Song(youtube_ID="pVhYGC2CdJo", title="Back to Back", artist="Drake")
-               ]
+               Song(youtube_ID="pVhYGC2CdJo", title="Back to Back", artist="Drake")]
 
 pop_songs=[]
-
 genres={"hiphop":hiphop_songs, "pop":pop_songs}
 
 
@@ -79,7 +79,16 @@ class MainHandler(webapp2.RequestHandler):
 class QuizHandler(webapp2.RequestHandler):
     def post(self):
         genre=self.request.get("genre")
-        template_values = {"songs":genres[genre],"genre":genre}
+        song_indexs=[]
+        selected_songs=[]
+        count=1
+        while count <=8:
+            rand_ind=random.randint(0,len(genres[genre])-1)
+            if rand_ind not in song_indexs:
+                selected_songs.append(genres[genre][rand_ind])
+                song_indexs.append(rand_ind)
+                count+=1
+        template_values = {"songs":selected_songs,"genre":genre, "song_indexs":song_indexs}
 
         template = JINJA_ENVIRONMENT.get_template('templates/quiz.html')
         self.response.write(template.render(template_values))
@@ -88,23 +97,30 @@ class ResultsHandler(webapp2.RequestHandler):
     def post(self):
         amount_right=0
         genre=self.request.get("genre")
+        song_indexs=self.request.get("song_indexs")
+        logging.info(song_indexs)
         counter=1
-        for song in genres[genre]:
+        selected_songs=[]
+        for ind in song_indexs:
+            selected_songs.append(genres[genre][ind])
+
+        for song in selected_songs:
             artist_answer=self.request.get("artist"+str(counter)).lower()
             song_answer=self.request.get("song_title"+str(counter)).lower()
             if artist_answer!="" and song_answer!="":
-                if artist_answer==genres[genre][counter-1].artist.lower() and song_answer==genres[genre][counter-1].title.lower():
+                if artist_answer==selected_songs[counter-1].artist.lower() and song_answer==selected_songs[counter-1].title.lower():
                     amount_right+=1
             counter+=1
         user=users.get_current_user()
         user_query=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()
         user_in_datastore=user_query[0]
-        user_in_datastore.questions_played+=len(genres[genre])
+        user_in_datastore.questions_played+=len(selected_songs)
         user_in_datastore.questions_correct+=amount_right
         user_in_datastore.put()
         total_percent_correct=int((user_in_datastore.questions_correct * 1.0/user_in_datastore.questions_played)*100)
+        percent_correct=int((amount_right*1.0/len(selected_songs))*100)
 
-        template_values = {"amount_right": amount_right,"percent_correct":total_percent_correct}
+        template_values = {"amount_right": amount_right,"total_percent_correct":total_percent_correct,"percent_correct":percent_correct}
         template = JINJA_ENVIRONMENT.get_template('templates/results.html')
         self.response.write(template.render(template_values))
 
