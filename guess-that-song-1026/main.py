@@ -37,10 +37,11 @@ hip_hop_songs=[Song(source="songs/Fashion Killa.mp3", title="Fashion Killa", art
                Song(source="songs/Love Sosa.mp3", title="Love Sosa", artist="Chief Keef"),
                Song(source="songs/Forbidden Fruit.mp3", title="Forbidden Fruit", artist="Kendrick Lamar"),
                Song(source="songs/My Way.mp3", title="My Way", artist="Fetty Wap")
-               Song(source="songs/Planes.mp3", title="Planes", artist="Jeremih")
+               Song(source="songs/Planes.mp3", title="Planes", artist="Jeremiah")
                Song(source="songs/Versace.mp3", title="Versace", artist="Migos")
                 ]
-genres={"hiphop":hiphop_songs}
+pop_songs=
+genres={"hiphop":hiphop_songs , "pop": pop_songs}
 
 
 class MainHandler(webapp2.RequestHandler):
