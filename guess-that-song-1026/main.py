@@ -27,10 +27,18 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
+class UserModel(ndb.Model):
+    currentUserID = ndb.StringProperty(required = True)
+    questions_correct = ndb.IntegerProperty()
+    questions_played = ndb.IntegerProperty()
+    is_new_user = ndb.BooleanProperty()
+
+
 class Song(ndb.Model):
     source = ndb.StringProperty(required=True)
     title = ndb.StringProperty(required=True)
     artist = ndb.StringProperty(required=True)
+
 
 hiphop_songs=[Song(source="songs/hiphop/Fashion_Killa.mp3", title="Fashion Killa", artist="A$AP ROCKY"),
                Song(source="songs/hiphop/Alright.mp3", title="Alright", artist="Kendrick Lamar"),
@@ -60,8 +68,24 @@ genres={"hiphop":hiphop_songs, "pop":pop_songs}
 
 class MainHandler(webapp2.RequestHandler):
     def get(self):
+        user = users.get_current_user()
+        if user:
+            self.response.write(user)
+            previous_user_query=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()
+            if previous_user_query:
+                current_user = previous_user_query[0]
+                current_user.is_new_user=False
+            else:
+                current_user = UserModel(currentUserID = user.user_id(), questions_played=0,questions_correct=0, is_new_user=True)
+            current_user.put()
+        else:
+            self.redirect(users.create_login_url(self.request.uri))
+
+        template_vars={"nickname": user.nickname(),"logout_url":users.create_logout_url('/')}
         template = JINJA_ENVIRONMENT.get_template('templates/setup.html')
         self.response.write(template.render())
+
+
 
 
 class QuizHandler(webapp2.RequestHandler):
@@ -84,6 +108,9 @@ class ResultsHandler(webapp2.RequestHandler):
             if artist_answer!="" and song_answer!="":
                 if artist_answer==genres[genre][counter-1].artist.lower() and song_answer==genres[genre][counter-1].title.lower():
                     amount_right+=1
+        user=users.get_current_user()
+        user.questions_played+=genres[genre]
+        user.questions_correct+=amount_right
 
         template_values = {"amount_right": amount_right}
         template = JINJA_ENVIRONMENT.get_template('templates/results.html')
