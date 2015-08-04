@@ -15,16 +15,20 @@
       {% for song in songs %}
     </br>
           Question {{counter}}
-          <audio controls>
-            <source src="{{song.source}}" type="audio/mpeg">
-          </audio>
+          <div style="position:relative;width:267px;height:25px;overflow:hidden;">
+          <div style="position:absolute;top:-276px;left:-5px">
+          <iframe width="300" height="300"
+            src="https://www.youtube.com/embed/{{song.youtube_ID}}?rel=0">
+          </iframe>
+          </div>
+          </div>
             <div>Artist: <input name="artist{{counter}}"></input></div>
             <div>Song Title: <input name="song_title{{counter}}"></input></div>
         {% set counter=counter+1 %}
       {% endfor %}
         <input name="genre" type="hidden" value={{genre}}>
         </input>
-      <div><input type="submit" value="Submit Quiz"></div>
+      <div><input class="btn"type="submit" value="Submit Quiz"></div>
     </p>
     </form>
   </body>

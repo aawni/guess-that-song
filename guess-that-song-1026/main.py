@@ -35,16 +35,13 @@ class UserModel(ndb.Model):
 
 
 class Song(ndb.Model):
-    source = ndb.StringProperty(required=True)
+    youtube_ID = ndb.StringProperty(required=True)
     title = ndb.StringProperty(required=True)
     artist = ndb.StringProperty(required=True)
 
 
-hiphop_songs=[Song(source="songs/hiphop/Alright.mp3", title="Alright", artist="Kendrick Lamar"),
-               Song(source="songs/hiphop/Commas.mp3", title="Commas", artist="Future")]
-
-pop_songs=[Song(source="songs/pop/Bad_Blood.mp3", title="Bad Blood", artist="Taylor Swift"),
-            Song(source="songs/pop/Cheerleader.mp3",title="Cheerleader",artist= "Omi")]
+hiphop_songs=[Song(youtube_ID="SADoyWxGRV4", title="Diamonds", artist="Rihanna")]
+pop_songs=[]
 genres={"hiphop":hiphop_songs, "pop":pop_songs}
 
 
@@ -92,7 +89,7 @@ class ResultsHandler(webapp2.RequestHandler):
         user_in_datastore.questions_played+=len(genres[genre])
         user_in_datastore.questions_correct+=amount_right
         user_in_datastore.put()
-        total_percent_correct=int(user_in_datastore.questions_correct/user_in_datastore.questions_played*100)
+        total_percent_correct=int((user_in_datastore.questions_correct * 1.0/user_in_datastore.questions_played)*100)
 
         template_values = {"amount_right": amount_right,"percent_correct":total_percent_correct}
         template = JINJA_ENVIRONMENT.get_template('templates/results.html')
