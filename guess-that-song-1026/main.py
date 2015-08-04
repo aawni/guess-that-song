@@ -35,16 +35,25 @@ class UserModel(ndb.Model):
 
 
 class Song(ndb.Model):
-    source = ndb.StringProperty(required=True)
+    youtube_ID = ndb.StringProperty(required=True)
     title = ndb.StringProperty(required=True)
     artist = ndb.StringProperty(required=True)
 
 
-hiphop_songs=[Song(source="songs/hiphop/Alright.mp3", title="Alright", artist="Kendrick Lamar"),
-               Song(source="songs/hiphop/Commas.mp3", title="Commas", artist="Future")]
+hiphop_songs=[Song(youtube_ID="Z-48u_uWMHY", title="Alright", artist="Kendrick Lamar"),
+               Song(youtube_ID="frOjjVDb8R8.mp3", title="Commas", artist="Future"),
+               Song(youtube_ID="NtTLfSOujTI.mp3", title="Planes", artist="Jeremih")
+               Song(youtube_ID="YWyHZNBz6FE.mp3", title="Love Sosa", artist="Chief Keef")
+               Song(youtube_ID="rF-hq_CHNH0.mp3", title="Versace", artist="Migos")
+               Song(youtube_ID="C0U4aDOjr_M.mp3", title="Look At Me Now", artist="Chris Brown")
+               Song(youtube_ID="vKzwbsI7ISQ.mp3", title="We Dem Boyz", artist="Wiz Khalifa")
+               Song(youtube_ID="Bo0WMtwoqtY.mp3", title="Blessed", artist="Big Sean")
+               Song(youtube_ID="Cvu0Q4Cl7pU.mp3", title="My Way", artist="Fetty Wap")
+               Song(youtube_ID="pVhYGC2CdJo.mp3", title="Back to Back", artist="Drake")
+               ]
 
-pop_songs=[Song(source="songs/pop/Bad_Blood.mp3", title="Bad Blood", artist="Taylor Swift"),
-            Song(source="songs/pop/Cheerleader.mp3",title="Cheerleader",artist= "Omi")]
+pop_songs=[Song(youtube_ID="songs/pop/Bad_Blood.mp3", title="Bad Blood", artist="Taylor Swift"),
+            Song(youtube_ID="songs/pop/Cheerleader.mp3",title="Cheerleader",artist= "Omi")]
 genres={"hiphop":hiphop_songs, "pop":pop_songs}
 
 
