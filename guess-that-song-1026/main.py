@@ -39,7 +39,18 @@ class Song(ndb.Model):
     title = ndb.StringProperty(required=True)
     artist = ndb.StringProperty(required=True)
 
-hiphop_songs=[Song(youtube_ID="SADoyWxGRV4", title="Diamonds", artist="Rihanna")]
+hiphop_songs=[Song(youtube_ID="Z-48u_uWMHY", title="Alright", artist="Kendrick Lamar"),
+               Song(youtube_ID="frOjjVDb8R8", title="Commas", artist="Future"),
+               Song(youtube_ID="NtTLfSOujTI", title="Planes", artist="Jeremih"),
+               Song(youtube_ID="YWyHZNBz6FE", title="Love Sosa", artist="Chief Keef"),
+               Song(youtube_ID="rF-hq_CHNH0", title="Versace", artist="Migos"),
+               Song(youtube_ID="C0U4aDOjr_M", title="Look At Me Now", artist="Chris Brown"),
+               Song(youtube_ID="vKzwbsI7ISQ", title="We Dem Boyz", artist="Wiz Khalifa"),
+               Song(youtube_ID="Bo0WMtwoqtY", title="Blessed", artist="Big Sean"),
+               Song(youtube_ID="Cvu0Q4Cl7pU", title="My Way", artist="Fetty Wap"),
+               Song(youtube_ID="pVhYGC2CdJo", title="Back to Back", artist="Drake")
+               ]
+
 pop_songs=[]
 
 genres={"hiphop":hiphop_songs, "pop":pop_songs}
