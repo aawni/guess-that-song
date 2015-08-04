@@ -40,28 +40,11 @@ class Song(ndb.Model):
     artist = ndb.StringProperty(required=True)
 
 
-hiphop_songs=[Song(source="songs/hiphop/Fashion_Killa.mp3", title="Fashion Killa", artist="A$AP ROCKY"),
-               Song(source="songs/hiphop/Alright.mp3", title="Alright", artist="Kendrick Lamar"),
-               Song(source="songs/hiphop/Commas.mp3", title="Commas", artist="Future"),
-               Song(source="songs/hiphop/Good_Life.mp3", title="Good Life", artist="Kanye West"),
-               Song(source="songs/hiphop/Love_Sosa.mp3", title="Love Sosa", artist="Chief Keef"),
-               Song(source="songs/hiphop/Forbidden_Fruit.mp3", title="Forbidden Fruit", artist="Kendrick Lamar"),
-               Song(source="songs/hiphop/My_Way.mp3", title="My Way", artist="Fetty Wap"),
-               Song(source="songs/hiphop/Planes.mp3", title="Planes", artist="Jeremiah"),
-               Song(source="songs/hiphop/Versace.mp3", title="Versace", artist="Migos")]
+hiphop_songs=[Song(source="songs/hiphop/Alright.mp3", title="Alright", artist="Kendrick Lamar"),
+               Song(source="songs/hiphop/Commas.mp3", title="Commas", artist="Future")]
 
 pop_songs=[Song(source="songs/pop/Bad_Blood.mp3", title="Bad Blood", artist="Taylor Swift"),
-            Song(source="songs/pop/Cheerleader.mp3",title="Cheerleader",artist= "Omi"),
-            Song(source="songs/pop/Cool_For_The_Summer.mp3",title="Cool for the Summer",artist= "Demi Lovato"),
-            Song(source="songs/pop/Diamonds.mp3",title="Diamonds",artist= "Rihanna"),
-            Song(source="songs/pop/Flashlight.mp3",title="Flashlight",artist= "Jessie J"),
-            Song(source="songs/pop/Fun.mp3",title= "Fun", artist= "Chris Brown"),
-            Song(source="songs/pop/Good_For_You.mp3",title="Good For You",artist= "Selena Gomez"),
-            Song(source="songs/pop/Shouldve_Been_Us.mp3",title="Should've Been Us",artist= "Tori Kelly"),
-            Song(source="songs/pop/Uptown_Funk.mp3",title="Upton Funk",artist= "Bruno Mars"),
-            Song(source="songs/pop/Worth_It.mp3",title="Worth It",artist= "Fifth Harmony")
-
-            ]
+            Song(source="songs/pop/Cheerleader.mp3",title="Cheerleader",artist= "Omi")]
 genres={"hiphop":hiphop_songs, "pop":pop_songs}
 
 
@@ -97,18 +80,23 @@ class ResultsHandler(webapp2.RequestHandler):
         amount_right=0
         genre=self.request.get("genre")
         counter=1
-        print genres[genre]
+        self.response.write(genres[genre])
         for song in genres[genre]:
             artist_answer=self.request.get("artist"+str(counter)).lower()
             song_answer=self.request.get("song_title"+str(counter)).lower()
             if artist_answer!="" and song_answer!="":
                 if artist_answer==genres[genre][counter-1].artist.lower() and song_answer==genres[genre][counter-1].title.lower():
                     amount_right+=1
+            counter+=1
         user=users.get_current_user()
-        user.questions_played+=genres[genre]
-        user.questions_correct+=amount_right
+        user_query=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()
+        user_in_datastore=user_query[0]
+        user_in_datastore.questions_played+=len(genres[genre])
+        user_in_datastore.questions_correct+=amount_right
+        user_in_datastore.put()
+        total_percent_correct=int(user_in_datastore.questions_correct/user_in_datastore.questions_played*100)
 
-        template_values = {"amount_right": amount_right}
+        template_values = {"amount_right": amount_right,"percent_correct":total_percent_correct}
         template = JINJA_ENVIRONMENT.get_template('templates/results.html')
         self.response.write(template.render(template_values))
 
