@@ -18,6 +18,14 @@ import os
 import webapp2
 import jinja2
 from google.appengine.ext import ndb
+from google.appengine.api import users
+
+user = users.get_current_user()
+if user:
+
+else:
+    self.redirect(users.create_)
+
 
 
 JINJA_ENVIRONMENT = jinja2.Environment(

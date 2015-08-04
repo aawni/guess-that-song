@@ -9,11 +9,12 @@
   <body>
     <h1>Guess That Song Quiz</h1>
 
-    <form action="/results" method="post">
+    <form id="quiz_form" action="/results" method="post">
     <p>
       {% set counter=1 %}
       {% for song in songs %}
-          Question {{counter}}</br>
+    </br>
+          Question {{counter}}
           <audio controls>
             <source src="{{song.source}}" type="audio/mpeg">
           </audio>
@@ -24,7 +25,6 @@
         <input name="genre" type="hidden" value={{genre}}>
         </input>
       <div><input type="submit" value="Submit Quiz"></div>
-
     </p>
     </form>
   </body>

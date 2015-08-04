@@ -12,8 +12,8 @@ body {
   /*background-color: white;*/
 
   font-size: 20px;
-  width: 500px;
-  height: 50px;
+  /*width: 500px;
+  height: 50px;*/
   color: black;
   padding: 20px 20px 30px 400px;
 
@@ -22,6 +22,7 @@ body {
 h1 {
   font-family: 'Lobster', cursive;
   font-size: 60px;
+  position: center;
   /*border: 4px solid black;
   padding: 20px 10px 20px 20px;*/
 
