@@ -20,12 +20,6 @@ import jinja2
 from google.appengine.ext import ndb
 from google.appengine.api import users
 
-user = users.get_current_user()
-if user:
-
-else:
-    self.redirect(users.create_)
-
 
 
 JINJA_ENVIRONMENT = jinja2.Environment(
@@ -47,7 +41,20 @@ hiphop_songs=[Song(source="songs/hiphop/Fashion_Killa.mp3", title="Fashion Killa
                Song(source="songs/hiphop/My_Way.mp3", title="My Way", artist="Fetty Wap"),
                Song(source="songs/hiphop/Planes.mp3", title="Planes", artist="Jeremiah"),
                Song(source="songs/hiphop/Versace.mp3", title="Versace", artist="Migos")]
-genres={"hiphop":hiphop_songs}
+
+pop_songs=[Song(source="songs/pop/Bad_Blood.mp3", title="Bad Blood", artist="Taylor Swift"),
+            Song(source="songs/pop/Cheerleader.mp3",title="Cheerleader",artist= "Omi"),
+            Song(source="songs/pop/Cool_For_The_Summer.mp3",title="Cool for the Summer",artist= "Demi Lovato"),
+            Song(source="songs/pop/Diamonds.mp3",title="Diamonds",artist= "Rihanna"),
+            Song(source="songs/pop/Flashlight.mp3",title="Flashlight",artist= "Jessie J"),
+            Song(source="songs/pop/Fun.mp3",title= "Fun", artist= "Chris Brown"),
+            Song(source="songs/pop/Good_For_You.mp3",title="Good For You",artist= "Selena Gomez"),
+            Song(source="songs/pop/Shouldve_Been_Us.mp3",title="Should've Been Us",artist= "Tori Kelly"),
+            Song(source="songs/pop/Uptown_Funk.mp3",title="Upton Funk",artist= "Bruno Mars"),
+            Song(source="songs/pop/Worth_It.mp3",title="Worth It",artist= "Fifth Harmony")
+
+            ]
+genres={"hiphop":hiphop_songs, "pop":pop_songs}
 
 
 
