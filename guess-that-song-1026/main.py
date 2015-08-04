@@ -53,7 +53,17 @@ hiphop_songs=[Song(youtube_ID="Z-48u_uWMHY", title="Alright", artist="Kendrick L
 
 pop_songs=[]
 
-genres={"hiphop":hiphop_songs, "pop":pop_songs}
+rock_songs=[Song(youtube_ID="BcL---4xQYA", title="Stairway To Heaven", artist="Led Zeppelin"),
+Song(youtube_ID="6JCLY0Rlx6Q", title="Shut Up and Dance", artist="Walk The Moon"),
+Song(youtube_ID="TLV4_xaYynY", title="All Along The Watchtower", artist="Jimi Hendrix"),
+Song(youtube_ID="pAgnJDJN4VA", title="Back in Black", artist="ACDC"),
+Song(youtube_ID="D0W1v0kOELA", title="Free Bird", artist="Lynyrd Skynyrd"),
+Song(youtube_ID="lDK9QqIzhwk", title="Living On A Prayer", artist="Bon Jovi"),
+Song(youtube_ID="P-Q9D4dcYng", title="A Day in the Life", artist="The Beatles"),
+Song(youtube_ID="vD3iXpv4h-o", title="The Wolf", artist="Mumford & Sons"),
+Song(youtube_ID="mqiH0ZSkM9I", title="Hold Back The River", artist="James Bay")]
+
+genres={"hiphop":hiphop_songs, "pop":pop_songs, "rock":rock_songs}
 
 
 class MainHandler(webapp2.RequestHandler):
