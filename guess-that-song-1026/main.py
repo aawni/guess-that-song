@@ -37,7 +37,7 @@ hiphop_songs=[Song(source="songs/hiphop/Fashion_Killa.mp3", title="Fashion Killa
                Song(source="songs/hiphop/Love_Sosa.mp3", title="Love Sosa", artist="Chief Keef"),
                Song(source="songs/hiphop/Forbidden_Fruit.mp3", title="Forbidden Fruit", artist="Kendrick Lamar"),
                Song(source="songs/hiphop/My_Way.mp3", title="My Way", artist="Fetty Wap"),
-               Song(source="songs/hiphop/Planes.mp3", title="Planes", artist="Jeremih"),
+               Song(source="songs/hiphop/Planes.mp3", title="Planes", artist="Jeremiah"),
                Song(source="songs/hiphop/Versace.mp3", title="Versace", artist="Migos")]
 genres={"hiphop":hiphop_songs}
 
