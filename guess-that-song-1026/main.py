@@ -52,7 +52,6 @@ class MainHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         if user:
-            self.response.write(user)
             previous_user_query=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()
             if previous_user_query:
                 current_user = previous_user_query[0]
@@ -80,7 +79,6 @@ class ResultsHandler(webapp2.RequestHandler):
         amount_right=0
         genre=self.request.get("genre")
         counter=1
-        self.response.write(genres[genre])
         for song in genres[genre]:
             artist_answer=self.request.get("artist"+str(counter)).lower()
             song_answer=self.request.get("song_title"+str(counter)).lower()
