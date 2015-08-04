@@ -48,7 +48,7 @@ pop_songs=[Song(source="songs/pop/Bad_Blood.mp3", title="Bad Blood", artist="Tay
             Song(source="songs/pop/Diamonds.mp3",title="Diamonds",artist= "Rihanna"),
             Song(source="songs/pop/Flashlight.mp3",title="Flashlight",artist= "Jessie J"),
             Song(source="songs/pop/Fun.mp3",title= "Fun", artist= "Chris Brown"),
-            Song(source="songs/pop/Good_For_You.mp3",title="Good For You",artist= "Selena Gomez"),
+            Song(source="songs/pop/Good4U.mp3",title="Good For You",artist= "Selena Gomez"),
             Song(source="songs/pop/Shouldve_Been_Us.mp3",title="Should've Been Us",artist= "Tori Kelly"),
             Song(source="songs/pop/Uptown_Funk.mp3",title="Upton Funk",artist= "Bruno Mars"),
             Song(source="songs/pop/Worth_It.mp3",title="Worth It",artist= "Fifth Harmony")
