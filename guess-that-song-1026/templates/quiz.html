@@ -6,7 +6,11 @@
 <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
+<<<<<<< HEAD
   <body id="background">
+=======
+  <body>
+>>>>>>> 64b8158dbdc64077a281901c83072e2f8199eacc
     <p class="logout_buttons"> <a href="{{logout_url}}">Logout Here</a></p>
     <p class="left_buttons"> <a  href="/">Home</a></p>
     <div class="spacer">
@@ -22,10 +26,12 @@
           <div class="labels">Question {{counter}}</div>
           <div style="position:relative;width:267px;height:25px;overflow:hidden;">
           <div style="position:absolute;top:-276px;left:-5px">
-
           <div id="videoContainer">
-          <iframe id="youTUBE" width="300" height="300"
+          <iframe id="youTUBE" width="300" height="300" align="left"
             src="https://www.youtube.com/embed/{{song.youtube_ID}}?wmode=transparent&autoplay=0&start=50&end=70&autoplay=1">
+          </iframe>
+          <iframe width="300" height="300" align="left"
+            src="https://www.youtube.com/embed/{{song.youtube_ID}}?rel=0&start=30&end=40&autoplay=0">
           </iframe>
           <a class="introVid" href="#video">Watch the video</a></p>
           </div>
