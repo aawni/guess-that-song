@@ -5,8 +5,8 @@
 body{
   background-size: cover;
   background-position: 0px 0px;
-  background-image: url("tumblr-backgrounds-design-ideas-9.jpg");
-  /*background: url('/images/background.JPG');*/
+  /*background-image: url("tumblr-backgrounds-design-ideas-9.jpg");*/
+  background-image: url('/images/background.JPG');
   background-size: cover;
   /*background-size: 100% 100%;*/
   background-size: 1400px;
@@ -31,7 +31,7 @@ body{
   background-color: white;
   width: 80% ;
   margin:auto;
-  opacity: 0.6;
+  opacity: 0.8;
 
 }
 .titles {
