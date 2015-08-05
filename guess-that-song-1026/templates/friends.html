@@ -7,7 +7,8 @@
   <body>
     <p class="logout_buttons"> <a  href="{{logout_url}}">Logout Here</a></p>
     <p class="left_buttons"> <a href="/">Home</a></p>
-
+    <div class="spacer">
+    </div>
     <h1 class="titles">Your Friends</h1>
     {%if friends%}
       {%for friend in friends%}
@@ -20,6 +21,6 @@
     {%else%}
       <p>You have no friends!</p>
     {%endif%}
-
+    <p class="small_btn" id="add_friend"> <a href="/post">Add Friends</a></p>
   </body>
 </html>
