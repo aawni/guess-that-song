@@ -95,7 +95,19 @@ pop_songs=[Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="D
            Song(youtube_ID="xo1VInw-SKc", title="Fight Song", artist="Rachel Platten"),
            Song(youtube_ID="nSDgHBxUbVQ", title="Photograph", artist="Ed Sheeran")
            ]
-country_songs=[]
+country_songs=[Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato"),
+               Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato"),
+               Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato"),
+               Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato"),
+               Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato"),
+               Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato"),
+               Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato"),
+               Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato"),
+               
+
+
+
+]
 
 
 
