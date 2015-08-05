@@ -31,6 +31,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class UserModel(ndb.Model):
     currentUserID = ndb.StringProperty(required = True)
+    email=ndb.StringProperty(required=True)
     questions_correct = ndb.IntegerProperty()
     questions_played = ndb.IntegerProperty()
     is_new_user = ndb.BooleanProperty()
@@ -45,56 +46,32 @@ class Song(ndb.Model):
     genre = ndb.StringProperty(required=True)
 
 
-
-
-
-<<<<<<< HEAD
-country_song1=Song(youtube_ID="_9TShlMkQnc", title="Live like you were dying", artist="Tim McGraw", genre="country")
-country_song2=Song(youtube_ID="6iXPlJHKB1g", title="Springsteen", artist="Eric Church", genre="country")
+# country_song1=Song(youtube_ID="_9TShlMkQnc", title="Live like you were dying", artist="Tim McGraw" , genre= "country")
+# country_song2=Song(youtube_ID="6iXPlJHKB1g", title="Springsteen", artist="Eric Church" , genre= "country")
+# country_song3 =Song(youtube_ID="Vd2qlMV-seQ", title="Drunk on a Plane", artist="Dierks Bently" , genre= "country")
+# country_song4 =  Song(youtube_ID="9wR-z4XEzKk", title="House Party", artist="Sam Hunt", genre= "country"),
+# country_song5 = Song(youtube_ID="mWecuhUUvX0", title="Girl Crush", artist="Little Big Town", genre= "country"),
+# country_song6 =Song(youtube_ID="LoH9klMK1rg", title="Crash and Burn", artist="Thomas Rhett", genre= "country"),
+# country_song7= Song(youtube_ID="ZhsdBOlczHY", title="Like a Wrecking Ball", artist="Eric Church", genre= "country"),
+# country_song8 = Song(youtube_ID="mQPjKSVe1tQ", title="Buy Me a Boat", artist="Chris Janson", genre= "country"),
+# country_song9 = Song(youtube_ID="w11aKrkCZYQ", title="Loving You Easy", artist="Zac Brown Band", genre= "country"),
+# country_song10 =  Song(youtube_ID="lBGUfVuBkMg", title="Burning House", artist="Cam", genre= "country")
+# country_song11 = Song(youtube_ID="WaSy8yy-mr8", title="Before He Cheats", artist="Carrie Underwood", genre= "country")
+# country_song12 =  Song(youtube_ID="lydBPm2KRaU", title="Jesus Take The Wheel", artist="Carrie Underwood", genre= "country")
+# country_song13 = Song(youtube_ID="ULYOUCjhVZw", title="Kick the Dust Up", artist="Luke Bryan", genre= "country")
 # country_song1.put()
 # country_song2.put()
-            #    Song(youtube_ID="Vd2qlMV-seQ", title="Drunk on a Plane", artist="Dierks Bently"),
-            #    Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato"),
-            #    Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato"),
-            #    Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato"),
-            #    Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato"),
-            #    Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato"),
-=======
-country_song1=Song(youtube_ID="_9TShlMkQnc", title="Live like you were dying", artist="Tim McGraw" , genre= "country")
-country_song2=Song(youtube_ID="6iXPlJHKB1g", title="Springsteen", artist="Eric Church" , genre= "country")
-country_song3 =Song(youtube_ID="Vd2qlMV-seQ", title="Drunk on a Plane", artist="Dierks Bently" , genre= "country")
-country_song4 =  Song(youtube_ID="9wR-z4XEzKk", title="House Party", artist="Sam Hunt", genre= "country"),
-country_song5 = Song(youtube_ID="mWecuhUUvX0", title="Girl Crush", artist="Little Big Town", genre= "country"),
-country_song6 =Song(youtube_ID="LoH9klMK1rg", title="Crash and Burn", artist="Thomas Rhett", genre= "country"),
-country_song7= Song(youtube_ID="ZhsdBOlczHY", title="Like a Wrecking Ball", artist="Eric Church", genre= "country"),
-country_song8 = Song(youtube_ID="mQPjKSVe1tQ", title="Buy Me a Boat", artist="Chris Janson", genre= "country"),
-country_song9 = Song(youtube_ID="w11aKrkCZYQ", title="Loving You Easy", artist="Zac Brown Band", genre= "country"),
-country_song10 =  Song(youtube_ID="lBGUfVuBkMg", title="Burning House", artist="Cam", genre= "country")
-country_song11 = Song(youtube_ID="WaSy8yy-mr8", title="Before He Cheats", artist="Carrie Underwood", genre= "country")
-country_song12 =  Song(youtube_ID="lydBPm2KRaU", title="Jesus Take The Wheel", artist="Carrie Underwood", genre= "country")
-country_song13 = Song(youtube_ID="ULYOUCjhVZw", title="Kick the Dust Up", artist="Luke Bryan", genre= "country")
-
-country_song1.put()
-country_song2.put()
-country_song3.put()
-country_song4.put()
-country_song5.put()
-country_song6.put()
-country_song7.put()
-country_song8.put()
-country_song9.put()
-country_song10.put()
-country_song11.put()
-country_song12.put()
-country_song13.put()
-
-
->>>>>>> b46e01ffb5dc6862459e86db25b306ecedcb8705
-
-
-
-
-
+# country_song3.put()
+# country_song4.put()
+# country_song5.put()
+# country_song6.put()
+# country_song7.put()
+# country_song8.put()
+# country_song9.put()
+# country_song10.put()
+# country_song11.put()
+# country_song12.put()
+# country_song13.put()
 
 hiphop_song1=Song(youtube_ID="Z-48u_uWMHY", title="Alright", artist="Kendrick Lamar",genre="hiphop")
 hiphop_song2=Song(youtube_ID="frOjjVDb8R8", title="Commas", artist="Future",genre="hiphop")
@@ -229,7 +206,7 @@ class MainHandler(webapp2.RequestHandler):
                 current_user = previous_user_query[0]
                 current_user.is_new_user=False
             else:
-                current_user = UserModel(currentUserID = user.user_id(), questions_played=0,questions_correct=0, is_new_user=True)
+                current_user = UserModel(currentUserID = user.user_id(), questions_played=0,questions_correct=0, is_new_user=True, email=user.nickname())
             current_user.put()
             template_values={"is_new_user":current_user.is_new_user,"logout_url":users.create_logout_url('/')}
             if current_user.nickname:
@@ -308,7 +285,7 @@ class FriendsHandler(webapp2.RequestHandler):
             for friend_id in user_in_datastore.friends_ids:
                 friends_list.append(UserModel.query().filter(UserModel.currentUserID==friend_id).fetch())
             template_values["friends"]=friends_list
-
+        template_values["logout_url"]=users.create_logout_url('/')
         template = JINJA_ENVIRONMENT.get_template('templates/friends.html')
         self.response.write(template.render(template_values))
 

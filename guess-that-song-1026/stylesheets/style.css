@@ -80,6 +80,7 @@ body {
   padding: 10px 45px 10px 45px;
   /*border: solid #000000 6px;*/
   text-decoration: none;
+  width: 400px;
 }
 .small_btn {
   font-family: 'Lobster', cursive;
@@ -97,10 +98,12 @@ body {
   background: #ffffff;
   text-decoration: none;
   width: 100px;
-  margin-left: 625px;
 }
 .labels {
   font-family: 'Lobster', cursive;
   font-size: 20px;
   color: black;
+}
+#home_large {
+  margin-left: 483px;
 }

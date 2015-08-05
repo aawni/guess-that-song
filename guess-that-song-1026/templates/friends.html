@@ -21,6 +21,16 @@
     {%else%}
       <p>You have no friends!</p>
     {%endif%}
-    <p class="small_btn" id="add_friend"> <a href="/post">Add Friends</a></p>
+    <form id="show_add_friends" action="/friends" method="get">
+    <p>
+      <div><input class="small_btn" type="submit" value="Find Friends"></div>
+    </p>
+    </form>
+    <form id="add_friends" action="/friends" method="get" style="display: none">
+    <p>
+      <div class="labels">Enter their email: <input name="friend_email"></input></div>
+      <div><input class="small_btn" type="submit" value="Add Friend"></div>
+    </p>
+    </form>
   </body>
 </html>

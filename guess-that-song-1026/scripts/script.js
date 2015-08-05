@@ -11,26 +11,20 @@ function Verify(){
   {
     $("#need_nickname_error").text(" ");
     $("#need_nickname_error").fadeOut();
-    users_with_same_nickname=UserModel.query().filter(UserModel.nickname==nickname).fetch();
-          console.log(users_with_same_nickname)
-    if (users_with_same_nickname!=[])
-    {
-
-      $("#need_unique_nickname_error").text("Sorry, that nickname is taken. Please change your nickname so it is unique!");
-      $("#need_unique_nickname_error").fadeIn();
-      return false;
-    }
-    else
-    {
-      $("#need_unique_nickname_error").text(" ");
-      $("#need_unique_nickname_error").fadeOut();
-      return true;
+    return true;
     }
   }
+}
+
+function Add_Friends() {
+  $("#add_friends").fadeIn();
+  self.response.write("hey")
+  return false;
 }
 
 $(document).ready(
   function() {
     $('#setup_form').on('submit', Verify)
+    $('#show_add_friends').on('submit', Add_Friends)
   }
 );

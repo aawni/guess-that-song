@@ -8,6 +8,7 @@
 </head>
   <body>
     <p class="logout_buttons"> <a href="{{logout_url}}">Logout Here</a></p>
+    <p class="left_buttons"> <a  href="/">Home</a></p>
     <div class="spacer">
     </div>
     <h1 class="titles">Guess That Song Quiz</h1>
@@ -22,7 +23,7 @@
           <div style="position:relative;width:267px;height:25px;overflow:hidden;">
           <div style="position:absolute;top:-276px;left:-5px">
           <iframe width="300" height="300"
-            src="https://www.youtube.com/embed/{{song.youtube_ID}}?rel=0&start=30&end=50&autoplay=0">
+            src="https://www.youtube.com/embed/{{song.youtube_ID}}?rel=0&start=30&end=40&autoplay=0">
           </iframe>
           </div>
           </div>
@@ -32,6 +33,8 @@
       {% endfor %}
         <input name="genre" type="hidden" value={{genre}}>
         </input>
+        <div class="spacer">
+        </div>
       <div><input class="big_btn"type="submit" value="Submit Quiz"></div>
     </p>
     </form>

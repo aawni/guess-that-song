@@ -15,7 +15,7 @@
     <h1 class="titles">Welcome {{nickname}} to the Guess That Song Game!</h1>
     <form id="setup_form" action="/quiz" method="post">
       {%if is_new_user%}
-        <div>New users should enter a unique nickname:<input name="nickname" id="nickname"></input></div>
+        <div>New users should enter a nickname:<input name="nickname" id="nickname"></input></div>
       {%endif%}
       <p>Choose your genre:
         <select name="genre">
