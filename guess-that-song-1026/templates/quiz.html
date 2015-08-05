@@ -2,11 +2,12 @@
 <html>
 
 <head>
-  <title>Guess That Song Quiz</title>
+  <title>Guess That Song</title>
 <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
   <body>
+    <p class="logout_buttons"> <a href="{{logout_url}}">Logout Here</a></p>
     <h1 class="titles">Guess That Song Quiz</h1>
 
 
@@ -19,7 +20,7 @@
           <div style="position:relative;width:267px;height:25px;overflow:hidden;">
           <div style="position:absolute;top:-276px;left:-5px">
           <iframe width="300" height="300"
-            src="https://www.youtube.com/embed/{{song.youtube_ID}}?rel=0&start=37&end=57">
+            src="https://www.youtube.com/embed/{{song.youtube_ID}}?rel=0&start=0&end=20&autoplay=0">
           </iframe>
           </div>
           </div>
@@ -29,9 +30,7 @@
       {% endfor %}
         <input name="genre" type="hidden" value={{genre}}>
         </input>
-        <input name="song_indexs" type="hidden" value={{song_indexs}}>
-        </input>
-      <div><input class="btn"type="submit" value="Submit Quiz"></div>
+      <div><input class="big_btn"type="submit" value="Submit Quiz"></div>
     </p>
     </form>
   </body>

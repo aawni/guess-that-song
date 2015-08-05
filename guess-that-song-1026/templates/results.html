@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Guess That Song Quiz</title>
+    <title>Guess That Song</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   </head>
   <body>
-    <h1>Your Results</h1>
+    <p class="logout_buttons"> <a href="{{logout_url}}">Logout Here</a></p>
+    <h1 class="titles">Your Results</h1>
     {%if amount_right!=1%}
-    <p> You got {{amount_right}} questions correct! </p>
+    <p class="labels"> You got {{amount_right}} questions correct </p>
     {%else%}
-    <p> You got {{amount_right}} question correct! </p>
+    <p class="labels"> You got {{amount_right}} question correct </p>
     {%endif%}
-    <p>You got {{percent_correct}}% correct!</p>
-    <p>Overall, you have gotten {{total_percent_correct}}% of questions you've played correct!</p>
-    <a href="/">Back to Home</a>
+    <p class="labels">You got {{percent_correct}}% correct</p>
+    <p class="labels">Overall, you have gotten {{total_percent_correct}}% of questions you've played correct!</p>
+    <p class="small_btn"><a href="/">Back to Home</a></p>
   </body>
 </html>
