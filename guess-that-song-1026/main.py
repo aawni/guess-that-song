@@ -31,6 +31,7 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class UserModel(ndb.Model):
     currentUserID = ndb.StringProperty(required = True)
+    email=ndb.StringProperty(required=True)
     questions_correct = ndb.IntegerProperty()
     questions_played = ndb.IntegerProperty()
     is_new_user = ndb.BooleanProperty()
@@ -43,9 +44,6 @@ class Song(ndb.Model):
     title = ndb.StringProperty(required=True)
     artist = ndb.StringProperty(required=True)
     genre = ndb.StringProperty(required=True)
-
-
-
 
 
 country_song1=Song(youtube_ID="_9TShlMkQnc", title="Live like you were dying", artist="Tim McGraw" , genre= "country")
@@ -61,26 +59,19 @@ country_song10 =  Song(youtube_ID="lBGUfVuBkMg", title="Burning House", artist="
 country_song11 = Song(youtube_ID="WaSy8yy-mr8", title="Before He Cheats", artist="Carrie Underwood", genre= "country")
 country_song12 =  Song(youtube_ID="lydBPm2KRaU", title="Jesus Take The Wheel", artist="Carrie Underwood", genre= "country")
 country_song13 = Song(youtube_ID="ULYOUCjhVZw", title="Kick the Dust Up", artist="Luke Bryan", genre= "country")
-
-country_song1.put()
-country_song2.put()
-country_song3.put()
-country_song4.put()
-country_song5.put()
-country_song6.put()
-country_song7.put()
-country_song8.put()
-country_song9.put()
-country_song10.put()
-country_song11.put()
-country_song12.put()
-country_song13.put()
-
-
-
-
-
-
+# country_song1.put()
+# country_song2.put()
+# country_song3.put()
+# country_song4.put()
+# country_song5.put()
+# country_song6.put()
+# country_song7.put()
+# country_song8.put()
+# country_song9.put()
+# country_song10.put()
+# country_song11.put()
+# country_song12.put()
+# country_song13.put()
 
 
 hiphop_song1=Song(youtube_ID="Z-48u_uWMHY", title="Alright", artist="Kendrick Lamar",genre="hiphop")
@@ -140,15 +131,28 @@ rock_song6=Song(youtube_ID="lDK9QqIzhwk", title="Living On A Prayer", artist="Bo
 rock_song7=Song(youtube_ID="P-Q9D4dcYng", title="A Day in the Life", artist="The Beatles",genre="rock")
 rock_song8=Song(youtube_ID="vD3iXpv4h-o", title="The Wolf", artist="Mumford & Sons",genre="rock")
 rock_song9=Song(youtube_ID="mqiH0ZSkM9I", title="Hold Back The River", artist="James Bay",genre="rock")
-rock_song1.put()
-rock_song2.put()
-rock_song3.put()
-rock_song4.put()
-rock_song5.put()
-rock_song6.put()
-rock_song7.put()
-rock_song8.put()
-rock_song9.put()
+rock_song10=Song(youtube_ID="KQ6zr6kCPj8", title="Party Rock Anthem", artist="LMFAO",genre="rock")
+rock_song11=Song(youtube_ID="KCy7lLQwToI", title="Don't Stop Believing", artist="Journey",genre="rock")
+rock_song12=Song(youtube_ID="xPU8OAjjS4k", title="Kyrptonite", artist="3 Doors",genre="rock")
+rock_song13=Song(youtube_ID="H25ORRgLxdA", title="Second Chance", artist="Shinedown",genre="rock")
+rock_song14=Song(youtube_ID="ip-8VhGSMWg", title="Rockstar", artist="Nickelback",genre="rock")
+rock_song15=Song(youtube_ID="RiSfTyrvJlg", title="Lips of and Angel", artist="Hinder",genre="rock")
+# rock_song1.put()
+# rock_song2.put()
+# rock_song3.put()
+# rock_song4.put()
+# rock_song5.put()
+# rock_song6.put()
+# rock_song7.put()
+# rock_song8.put()
+# rock_song9.put()
+# rock_song10.put()
+# rock_song11.put()
+# rock_song12.put()
+# rock_song13.put()
+# rock_song14.put()
+# rock_song15.put()
+
 
 pop_song1=Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato", genre="pop")
 pop_song2=Song(youtube_ID="Wp0hWIO8DiU", title="Good For You", artist="Selena Gomez", genre="pop")
@@ -176,32 +180,34 @@ pop_song23 = Song(youtube_ID="hnIeRkCqD-E", title="Bitch Better Have My Money", 
 pop_song24 =  Song(youtube_ID="e-ORhEE9VVg", title="Blank Space", artist="Taylor Swift", genre="pop")
 pop_song25 = Song(youtube_ID="xo1VInw-SKc", title="Fight Song", artist="Rachel Platten", genre="pop")
 pop_song26 =  Song(youtube_ID="nSDgHBxUbVQ", title="Photograph", artist="Ed Sheeran", genre="pop")
-pop_song1.put()
-pop_song2.put()
-pop_song3.put()
-pop_song4.put()
-pop_song5.put()
-pop_song6.put()
-pop_song7.put()
-pop_song8.put()
-pop_song9.put()
-pop_song10.put()
-pop_song11.put()
-pop_song12.put()
-pop_song13.put()
-pop_song14.put()
-pop_song15.put()
-pop_song16.put()
-pop_song17.put()
-pop_song18.put()
-pop_song19.put()
-pop_song20.put()
-pop_song21.put()
-pop_song22.put()
-pop_song23.put()
-pop_song24.put()
-pop_song25.put()
-pop_song26.put()
+
+# pop_song1.put()
+# pop_song2.put()
+# pop_song3.put()
+# pop_song4.put()
+# pop_song5.put()
+# pop_song6.put()
+# pop_song7.put()
+# pop_song8.put()
+# pop_song9.put()
+# pop_song10.put()
+# pop_song11.put()
+# pop_song12.put()
+# pop_song13.put()
+# pop_song14.put()
+# pop_song15.put()
+# pop_song16.put()
+# pop_song17.put()
+# pop_song18.put()
+# pop_song19.put()
+# pop_song20.put()
+# pop_song21.put()
+# pop_song22.put()
+# pop_song23.put()
+# pop_song24.put()
+# pop_song25.put()
+# pop_song26.put()
+
 
 users_current_songs={}
 
@@ -216,7 +222,7 @@ class MainHandler(webapp2.RequestHandler):
                 current_user = previous_user_query[0]
                 current_user.is_new_user=False
             else:
-                current_user = UserModel(currentUserID = user.user_id(), questions_played=0,questions_correct=0, is_new_user=True)
+                current_user = UserModel(currentUserID = user.user_id(), questions_played=0,questions_correct=0, is_new_user=True, email=user.nickname())
             current_user.put()
             template_values={"is_new_user":current_user.is_new_user,"logout_url":users.create_logout_url('/')}
             if current_user.nickname:
@@ -246,6 +252,7 @@ class QuizHandler(webapp2.RequestHandler):
         user=users.get_current_user()
         user_in_datastore=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()[0]
         nickname=self.request.get("nickname")
+
         if nickname:
             user_in_datastore.nickname=nickname
             user_in_datastore.put()
@@ -294,7 +301,7 @@ class FriendsHandler(webapp2.RequestHandler):
             for friend_id in user_in_datastore.friends_ids:
                 friends_list.append(UserModel.query().filter(UserModel.currentUserID==friend_id).fetch())
             template_values["friends"]=friends_list
-
+        template_values["logout_url"]=users.create_logout_url('/')
         template = JINJA_ENVIRONMENT.get_template('templates/friends.html')
         self.response.write(template.render(template_values))
 
