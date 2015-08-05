@@ -1,6 +1,8 @@
 function Verify(){
   var nickname = $("#nickname").val();
+  console.log(nickname);
   if (nickname == "")
+
   {
     $("#error").text("Please provide a nickname!");
     $("#error").fadeIn();
@@ -13,6 +15,7 @@ function Verify(){
     return true;
     window.location= "/quiz";
   }
+}
 
 $(document).ready(
   function() {
