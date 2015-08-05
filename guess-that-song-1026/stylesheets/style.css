@@ -1,32 +1,14 @@
 @import url(http://fonts.googleapis.com/css?family=Poiret+One);
 @import url(http://fonts.googleapis.com/css?family=Lobster);
 
-<<<<<<< HEAD
+
 body{
   background-size: cover;
   background-position: 0px 0px;
   background-image: url("tumblr-backgrounds-design-ideas-9.jpg");
-=======
-body {
-  /*background-image: url ("background.jpg");*/
-
-
-background: url('/images/background.JPG');
-
-
-  /*background-size: cover;*/
-
-
-
-  background-size: 100% 100%;
-
-
-  /*background-position: 0px 0px;*/
-
-
-
-  /*background-image: url("tumblr-backgrounds-design-ideas-9.jpg");*/
->>>>>>> 1d14f0c53c5559b56d00581e2ef2fc647be0bdf0
+  /*background: url('/images/background.JPG');*/
+  background-size: cover;
+  /*background-size: 100% 100%;*/
   background-size: 1400px;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -35,12 +17,7 @@ background: url('/images/background.JPG');
   text-align: center;
   font-size: 20px;
   color: black;
-<<<<<<< HEAD
   padding: 20px 20px 30px 20px;
-=======
-  padding: 20px 20px 30px 30px;
-
->>>>>>> 1d14f0c53c5559b56d00581e2ef2fc647be0bdf0
 }
 /*#videoContainer {
   text-align: center;
@@ -54,7 +31,7 @@ background: url('/images/background.JPG');
   background-color: white;
   width: 80% ;
   margin:auto;
-  opacity: 0.8;
+  opacity: 0.6;
 
 }
 .titles {
@@ -141,9 +118,6 @@ background: url('/images/background.JPG');
   color: black;
 }
 #home_large {
-<<<<<<< HEAD
-  margin-left: 520px;
-=======
   margin-left: 483px;
   font-family: 'Lobster', cursive;
   text-size: 20px
@@ -170,5 +144,4 @@ background: url('/images/background.JPG');
   float:left;
 
   width: 520px;
->>>>>>> 1d14f0c53c5559b56d00581e2ef2fc647be0bdf0
 }
