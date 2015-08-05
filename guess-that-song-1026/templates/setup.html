@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Guess That Song Quiz</title>
+  <title>Guess That Song</title>
   <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 </head>
   <body>
-<p align="right"> <a href="{{logout_url}}">Logout Here</a></p>
+    <p class="logout_buttons"> <a  href="{{logout_url}}">Logout Here</a></p>
+    <p class="left_buttons"> <a  href="/friends">View Your Friends</a></p>
 
-    <h1 id="welcome">Welcome {{nickname}}, to the Guess That Song Game!</h1>
+    <h1 class="titles">Welcome {{nickname}} to the Guess That Song Game!</h1>
     <form action="/quiz" method="post">
+      {%if is_new_user%}
+        <div>New users should enter a nickname:<input name="nickname"></input></div>
+      {%endif%}
       <p>Choose your genre:
         <select name="genre">
           <option value="hiphop">Hip Hop</option>
@@ -17,7 +21,7 @@
           <option value="country">Country</option>
         </select>
       </p>
-      <div><input class="btn"type="submit" value="continue to quiz"></div>
+      <div><input class="big_btn"type="submit" value="continue to quiz"></div>
     </form>
   </body>
 </html>

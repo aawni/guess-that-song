@@ -24,7 +24,43 @@ body {
   padding: 20px 10px 20px 20px;*/
 
 }
-.btn {
+
+.logout_buttons {
+  float: right;
+  font-family: 'Lobster', cursive;
+  text-size: 20px
+  text-decoration: none;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  -webkit-border-radius: 20;
+  -moz-border-radius: 20;
+  border-radius: 20px;
+  color: #000000;
+  background: #ffffff;
+  text-decoration: none;
+}
+.left_buttons {
+  float: left;
+  font-family: 'Lobster', cursive;
+  text-size: 20px
+  text-decoration: none;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  -webkit-border-radius: 20;
+  -moz-border-radius: 20;
+  border-radius: 20px;
+  color: #000000;
+  background: #ffffff;
+  text-decoration: none;
+}
+
+.big_btn {
   -webkit-border-radius: 20;
   -moz-border-radius: 20;
   border-radius: 20px;
@@ -34,6 +70,22 @@ body {
   background: #ffffff;
   padding: 10px 45px 10px 45px;
   /*border: solid #000000 6px;*/
+  text-decoration: none;
+}
+.small_btn {
+  font-family: 'Lobster', cursive;
+  text-size: 20px
+  text-decoration: none;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  -webkit-border-radius: 20;
+  -moz-border-radius: 20;
+  border-radius: 20px;
+  color: #000000;
+  background: #ffffff;
   text-decoration: none;
 }
 .labels {
