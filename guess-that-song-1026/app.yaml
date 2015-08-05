@@ -14,7 +14,8 @@ handlers:
   static_dir: stylesheets
 - url: /scripts
   static_dir: scripts
-
+- url: /images
+  static_dir: images
 
 - url: .*
   script: main.app

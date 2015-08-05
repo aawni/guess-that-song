@@ -9,6 +9,7 @@
     <p class="logout_buttons"> <a href="{{logout_url}}">Logout Here</a></p>
     <div class="spacer">
     </div>
+    <div id= "content">
     <h1 class="titles">Your Results</h1>
     {%if amount_right!=1%}
     <p class="labels"> You got {{amount_right}} questions correct </p>
@@ -18,5 +19,8 @@
     <p class="labels">You got {{percent_correct}}% correct</p>
     <p class="labels">Overall, you have gotten {{total_percent_correct}}% of questions you've played correct!</p>
     <p class="big_btn" id="home_large"><a href="/">Back to Home</a></p>
+    <div class="spacer">
+    </div>
+  </div>
   </body>
 </html>
