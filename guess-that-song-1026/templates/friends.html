@@ -14,10 +14,8 @@
     <h1 class="titles">Your Friends</h1>
     {%if friends%}
       {%for friend in friends%}
-        {%if friend.nickname%}
         <p>{{friend.nickname}}</p>
-        {%endif%}
-        {%endfor%}
+      {%endfor%}
     {%else%}
       <p>You have no friends!</p>
     {%endif%}
@@ -28,7 +26,7 @@
     </form>
     <form id="add_friends_form" action="/friends" method="post" style="display: none">
     <p>
-      <div class="labels">Enter their email: <input name="friend_email"></input></div>
+      <div class="labels">Enter their nickname: <input name="friend_nickname"></input></div>
       <div><input class="small_btn" type="submit" value="Add Friend"></div>
     </p>
     </form>
