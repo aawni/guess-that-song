@@ -16,7 +16,7 @@ body {
 
 }
 
-h1 {
+.titles {
   font-family: 'Lobster', cursive;
   font-size: 50px;
   text-align: center;
@@ -35,4 +35,8 @@ h1 {
   padding: 10px 45px 10px 45px;
   /*border: solid #000000 6px;*/
   text-decoration: none;
+}
+.labels {
+  font-family: 'Lobster';
+  font-size: 20px;
 }

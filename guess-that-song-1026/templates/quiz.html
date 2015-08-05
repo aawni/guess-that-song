@@ -7,7 +7,7 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 </head>
   <body>
-    <h1>Guess That Song Quiz</h1>
+    <h1 class="titles">Guess That Song Quiz</h1>
 
 
     <form id="quiz_form" action="/results" method="post">
@@ -15,7 +15,7 @@
       {% set counter=1 %}
       {% for song in songs %}
     </br>
-          Question {{counter}}
+          <div class="labels">Question {{counter}}</div>
           <div style="position:relative;width:267px;height:25px;overflow:hidden;">
           <div style="position:absolute;top:-276px;left:-5px">
           <iframe width="300" height="300"
@@ -23,11 +23,13 @@
           </iframe>
           </div>
           </div>
-            <div>Artist: <input name="artist{{counter}}"></input></div>
-            <div>Song Title: <input name="song_title{{counter}}"></input></div>
+            <div class="labels">Artist: <input name="artist{{counter}}"></input></div>
+            <div class="labels">Song Title: <input name="song_title{{counter}}"></input></div>
         {% set counter=counter+1 %}
       {% endfor %}
         <input name="genre" type="hidden" value={{genre}}>
+        </input>
+        <input name="song_indexs" type="hidden" value={{song_indexs}}>
         </input>
       <div><input class="btn"type="submit" value="Submit Quiz"></div>
     </p>

@@ -7,12 +7,14 @@
   <body>
 <p align="right"> <a href="{{logout_url}}">Logout Here</a></p>
 
-    <h1 id="welcome">Welcome {{nickname}}, to the Guess The Song Game!</h1>
+    <h1 id="welcome">Welcome {{nickname}}, to the Guess That Song Game!</h1>
     <form action="/quiz" method="post">
       <p>Choose your genre:
         <select name="genre">
           <option value="hiphop">Hip Hop</option>
           <option value="pop">Pop</option>
+          <option value="rock">Rock</option>
+          <option value="country">Country</option>
         </select>
       </p>
       <div><input class="btn"type="submit" value="continue to quiz"></div>
