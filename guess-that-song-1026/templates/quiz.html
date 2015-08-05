@@ -9,6 +9,7 @@
   <body>
     <h1>Guess That Song Quiz</h1>
 
+
     <form id="quiz_form" action="/results" method="post">
     <p>
       {% set counter=1 %}
@@ -18,7 +19,7 @@
           <div style="position:relative;width:267px;height:25px;overflow:hidden;">
           <div style="position:absolute;top:-276px;left:-5px">
           <iframe width="300" height="300"
-            src="https://www.youtube.com/embed/{{song.youtube_ID}}?rel=0">
+            src="https://www.youtube.com/embed/{{song.youtube_ID}}?rel=0&start=37&end=57">
           </iframe>
           </div>
           </div>

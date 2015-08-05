@@ -51,26 +51,61 @@ hiphop_songs=[Song(youtube_ID="Z-48u_uWMHY", title="Alright", artist="Kendrick L
                Song(youtube_ID="pVhYGC2CdJo", title="Back to Back", artist="Drake")
                ]
 
+
 pop_songs=[Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato"),
-           Song(youtube_ID="NONEEEEE", title="Cool For The Summer", artist="Demi Lovato"),
-           Song(youtube_ID="NONEEEEE", title="Cool For The Summer", artist="Demi Lovato"),
-           Song(youtube_ID="NONEEEEE", title="Cool For The Summer", artist="Demi Lovato"),
-           Song(youtube_ID="NONEEEEE", title="Cool For The Summer", artist="Demi Lovato"),
-           Song(youtube_ID="NONEEEEE", title="Cool For The Summer", artist="Demi Lovato"),
-           Song(youtube_ID="NONEEEEE", title="Cool For The Summer", artist="Demi Lovato"),
-           Song(youtube_ID="NONEEEEE", title="Cool For The Summer", artist="Demi Lovato"),
-           Song(youtube_ID="NONEEEEE", title="Cool For The Summer", artist="Demi Lovato"),
-           Song(youtube_ID="NONEEEEE", title="Cool For The Summer", artist="Demi Lovato"),
-           Song(youtube_ID="NONEEEEE", title="Cool For The Summer", artist="Demi Lovato"),
-           Song(youtube_ID="NONEEEEE", title="Cool For The Summer", artist="Demi Lovato"),
-           Song(youtube_ID="NONEEEEE", title="Cool For The Summer", artist="Demi Lovato"),
-           Song(youtube_ID="NONEEEEE", title="Cool For The Summer", artist="Demi Lovato"),
-           Song(youtube_ID="NONEEEEE", title="Cool For The Summer", artist="Demi Lovato"),
+           Song(youtube_ID="Wp0hWIO8DiU", title="Good For You", artist="Selena Gomez"),
+           Song(youtube_ID="ncObwOWDT0Q", title="The Hills", artist="The Weeknd"),
+           Song(youtube_ID="vFKpy59h5fM", title="Fun", artist="Chris Brown"),
+           Song(youtube_ID="nlYbDjwBe2Y", title="Talking Body", artist="Tove Lo"),
+           Song(youtube_ID="gdf5XaHU11U", title="Waves", artist="Mr Probz"),
+           Song(youtube_ID="QA8ZbxS5dFs", title="Lips are Movin", artist="Megan Trainor"),
+           Song(youtube_ID="bfC0IkLkL8o", title="The Night Is Still Young", artist="Nicki Minaj"),
+           Song(youtube_ID="8zqdo_Umd5c", title="Somebody", artist="Natalie La Rose"),
+           Song(youtube_ID="7hPMmzKs62w", title="Bitch Im Madonna", artist="Madonna"),
+           Song(youtube_ID="rC8RRXcfeo", title="Stay With Me", artist="Sam Smith"),
+           Song(youtube_ID="WpyfrixXBqU", title="Thinking Out Loud", artist="Ed Sheeran"),
+           Song(youtube_ID="wg6J-_fTJ44", title="Cheerleader", artist="Omi"),
+           Song(youtube_ID="rn9AQoI7mYU", title="Lean On", artist="Major Lazor"),
+           Song(youtube_ID="ntggGgbKr4w", title="Want You To Want Me", artist="Jason Derulo"),
+           Song(youtube_ID="ntggGgbKr4w", title="Want You To Want Me", artist="Jason Derulo"),
+           Song(youtube_ID="ntggGgbKr4w", title="Want You To Want Me", artist="Jason Derulo"),
+           Song(youtube_ID="ntggGgbKr4w", title="Want You To Want Me", artist="Jason Derulo"),
+           Song(youtube_ID="ntggGgbKr4w", title="Want You To Want Me", artist="Jason Derulo"),
+        #    rule the world
+        #    hey mama
+        #    cant stop dancin
+        #    7/11
+        #    drunk in Love
+        #    one last time
+        #    la Love
+        #    elastic heart
+        #    chandelier
+        #    fight Song
+        #    honey im Good
+        #    worth it
+        #    uptown funk
+        #    photograph
+        #    this summers gonna hurt
+        #    sugar
+        #    bitch better have my money
+        #    shake it off
+        #    blank space,
            ]
 country_songs=[]
 
 
-genres={"hiphop":hiphop_songs, "pop":pop_songs , "country":country_songs}
+rock_songs=[Song(youtube_ID="BcL---4xQYA", title="Stairway To Heaven", artist="Led Zeppelin"),
+Song(youtube_ID="6JCLY0Rlx6Q", title="Shut Up and Dance", artist="Walk The Moon"),
+Song(youtube_ID="TLV4_xaYynY", title="All Along The Watchtower", artist="Jimi Hendrix"),
+Song(youtube_ID="pAgnJDJN4VA", title="Back in Black", artist="ACDC"),
+Song(youtube_ID="D0W1v0kOELA", title="Free Bird", artist="Lynyrd Skynyrd"),
+Song(youtube_ID="lDK9QqIzhwk", title="Living On A Prayer", artist="Bon Jovi"),
+Song(youtube_ID="P-Q9D4dcYng", title="A Day in the Life", artist="The Beatles"),
+Song(youtube_ID="vD3iXpv4h-o", title="The Wolf", artist="Mumford & Sons"),
+Song(youtube_ID="mqiH0ZSkM9I", title="Hold Back The River", artist="James Bay")]
+
+genres={"hiphop":hiphop_songs, "pop":pop_songs , "country":country_songs, "rock":rock_songs}
+
 
 
 class MainHandler(webapp2.RequestHandler):
