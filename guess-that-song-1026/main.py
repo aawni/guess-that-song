@@ -48,10 +48,10 @@ class Song(ndb.Model):
 
 
 
-country_song1=Song(youtube_ID="_9TShlMkQnc", title="Live like you were dying", artist="Tim McGraw")
-country_song2=Song(youtube_ID="6iXPlJHKB1g", title="Springsteen", artist="Eric Church")
-country_song1.put()
-country_song2.put()
+country_song1=Song(youtube_ID="_9TShlMkQnc", title="Live like you were dying", artist="Tim McGraw", genre="country")
+country_song2=Song(youtube_ID="6iXPlJHKB1g", title="Springsteen", artist="Eric Church", genre="country")
+# country_song1.put()
+# country_song2.put()
             #    Song(youtube_ID="Vd2qlMV-seQ", title="Drunk on a Plane", artist="Dierks Bently"),
             #    Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato"),
             #    Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato"),
@@ -146,17 +146,17 @@ pop_song12=Song(youtube_ID="WpyfrixXBqU", title="Thinking Out Loud", artist="Ed 
 pop_song13=Song(youtube_ID="wg6J-_fTJ44", title="Cheerleader", artist="Omi", genre="pop")
 pop_song14=Song(youtube_ID="rn9AQoI7mYU", title="Lean On", artist="Major Lazor", genre="pop")
 pop_song15=Song(youtube_ID="ntggGgbKr4w", title="Want You To Want Me", artist="Jason Derulo", genre="pop")
-pop_song16 = Song(youtube_ID="uO59tfQ2TbA", title="Hey Mama", artist="Nick Minaj")
-pop_song17 = Song(youtube_ID="o4C4xzkQ8q4", title="Can't Stop Dancing", artist="Becky G")
-pop_song18 = Song(youtube_ID="lKzKTDp00Z4", title="7/11", artist="Beyonce")
-pop_song19 = Song(youtube_ID="Wg92RrNhB8s", title="One Last Time", artist="Ariana Grande")
-pop_song20 =  Song(youtube_ID="7RMQksXpQSk", title="This is How We Do", artist="Katy Perry")
-pop_song21 =  Song(youtube_ID="5RYY0hwHIRw", title="Elastic Heart", artist="Sia")
-pop_song22 =  Song(youtube_ID="-KXPLT2Xk5k", title="Chandelier", artist="Sia")
-pop_song23 = Song(youtube_ID="hnIeRkCqD-E", title="Bitch Better Have My Money", artist="Rihanna")
-pop_song24 =  Song(youtube_ID="e-ORhEE9VVg", title="Blank Space", artist="Taylor Swift")
-pop_song25 = Song(youtube_ID="xo1VInw-SKc", title="Fight Song", artist="Rachel Platten")
-pop_song26 =  Song(youtube_ID="nSDgHBxUbVQ", title="Photograph", artist="Ed Sheeran")
+pop_song16=Song(youtube_ID="uO59tfQ2TbA", title="Hey Mama", artist="Nick Minaj", genre="pop")
+pop_song17=Song(youtube_ID="o4C4xzkQ8q4", title="Can't Stop Dancing", artist="Becky G", genre="pop")
+pop_song18=Song(youtube_ID="lKzKTDp00Z4", title="7/11", artist="Beyonce", genre="pop")
+pop_song19=Song(youtube_ID="Wg92RrNhB8s", title="One Last Time", artist="Ariana Grande", genre="pop")
+pop_song20=Song(youtube_ID="7RMQksXpQSk", title="This is How We Do", artist="Katy Perry", genre="pop")
+pop_song21=Song(youtube_ID="5RYY0hwHIRw", title="Elastic Heart", artist="Sia", genre="pop")
+pop_song22=Song(youtube_ID="-KXPLT2Xk5k", title="Chandelier", artist="Sia", genre="pop")
+pop_song23=Song(youtube_ID="hnIeRkCqD-E", title="Bitch Better Have My Money", artist="Rihanna", genre="pop")
+pop_song24=Song(youtube_ID="e-ORhEE9VVg", title="Blank Space", artist="Taylor Swift", genre="pop")
+pop_song25=Song(youtube_ID="xo1VInw-SKc", title="Fight Song", artist="Rachel Platten", genre="pop")
+pop_song26=Song(youtube_ID="nSDgHBxUbVQ", title="Photograph", artist="Ed Sheeran", genre="pop")
 # pop_song1.put()
 # pop_song2.put()
 # pop_song3.put()
@@ -227,6 +227,7 @@ class QuizHandler(webapp2.RequestHandler):
         user=users.get_current_user()
         user_in_datastore=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()[0]
         nickname=self.request.get("nickname")
+
         if nickname:
             user_in_datastore.nickname=nickname
             user_in_datastore.put()
