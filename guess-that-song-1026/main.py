@@ -46,19 +46,19 @@ class Song(ndb.Model):
     genre = ndb.StringProperty(required=True)
 
 
-# country_song1=Song(youtube_ID="_9TShlMkQnc", title="Live like you were dying", artist="Tim McGraw" , genre= "country")
-# country_song2=Song(youtube_ID="6iXPlJHKB1g", title="Springsteen", artist="Eric Church" , genre= "country")
-# country_song3 =Song(youtube_ID="Vd2qlMV-seQ", title="Drunk on a Plane", artist="Dierks Bently" , genre= "country")
-# country_song4 =  Song(youtube_ID="9wR-z4XEzKk", title="House Party", artist="Sam Hunt", genre= "country"),
-# country_song5 = Song(youtube_ID="mWecuhUUvX0", title="Girl Crush", artist="Little Big Town", genre= "country"),
-# country_song6 =Song(youtube_ID="LoH9klMK1rg", title="Crash and Burn", artist="Thomas Rhett", genre= "country"),
-# country_song7= Song(youtube_ID="ZhsdBOlczHY", title="Like a Wrecking Ball", artist="Eric Church", genre= "country"),
-# country_song8 = Song(youtube_ID="mQPjKSVe1tQ", title="Buy Me a Boat", artist="Chris Janson", genre= "country"),
-# country_song9 = Song(youtube_ID="w11aKrkCZYQ", title="Loving You Easy", artist="Zac Brown Band", genre= "country"),
-# country_song10 =  Song(youtube_ID="lBGUfVuBkMg", title="Burning House", artist="Cam", genre= "country")
-# country_song11 = Song(youtube_ID="WaSy8yy-mr8", title="Before He Cheats", artist="Carrie Underwood", genre= "country")
-# country_song12 =  Song(youtube_ID="lydBPm2KRaU", title="Jesus Take The Wheel", artist="Carrie Underwood", genre= "country")
-# country_song13 = Song(youtube_ID="ULYOUCjhVZw", title="Kick the Dust Up", artist="Luke Bryan", genre= "country")
+country_song1=Song(youtube_ID="_9TShlMkQnc", title="Live like you were dying", artist="Tim McGraw" , genre= "country")
+country_song2=Song(youtube_ID="6iXPlJHKB1g", title="Springsteen", artist="Eric Church" , genre= "country")
+country_song3 =Song(youtube_ID="Vd2qlMV-seQ", title="Drunk on a Plane", artist="Dierks Bently" , genre= "country")
+country_song4 = Song(youtube_ID="9wR-z4XEzKk", title="House Party", artist="Sam Hunt", genre= "country")
+country_song5 = Song(youtube_ID="mWecuhUUvX0", title="Girl Crush", artist="Little Big Town", genre= "country")
+country_song6 =Song(youtube_ID="LoH9klMK1rg", title="Crash and Burn", artist="Thomas Rhett", genre= "country")
+country_song7= Song(youtube_ID="ZhsdBOlczHY", title="Like a Wrecking Ball", artist="Eric Church", genre= "country")
+country_song8 = Song(youtube_ID="mQPjKSVe1tQ", title="Buy Me a Boat", artist="Chris Janson", genre= "country")
+country_song9 = Song(youtube_ID="w11aKrkCZYQ", title="Loving You Easy", artist="Zac Brown Band", genre= "country")
+country_song10 =  Song(youtube_ID="lBGUfVuBkMg", title="Burning House", artist="Cam", genre= "country")
+country_song11 = Song(youtube_ID="WaSy8yy-mr8", title="Before He Cheats", artist="Carrie Underwood", genre= "country")
+country_song12 =  Song(youtube_ID="lydBPm2KRaU", title="Jesus Take The Wheel", artist="Carrie Underwood", genre= "country")
+country_song13 = Song(youtube_ID="ULYOUCjhVZw", title="Kick the Dust Up", artist="Luke Bryan", genre= "country")
 # country_song1.put()
 # country_song2.put()
 # country_song3.put()
@@ -72,6 +72,7 @@ class Song(ndb.Model):
 # country_song11.put()
 # country_song12.put()
 # country_song13.put()
+
 
 hiphop_song1=Song(youtube_ID="Z-48u_uWMHY", title="Alright", artist="Kendrick Lamar",genre="hiphop")
 hiphop_song2=Song(youtube_ID="frOjjVDb8R8", title="Commas", artist="Future",genre="hiphop")
@@ -130,6 +131,12 @@ rock_song6=Song(youtube_ID="lDK9QqIzhwk", title="Living On A Prayer", artist="Bo
 rock_song7=Song(youtube_ID="P-Q9D4dcYng", title="A Day in the Life", artist="The Beatles",genre="rock")
 rock_song8=Song(youtube_ID="vD3iXpv4h-o", title="The Wolf", artist="Mumford & Sons",genre="rock")
 rock_song9=Song(youtube_ID="mqiH0ZSkM9I", title="Hold Back The River", artist="James Bay",genre="rock")
+rock_song10=Song(youtube_ID="KQ6zr6kCPj8", title="Party Rock Anthem", artist="LMFAO",genre="rock")
+rock_song11=Song(youtube_ID="KCy7lLQwToI", title="Don't Stop Believing", artist="Journey",genre="rock")
+rock_song12=Song(youtube_ID="xPU8OAjjS4k", title="Kyrptonite", artist="3 Doors",genre="rock")
+rock_song13=Song(youtube_ID="H25ORRgLxdA", title="Second Chance", artist="Shinedown",genre="rock")
+rock_song14=Song(youtube_ID="ip-8VhGSMWg", title="Rockstar", artist="Nickelback",genre="rock")
+rock_song15=Song(youtube_ID="RiSfTyrvJlg", title="Lips of and Angel", artist="Hinder",genre="rock")
 # rock_song1.put()
 # rock_song2.put()
 # rock_song3.put()
@@ -139,6 +146,12 @@ rock_song9=Song(youtube_ID="mqiH0ZSkM9I", title="Hold Back The River", artist="J
 # rock_song7.put()
 # rock_song8.put()
 # rock_song9.put()
+# rock_song10.put()
+# rock_song11.put()
+# rock_song12.put()
+# rock_song13.put()
+# rock_song14.put()
+# rock_song15.put()
 
 pop_song1=Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato", genre="pop")
 pop_song2=Song(youtube_ID="Wp0hWIO8DiU", title="Good For You", artist="Selena Gomez", genre="pop")
