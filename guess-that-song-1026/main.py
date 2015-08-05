@@ -83,29 +83,17 @@ pop_songs=[Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="D
            Song(youtube_ID="wg6J-_fTJ44", title="Cheerleader", artist="Omi"),
            Song(youtube_ID="rn9AQoI7mYU", title="Lean On", artist="Major Lazor"),
            Song(youtube_ID="ntggGgbKr4w", title="Want You To Want Me", artist="Jason Derulo"),
-           Song(youtube_ID="ntggGgbKr4w", title="Want You To Want Me", artist="Jason Derulo"),
-           Song(youtube_ID="ntggGgbKr4w", title="Want You To Want Me", artist="Jason Derulo"),
-           Song(youtube_ID="ntggGgbKr4w", title="Want You To Want Me", artist="Jason Derulo"),
-           Song(youtube_ID="ntggGgbKr4w", title="Want You To Want Me", artist="Jason Derulo"),
-        #    rule the world
-        #    hey mama
-        #    cant stop dancin
-        #    7/11
-        #    drunk in Love
-        #    one last time
-        #    la Love
-        #    elastic heart
-        #    chandelier
-        #    fight Song
-        #    honey im Good
-        #    worth it
-        #    uptown funk
-        #    photograph
-        #    this summers gonna hurt
-        #    sugar
-        #    bitch better have my money
-        #    shake it off
-        #    blank space,
+           Song(youtube_ID="uO59tfQ2TbA", title="Hey Mama", artist="Nick Minaj"),
+           Song(youtube_ID="o4C4xzkQ8q4", title="Can't Stop Dancing", artist="Becky G"),
+           Song(youtube_ID="lKzKTDp00Z4", title="7/11", artist="Beyonce"),
+           Song(youtube_ID="Wg92RrNhB8s", title="One Last Time", artist="Ariana Grande"),
+           Song(youtube_ID="7RMQksXpQSk", title="This is How We Do", artist="Katy Perry"),
+           Song(youtube_ID="5RYY0hwHIRw", title="Elastic Heart", artist="Sia"),
+           Song(youtube_ID="-KXPLT2Xk5k", title="Chandelier", artist="Sia"),
+           Song(youtube_ID="hnIeRkCqD-E", title="Bitch Better Have My Money", artist="Rihanna"),
+           Song(youtube_ID="e-ORhEE9VVg", title="Blank Space", artist="Taylor Swift"),
+           Song(youtube_ID="xo1VInw-SKc", title="Fight Song", artist="Rachel Platten"),
+           Song(youtube_ID="nSDgHBxUbVQ", title="Photograph", artist="Ed Sheeran")
            ]
 country_songs=[]
 
