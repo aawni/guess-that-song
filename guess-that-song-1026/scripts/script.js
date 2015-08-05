@@ -13,7 +13,6 @@ function Verify(){
     $("#error").text(" ");
     $("#error").fadeOut();
     return true;
-    window.location= "/quiz";
   }
 }
 

@@ -9,7 +9,9 @@
   <body>
     <p class="logout_buttons"> <a  href="{{logout_url}}">Logout Here</a></p>
     <p class="left_buttons"> <a  href="/friends">View Your Friends</a></p>
-
+    <div class="spacer">
+    </div>
+    <div class="background">
     <h1 class="titles">Welcome {{nickname}} to the Guess That Song Game!</h1>
     <form id="setup_form" action="/quiz" method="post">
       {%if is_new_user%}
@@ -26,5 +28,8 @@
       <div><input class="big_btn" type="submit" value="continue to quiz"></div>
     </form>
         <p id="error" style="display: none"></p>
+    <div class="spacer">
+    </div>
+    </div>
   </body>
 </html>
