@@ -1,30 +1,41 @@
 function Verify(){
   var nickname = $("#nickname").val();
   if (nickname == "")
-
   {
-    $("#need_nickname_error").text("Please provide a nickname!");
-    $("#need_nickname_error").fadeIn();
+    $("#error").text("Please provide a nickname!");
+    $("#error").fadeIn();
     return false;
   }
   else
   {
-    $("#need_nickname_error").text(" ");
-    $("#need_nickname_error").fadeOut();
-    return true;
-    }
+    $("#error").text(" ");
+    $("#error").fadeOut();
+    Verify_Unique_Send(nickname);
   }
 }
 
-function Add_Friends() {
-  $("#add_friends").fadeIn();
-  self.response.write("hey")
+function Verify_Unique_Send(nickname) {
+  $.post("/searchnickname", {"nickname": nickname}, function(data){
+    if (data.is_unique){
+      return true;
+    }
+    else (
+      $("#not_unique_error").text("That nickname is taken. Please enter another!");
+      $("#not_unique_error").fadeIn();
+      return false;
+    )
+  })
+}
+
+function Show_Add_Friends() {
+  $("#add_friends_form").fadeIn(0);
+  $("#show_add_friends").fadeOut(0);
   return false;
 }
 
 $(document).ready(
   function() {
     $('#setup_form').on('submit', Verify)
-    $('#show_add_friends').on('submit', Add_Friends)
+    $('#show_add_friends').click(Show_Add_Friends)
   }
 );

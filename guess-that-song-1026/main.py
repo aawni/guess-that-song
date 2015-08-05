@@ -21,6 +21,7 @@ from google.appengine.ext import ndb
 from google.appengine.api import users
 import random
 import logging
+import json
 
 
 
@@ -31,7 +32,6 @@ JINJA_ENVIRONMENT = jinja2.Environment(
 
 class UserModel(ndb.Model):
     currentUserID = ndb.StringProperty(required = True)
-    email=ndb.StringProperty(required=True)
     questions_correct = ndb.IntegerProperty()
     questions_played = ndb.IntegerProperty()
     is_new_user = ndb.BooleanProperty()
@@ -219,7 +219,7 @@ class MainHandler(webapp2.RequestHandler):
                 current_user = previous_user_query[0]
                 current_user.is_new_user=False
             else:
-                current_user = UserModel(currentUserID = user.user_id(), questions_played=0,questions_correct=0, is_new_user=True, email=user.nickname())
+                current_user = UserModel(currentUserID = user.user_id(), questions_played=0,questions_correct=0, is_new_user=True)
             current_user.put()
             template_values={"is_new_user":current_user.is_new_user,"logout_url":users.create_logout_url('/')}
             if current_user.nickname:
@@ -266,7 +266,6 @@ class ResultsHandler(webapp2.RequestHandler):
         user=users.get_current_user()
         selected_songs=users_current_songs[user.user_id()]
 
-
         for song in selected_songs:
             artist_answer=self.request.get("artist"+str(counter)).lower()
             song_answer=self.request.get("song_title"+str(counter)).lower()
@@ -291,8 +290,8 @@ class ResultsHandler(webapp2.RequestHandler):
 class FriendsHandler(webapp2.RequestHandler):
     def get(self):
         user=users.get_current_user()
-        user_in_datastore=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()[0]
         template_values={}
+        user_in_datastore=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()[0]
         if user_in_datastore.friends_ids:
             friends_list=[]
             for friend_id in user_in_datastore.friends_ids:
@@ -302,10 +301,24 @@ class FriendsHandler(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('templates/friends.html')
         self.response.write(template.render(template_values))
 
+class SearchNicknameHandler(webapp2.RequestHandler):
+    def post(self):
+        user=users.get_current_user()
+        user_in_datastore=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()[0]
+        nickname=self.response.get("nickname")
+        nickname_results=UserModel.query().filter(UserModel.nickname==nickname).fetch()
+        if nickname_result:
+            is_unique=False
+        else:
+            is_unique=True
+        self.response.setContent("")
+        response={"is_unique":is_unique}
+        self.response.write(json.dumps(response))
 
 app = webapp2.WSGIApplication([
     ('/', MainHandler),
     ('/quiz', QuizHandler),
     ('/results', ResultsHandler),
-    ('/friends',FriendsHandler)
+    ('/friends',FriendsHandler),
+    ('/searchnickname',SearchNicknameHandler)
 ], debug=True)

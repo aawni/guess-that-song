@@ -3,6 +3,8 @@
 <head>
   <title>Guess That Song</title>
   <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+  <script src= "http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="scripts/script.js"></script>
 </head>
   <body>
     <p class="logout_buttons"> <a  href="{{logout_url}}">Logout Here</a></p>
@@ -14,19 +16,17 @@
       {%for friend in friends%}
         {%if friend.nickname%}
         <p>{{friend.nickname}}</p>
-        {%else%}
-        <p>{{friend.currentUserID}}</p>
         {%endif%}
         {%endfor%}
     {%else%}
       <p>You have no friends!</p>
     {%endif%}
-    <form id="show_add_friends" action="/friends" method="get">
+    <form id="show_add_friends" action="/friends" method="post">
     <p>
       <div><input class="small_btn" type="submit" value="Find Friends"></div>
     </p>
     </form>
-    <form id="add_friends" action="/friends" method="get" style="display: none">
+    <form id="add_friends_form" action="/friends" method="post" style="display: none">
     <p>
       <div class="labels">Enter their email: <input name="friend_email"></input></div>
       <div><input class="small_btn" type="submit" value="Add Friend"></div>
