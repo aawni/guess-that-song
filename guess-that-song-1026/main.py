@@ -110,7 +110,59 @@ rock_song8.put()
 rock_song9=Song(youtube_ID="mqiH0ZSkM9I", title="Hold Back The River", artist="James Bay",genre="rock")
 rock_song9.put()
 
+
+
+pop_song1=Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato", genre="pop")
+pop_song1.put()
+pop_song2=Song(youtube_ID="Wp0hWIO8DiU", title="Good For You", artist="Selena Gomez", genre="pop")
+pop_song2.put()
+pop_song3=Song(youtube_ID="ncObwOWDT0Q", title="The Hills", artist="The Weeknd", genre="pop")
+pop_song3.put()
+pop_song4=Song(youtube_ID="vFKpy59h5fM", title="Fun", artist="Chris Brown", genre="pop")
+pop_song4.put()
+pop_song5=Song(youtube_ID="nlYbDjwBe2Y", title="Talking Body", artist="Tove Lo", genre="pop")
+pop_song5.put()
+pop_song6=Song(youtube_ID="gdf5XaHU11U", title="Waves", artist="Mr Probz", genre="pop")
+pop_song6.put()
+pop_song7=Song(youtube_ID="QA8ZbxS5dFs", title="Lips are Movin", artist="Megan Trainor", genre="pop")
+pop_song7.put()
+pop_song8=Song(youtube_ID="bfC0IkLkL8o", title="The Night Is Still Young", artist="Nicki Minaj", genre="pop")
+pop_song8.put()
+pop_song9=Song(youtube_ID="8zqdo_Umd5c", title="Somebody", artist="Natalie La Rose", genre="pop")
+pop_song9.put()
+pop_song10=Song(youtube_ID="7hPMmzKs62w", title="Bitch Im Madonna", artist="Madonna", genre="pop")
+pop_song10.put()
+pop_song11=Song(youtube_ID="rC8RRXcfeo", title="Stay With Me", artist="Sam Smith", genre="pop")
+pop_song11.put()
+pop_song12=Song(youtube_ID="WpyfrixXBqU", title="Thinking Out Loud", artist="Ed Sheeran", genre="pop")
+pop_song12.put()
+pop_song13=Song(youtube_ID="wg6J-_fTJ44", title="Cheerleader", artist="Omi", genre="pop")
+pop_song13.put()
+pop_song14=Song(youtube_ID="rn9AQoI7mYU", title="Lean On", artist="Major Lazor", genre="pop")
+pop_song14.put()
+pop_song15=Song(youtube_ID="ntggGgbKr4w", title="Want You To Want Me", artist="Jason Derulo", genre="pop")
+pop_song15.put()
+        #    rule the world
+        #    hey mama
+        #    cant stop dancin
+        #    7/11
+        #    drunk in Love
+        #    one last time
+        #    la Love
+        #    elastic heart
+        #    chandelier
+        #    fight Song
+        #    honey im Good
+        #    worth it
+        #    uptown funk
+        #    photograph
+        #    this summers gonna hurt
+        #    sugar
+        #    bitch better have my money
+        #    shake it off
+        #    blank space,
 users_current_songs={}
+
 
 
 class MainHandler(webapp2.RequestHandler):

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guess That Song</title>
+  <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+</head>
+  <body>
+    <p class="logout_buttons"> <a  href="{{logout_url}}">Logout Here</a></p>
+    <p class="left_buttons"> <a href="/">Home</a></p>
+
+    <h1 class="titles">Your Friends</h1>
+    {%if friends%}
+      {%for friend in friends%}
+        {%if friend.nickname%}
+        <p>{{friend.nickname}}</p>
+        {%else%}
+        <p>{{friend.currentUserID}}</p>
+        {%endif%}
+        {%endfor%}
+    {%else%}
+      <p>You have no friends!</p>
+    {%endif%}
+
+  </body>
+</html>
