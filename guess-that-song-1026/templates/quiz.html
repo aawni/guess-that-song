@@ -21,10 +21,17 @@
           <div class="labels">Question {{counter}}</div>
           <div style="position:relative;width:267px;height:25px;overflow:hidden;">
           <div style="position:absolute;top:-276px;left:-5px">
-          <iframe width="300" height="300"
-            src="https://www.youtube.com/embed/{{song.youtube_ID}}?rel=0&start=0&end=20&autoplay=0">
+          <div id="videoContainer">
+          <iframe id="youTUBE" width="300" height="300"  
+            src="https://www.youtube.com/embed/{{song.youtube_ID}}?wmode=transparent&autoplay=0&start=50&end=70&autoplay=1">
           </iframe>
+          <a class="introVid" href="#video">Watch the video</a></p>
           </div>
+          </div>
+          <img src="http://images.clipartpanda.com/music-note-clip-art-music-notes-clip-art_jpg.jpg" id="imageTag"></img>
+          <!-- <div id="videoContainer">
+  <iframe width="450" height="283" src="https://www.youtube.com/embed/VIDEO_ID_HERE?wmode=transparent" frameborder="0" allowfullscreen wmode="Opaque"></iframe>
+</div> -->
           </div>
             <div class="labels">Artist: <input name="artist{{counter}}"></input></div>
             <div class="labels">Song Title: <input name="song_title{{counter}}"></input></div>
