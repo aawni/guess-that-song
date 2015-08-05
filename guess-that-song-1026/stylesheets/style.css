@@ -1,7 +1,6 @@
 @import url(http://fonts.googleapis.com/css?family=Poiret+One);
 @import url(http://fonts.googleapis.com/css?family=Lobster);
 
-
 body {
   background-image: url("tumblr-backgrounds-design-ideas-9.jpg");
   background-size: 1400px;
@@ -96,6 +95,8 @@ body {
   color: #000000;
   background: #ffffff;
   text-decoration: none;
+  margin-left: 640px
+  width: 100px
 }
 .labels {
   font-family: 'Lobster';
