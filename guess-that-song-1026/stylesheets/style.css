@@ -2,10 +2,10 @@
 @import url(http://fonts.googleapis.com/css?family=Lobster);
 
 body {
-  background-image: url ('/images/background.JPG/');
+  /*background-image: url ("background.jpg");*/
 
 
-  background: url('background.JPG');
+background: url('/images/background.JPG');
 
 
   /*background-size: cover;*/
@@ -19,7 +19,7 @@ body {
 
 
 
-  background-image: url("tumblr-backgrounds-design-ideas-9.jpg");
+  /*background-image: url("tumblr-backgrounds-design-ideas-9.jpg");*/
   background-size: 1400px;
   background-repeat: no-repeat;
   background-attachment: fixed;
@@ -42,7 +42,13 @@ body {
     width: 100%;
     height: 60px;
 }
+#content {
+  background-color: white;
+  width: 80% ;
+  margin:auto;
+  opacity: 0.8;
 
+}
 .titles {
   font-family: 'Lobster', cursive;
   font-size: 50px;
@@ -51,7 +57,9 @@ body {
   opacity: 1;
 
 }
-
+#videoContainer {
+  float: right;
+}
 .logout_buttons {
   float: right;
   font-family: 'Lobster', cursive;
@@ -128,4 +136,29 @@ body {
 }
 #home_large {
   margin-left: 483px;
+  font-family: 'Lobster', cursive;
+  text-size: 20px
+  text-decoration: none;
+  padding: 2px 6px 2px 6px;
+  border-top: 1px solid #CCCCCC;
+  border-right: 1px solid #333333;
+  border-bottom: 1px solid #333333;
+  border-left: 1px solid #CCCCCC;
+  -webkit-border-radius: 20;
+  -moz-border-radius: 20;
+  border-radius: 20px;
+  color: #000000;
+  background: #ffffff;
+  text-decoration: none;
+
+  width: 300px;
+
+  margin-left: 340px;
+}
+
+
+#tester {
+  float:left;
+
+  width: 520px;
 }

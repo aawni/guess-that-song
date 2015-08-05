@@ -269,7 +269,7 @@ class ResultsHandler(webapp2.RequestHandler):
         genre=self.request.get("genre")
         counter=1
         user=users.get_current_user()
-        selected_songs=users_current_songs[user.user_id()]
+        selected_songs = users_current_songs[user.user_id()]
 
         for song in selected_songs:
             artist_answer=self.request.get("artist"+str(counter)).lower()

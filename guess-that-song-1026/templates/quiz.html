@@ -13,42 +13,44 @@
     <p class="left_buttons"> <a  href="/">Home</a></p>
     <div class="spacer">
     </div>
-    <h1 class="titles">Guess That Song Quiz</h1>
+    <div id= "content">
+          <h1 class="titles">Guess That Song Quiz</h1>
 
 
-    <form id="quiz_form" action="/results" method="post">
-    <p>
-      {% set counter=1 %}
-      {% for song in songs %}
-    </br>
-          <div class="labels">Question {{counter}}</div>
-          <div style="position:relative;width:267px;height:25px;overflow:hidden;">
-          <div style="position:absolute;top:-276px;left:-5px">
-          <div id="videoContainer">
-          <iframe id="youTUBE" width="300" height="300" align="left"
-            src="https://www.youtube.com/embed/{{song.youtube_ID}}?wmode=transparent&autoplay=0&start=50&end=70&autoplay=1">
-          </iframe>
-          <iframe width="300" height="300" align="left"
-            src="https://www.youtube.com/embed/{{song.youtube_ID}}?rel=0&start=30&end=40&autoplay=0">
-          </iframe>
-          <a class="introVid" href="#video">Watch the video</a></p>
+          <form id="quiz_form" action="/results" method="post">
+          <p>
+            {% set counter=1 %}
+            {% for song in songs %}
+          </br>
+                <div class="labels">Question {{counter}}</div>
+                <div style="position:relative;width:267px;height:25px;overflow:hidden;">
+                <div style="position:absolute;top:-276px;left:-5px">
+                <div id="tester"> </div>
+                <div id="videoContainer">
+                <iframe id="youTUBE" width="300" height="300" align="left"
+                  src="https://www.youtube.com/embed/{{song.youtube_ID}}?wmode=transparent&autoplay=0&start=50&end=70&autoplay=1">
+                </iframe>
+                <!-- <a class="introVid" href="#video">Watch the video</a></p> -->
+                </div>
+                </div>
+                <img src="http://images.clipartpanda.com/music-note-clip-art-music-notes-clip-art_jpg.jpg" id="imageTag"></img>
+                <!-- <div id="videoContainer">
+        <iframe width="450" height="283" src="https://www.youtube.com/embed/VIDEO_ID_HERE?wmode=transparent" frameborder="0" allowfullscreen wmode="Opaque"></iframe>
+      </div> -->
+                </div>
+                  <div class="labels">Artist: <input name="artist{{counter}}"></input></div>
+                  <div class="labels">Song Title: <input name="song_title{{counter}}"></input></div>
+              {% set counter=counter+1 %}
+            {% endfor %}
+              <input name="genre" type="hidden" value={{genre}}>
+              </input>
+              <div class="spacer">
+              </div>
+            <div><input class="big_btn" type="submit" value="Submit Quiz"></div>
+          </p>
+          <div class="spacer">
           </div>
-          </div>
-          <img src="http://images.clipartpanda.com/music-note-clip-art-music-notes-clip-art_jpg.jpg" id="imageTag"></img>
-          <!-- <div id="videoContainer">
-  <iframe width="450" height="283" src="https://www.youtube.com/embed/VIDEO_ID_HERE?wmode=transparent" frameborder="0" allowfullscreen wmode="Opaque"></iframe>
-</div> -->
-          </div>
-            <div class="labels">Artist: <input name="artist{{counter}}"></input></div>
-            <div class="labels">Song Title: <input name="song_title{{counter}}"></input></div>
-        {% set counter=counter+1 %}
-      {% endfor %}
-        <input name="genre" type="hidden" value={{genre}}>
-        </input>
-        <div class="spacer">
-        </div>
-      <div><input class="big_btn"type="submit" value="Submit Quiz"></div>
-    </p>
-    </form>
+          </form>
+    </div>
   </body>
 </html>
