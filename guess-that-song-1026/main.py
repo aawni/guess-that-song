@@ -48,16 +48,35 @@ class Song(ndb.Model):
 
 
 
-country_song1=Song(youtube_ID="_9TShlMkQnc", title="Live like you were dying", artist="Tim McGraw")
-country_song2=Song(youtube_ID="6iXPlJHKB1g", title="Springsteen", artist="Eric Church")
+country_song1=Song(youtube_ID="_9TShlMkQnc", title="Live like you were dying", artist="Tim McGraw" , genre= "country")
+country_song2=Song(youtube_ID="6iXPlJHKB1g", title="Springsteen", artist="Eric Church" , genre= "country")
+country_song3 =Song(youtube_ID="Vd2qlMV-seQ", title="Drunk on a Plane", artist="Dierks Bently" , genre= "country")
+country_song4 =  Song(youtube_ID="9wR-z4XEzKk", title="House Party", artist="Sam Hunt", genre= "country"),
+country_song5 = Song(youtube_ID="mWecuhUUvX0", title="Girl Crush", artist="Little Big Town", genre= "country"),
+country_song6 =Song(youtube_ID="LoH9klMK1rg", title="Crash and Burn", artist="Thomas Rhett", genre= "country"),
+country_song7= Song(youtube_ID="ZhsdBOlczHY", title="Like a Wrecking Ball", artist="Eric Church", genre= "country"),
+country_song8 = Song(youtube_ID="mQPjKSVe1tQ", title="Buy Me a Boat", artist="Chris Janson", genre= "country"),
+country_song9 = Song(youtube_ID="w11aKrkCZYQ", title="Loving You Easy", artist="Zac Brown Band", genre= "country"),
+country_song10 =  Song(youtube_ID="lBGUfVuBkMg", title="Burning House", artist="Cam", genre= "country")
+country_song11 = Song(youtube_ID="WaSy8yy-mr8", title="Before He Cheats", artist="Carrie Underwood", genre= "country")
+country_song12 =  Song(youtube_ID="lydBPm2KRaU", title="Jesus Take The Wheel", artist="Carrie Underwood", genre= "country")
+country_song13 = Song(youtube_ID="ULYOUCjhVZw", title="Kick the Dust Up", artist="Luke Bryan", genre= "country")
+
 country_song1.put()
 country_song2.put()
-            #    Song(youtube_ID="Vd2qlMV-seQ", title="Drunk on a Plane", artist="Dierks Bently"),
-            #    Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato"),
-            #    Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato"),
-            #    Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato"),
-            #    Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato"),
-            #    Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="Demi Lovato"),
+country_song3.put()
+country_song4.put()
+country_song5.put()
+country_song6.put()
+country_song7.put()
+country_song8.put()
+country_song9.put()
+country_song10.put()
+country_song11.put()
+country_song12.put()
+country_song13.put()
+
+
 
 
 
