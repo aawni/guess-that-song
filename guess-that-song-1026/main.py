@@ -351,6 +351,21 @@ class AboutHandler(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('templates/about.html')
         self.response.write(template.render())
 
+class JordanHandler(webapp2.RequestHandler):
+    def get(self):
+        template = JINJA_ENVIRONMENT.get_template('templates/jordan.html')
+        self.response.write(template.render())
+
+class AliaHandler(webapp2.RequestHandler):
+    def get(self):
+        template = JINJA_ENVIRONMENT.get_template('templates/alia.html')
+        self.response.write(template.render())
+
+class JewelHandler(webapp2.RequestHandler):
+    def get(self):
+        template = JINJA_ENVIRONMENT.get_template('templates/jewel.html')
+        self.response.write(template.render())
+
 app = webapp2.WSGIApplication([
     ('/', WelcomeHandler),
     ('/home', HomeHandler),
@@ -358,5 +373,8 @@ app = webapp2.WSGIApplication([
     ('/results', ResultsHandler),
     ('/friends',FriendsHandler),
     ('/searchnickname',SearchNicknameHandler),
-    ('/about', AboutHandler)
+    ('/about', AboutHandler),
+    ('/jordan', JordanHandler),
+    ('/alia', AliaHandler),
+    ('/jewel', JewelHandler),
 ], debug=True)
