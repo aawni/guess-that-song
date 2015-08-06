@@ -14,7 +14,9 @@
       <form id="begin" action="/about" method="get">
       <div><input class="small_btn" type="submit" value="Meet The Creators"></div>
       </form>
-      <div><p class="right_buttons"> <a href="{{logout_url}}">Logout Here</a></p></div>
+      <form action={{logout_url}}>
+        <div><input class="right_buttons" type="submit" value="Logout Here"></div>
+      </form>
     </div>
     <!-- <form class="logout" action="{{logout_url}}" method="">
     <p><div><input class="logout_buttons" type="submit" value="Logout Here"></div></p>
