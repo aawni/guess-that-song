@@ -16,16 +16,19 @@
     </form>
     <div class="spacer">
     </div>
-    <div id= "content">
+    <div class= "content">
     <div class="small_spacer">
     </div>
-    <h1 class="titles">Welcome {{nickname}} to the Guess That Song Game!</h1>
+    <h1 class="titles">Guess That Song</h1>
+    {%if not is_new_user%}
+    <p class="sub_titles">Signed in as {{nickname}}</p>
+    {%endif%}
     <div class="small_spacer">
     </div>
   </div>
   <div class="spacer">
   </div>
-    <div id= "content">
+    <div class= "content">
     <div class="small_spacer">
     </div>
     <form id="setup_form" action="/quiz" method="post">
@@ -47,5 +50,7 @@
     <div class="spacer">
     </div>
     </div>
+    <input name="is_new_user" type="hidden" value={{is_new_user}} id="is_new_user">
+    </input>
   </body>
 </html>

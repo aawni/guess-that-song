@@ -32,12 +32,17 @@ body{
     width: 100%;
     height: 10px;
 }
-#content {
+.content {
   background-color: white;
   width: 80% ;
   margin:auto;
   opacity: 0.8;
 
+}
+.sub_titles {
+  font-size: 25px;
+  font-family: 'Lobster', cursive;
+  color: #808080;
 }
 .titles {
   font-family: 'Lobster', cursive;
@@ -52,6 +57,7 @@ body{
 }
 #questions_played {
   margin-left: 200px;
+  color: #808080;
 }
 #friend_nickname {
   margin-right: 300px;
@@ -124,6 +130,11 @@ body{
   font-family: 'Lobster', cursive;
   font-size: 20px;
   color: black;
+}
+.sub_labels {
+  font-family: 'Lobster', cursive;
+  font-size: 20px;
+  color: #808080;
 }
 #home_large {
   margin-left: 483px;

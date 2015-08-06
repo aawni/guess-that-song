@@ -17,16 +17,17 @@
     <div class="spacer">
     </div>
 
-    <div id= "content">
+    <div class= "content">
     <div class="small_spacer"></div>
-    <h1 class="titles">Guess That Song Quiz</h1>
+    <h1 class="titles">Guess That Song</h1>
+    <p class="sub_titles">Genre: {{genre}}</p>
     <div class="small_spacer"></div>
     </div>
 
     <div class="spacer">
     </div>
 
-    <div id="content">
+    <div class="content">
     <div class="small_spacer"></div>
     <form id="quiz_form" action="/results" method="post">
     <p>
@@ -44,8 +45,8 @@
           </div>
           </div>
           </div>
-            <div class="labels">Artist: <input name="artist{{counter}}"></input></div>
-            <div class="labels">Song Title: <input name="song_title{{counter}}"></input></div>
+            <div class="sub_labels">Artist: <input name="artist{{counter}}"></input></div>
+            <div class="sub_labels">Song Title: <input name="song_title{{counter}}"></input></div>
         {% set counter=counter+1 %}
       {% endfor %}
         <input name="genre" type="hidden" value={{genre}}>

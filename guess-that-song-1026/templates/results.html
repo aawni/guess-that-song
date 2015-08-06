@@ -13,7 +13,7 @@
 
     <div class="spacer"></div>
 
-    <div id= "content">
+    <div class= "content">
     <div class="small_spacer"></div>
     <h1 class="titles">Your Results</h1>
     <div class="small_spacer"></div>
@@ -21,16 +21,16 @@
 
     <div class="spacer"></div>
 
-    <div id="content">
+    <div class="content">
     <div class="small_spacer"></div>
     {%if amount_right!=1%}
-    <p class="labels"> You got {{amount_right}} questions correct </p>
+    <p class="sub_labels"> You got {{amount_right}} questions correct </p>
     {%else%}
-    <p class="labels"> You got {{amount_right}} question correct </p>
+    <p class="sub_labels"> You got {{amount_right}} question correct </p>
     {%endif%}
-    <p class="labels">You got {{percent_correct}}% correct</p>
+    <p class="sub_labels">You got {{percent_correct}}% correct</p>
     <p class="labels">Overall, you have gotten {{total_percent_correct}}% of questions you've played correct!</p>
-    <p class="big_btn" id="home_large"><a href="/">Back to Home</a></p>
+    <!-- <p class="big_btn" id="home_large"><a href="/">Back to Home</a></p> -->
     <div class="spacer"></div>
   </div>
   </body>
