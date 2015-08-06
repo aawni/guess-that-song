@@ -261,9 +261,14 @@ class QuizHandler(webapp2.RequestHandler):
                 selected_songs.append(songs[rand_ind])
                 song_indexs.append(rand_ind)
                 count+=1
-        template_values = {"songs":selected_songs,"genre":genre, "logout_url":users.create_logout_url('/')}
         user=users.get_current_user()
         users_current_songs[user.user_id()]=selected_songs
+        print("hello1")
+        print(selected_songs)
+        print("hello2")
+        print(user.user_id())
+        print("hello3")
+        template_values = {"songs":selected_songs,"genre":genre, "logout_url":users.create_logout_url('/')}
 
         template = JINJA_ENVIRONMENT.get_template('templates/quiz.html')
         self.response.write(template.render(template_values))
@@ -275,7 +280,7 @@ class ResultsHandler(webapp2.RequestHandler):
         counter=1
         user=users.get_current_user()
         selected_songs = users_current_songs[user.user_id()]
-
+        print (users_current_songs)
         for song in selected_songs:
             artist_answer=self.request.get("artist"+str(counter)).lower()
             song_answer=self.request.get("song_title"+str(counter)).lower()
@@ -284,7 +289,7 @@ class ResultsHandler(webapp2.RequestHandler):
                     amount_right+=1
             counter+=1
 
-        users_current_songs[user.user_id()]=[]
+        # users_current_songs[user.user_id()]=[]
         user_query=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()
         user_in_datastore=user_query[0]
         user_in_datastore.questions_played+=len(selected_songs)
@@ -293,7 +298,7 @@ class ResultsHandler(webapp2.RequestHandler):
         total_percent_correct=int((user_in_datastore.questions_correct * 1.0/user_in_datastore.questions_played)*100)
         percent_correct=int((amount_right*1.0/len(selected_songs))*100)
 
-        template_values = {"amount_right": amount_right,"total_percent_correct":total_percent_correct,"percent_correct":percent_correct,"logout_url":users.create_logout_url('/')}
+        template_values = {"amount_right":amount_right,"total_percent_correct":total_percent_correct,"percent_correct":percent_correct,"logout_url":users.create_logout_url('/'),"selected_songs":selected_songs}
         template = JINJA_ENVIRONMENT.get_template('templates/results.html')
         self.response.write(template.render(template_values))
 

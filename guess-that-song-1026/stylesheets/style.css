@@ -206,3 +206,9 @@ body.stew {
   font-weight: bold;
 
 }
+#artist_name {
+  margin-right: 300px;
+}
+#song_title {
+  margin-left: 300px;
+}
