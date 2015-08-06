@@ -214,16 +214,16 @@ users_current_songs={}
 class WelcomeHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
-        # if not user:
-        #     users.create_login_url('/')
+        if user:
+            songs=Song.query().fetch()
+            rand_ind=random.randint(0,len(songs))
+            song_ID=songs[rand_ind].youtube_ID
+            template_values={"song_ID":song_ID}
 
-        songs=Song.query().fetch()
-        rand_ind=random.randint(0,len(songs))
-        song_ID=songs[rand_ind].youtube_ID
-        template_values={"song_ID":song_ID}
-
-        template = JINJA_ENVIRONMENT.get_template('templates/welcome.html')
-        self.response.write(template.render(template_values))
+            template = JINJA_ENVIRONMENT.get_template('templates/welcome.html')
+            self.response.write(template.render(template_values))
+        else:
+            self.redirect(users.create_login_url(self.request.uri))
 
 class HomeHandler(webapp2.RequestHandler):
     def get(self):
@@ -249,7 +249,7 @@ class HomeHandler(webapp2.RequestHandler):
 
 
 class QuizHandler(webapp2.RequestHandler):
-    def post(self):
+    def get(self):
         genre=self.request.get("genre")
         songs=Song.query().filter(Song.genre==genre).fetch()
         song_indexs=[]

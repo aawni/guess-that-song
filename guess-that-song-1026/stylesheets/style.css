@@ -65,7 +65,7 @@ body{
   color: #808080;
 }
 /*buttons*/
-.logout_buttons {
+.right_buttons {
   float: right;
   font-family: 'Lobster', cursive;
   font-size: 25px;
