@@ -34,7 +34,6 @@ class UserModel(ndb.Model):
     currentUserID = ndb.StringProperty(required = True)
     questions_correct = ndb.IntegerProperty()
     questions_played = ndb.IntegerProperty()
-    is_new_user = ndb.BooleanProperty()
     nickname = ndb.StringProperty()
     friends_ids = ndb.StringProperty(repeated=True)
 
@@ -169,17 +168,17 @@ pop_song12=Song(youtube_ID="WpyfrixXBqU", title="Thinking Out Loud", artist="Ed 
 pop_song13=Song(youtube_ID="wg6J-_fTJ44", title="Cheerleader", artist="Omi", genre="pop")
 pop_song14=Song(youtube_ID="rn9AQoI7mYU", title="Lean On", artist="Major Lazor", genre="pop")
 pop_song15=Song(youtube_ID="ntggGgbKr4w", title="Want You To Want Me", artist="Jason Derulo", genre="pop")
-pop_song16 = Song(youtube_ID="uO59tfQ2TbA", title="Hey Mama", artist="Nick Minaj", genre="pop")
-pop_song17 = Song(youtube_ID="o4C4xzkQ8q4", title="Can't Stop Dancing", artist="Becky G", genre="pop")
-pop_song18 = Song(youtube_ID="lKzKTDp00Z4", title="7/11", artist="Beyonce", genre="pop")
-pop_song19 = Song(youtube_ID="Wg92RrNhB8s", title="One Last Time", artist="Ariana Grande", genre="pop")
-pop_song20 =  Song(youtube_ID="7RMQksXpQSk", title="This is How We Do", artist="Katy Perry", genre="pop")
-pop_song21 =  Song(youtube_ID="5RYY0hwHIRw", title="Elastic Heart", artist="Sia", genre="pop")
-pop_song22 =  Song(youtube_ID="-KXPLT2Xk5k", title="Chandelier", artist="Sia", genre="pop")
-pop_song23 = Song(youtube_ID="hnIeRkCqD-E", title="Bitch Better Have My Money", artist="Rihanna", genre="pop")
-pop_song24 =  Song(youtube_ID="e-ORhEE9VVg", title="Blank Space", artist="Taylor Swift", genre="pop")
-pop_song25 = Song(youtube_ID="xo1VInw-SKc", title="Fight Song", artist="Rachel Platten", genre="pop")
-pop_song26 =  Song(youtube_ID="nSDgHBxUbVQ", title="Photograph", artist="Ed Sheeran", genre="pop")
+pop_song16=Song(youtube_ID="uO59tfQ2TbA", title="Hey Mama", artist="Nick Minaj", genre="pop")
+pop_song17=Song(youtube_ID="o4C4xzkQ8q4", title="Can't Stop Dancing", artist="Becky G", genre="pop")
+pop_song18=Song(youtube_ID="lKzKTDp00Z4", title="7/11", artist="Beyonce", genre="pop")
+pop_song19=Song(youtube_ID="Wg92RrNhB8s", title="One Last Time", artist="Ariana Grande", genre="pop")
+pop_song20=Song(youtube_ID="7RMQksXpQSk", title="This is How We Do", artist="Katy Perry", genre="pop")
+pop_song21=Song(youtube_ID="5RYY0hwHIRw", title="Elastic Heart", artist="Sia", genre="pop")
+pop_song22=Song(youtube_ID="-KXPLT2Xk5k", title="Chandelier", artist="Sia", genre="pop")
+pop_song23=Song(youtube_ID="hnIeRkCqD-E", title="Bitch Better Have My Money", artist="Rihanna", genre="pop")
+pop_song24=Song(youtube_ID="e-ORhEE9VVg", title="Blank Space", artist="Taylor Swift", genre="pop")
+pop_song25=Song(youtube_ID="xo1VInw-SKc", title="Fight Song", artist="Rachel Platten", genre="pop")
+pop_song26=Song(youtube_ID="nSDgHBxUbVQ", title="Photograph", artist="Ed Sheeran", genre="pop")
 # pop_song1.put()
 # pop_song2.put()
 # pop_song3.put()
@@ -219,11 +218,12 @@ class MainHandler(webapp2.RequestHandler):
             previous_user_query=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()
             if previous_user_query:
                 current_user = previous_user_query[0]
-                current_user.is_new_user=False
+                is_new_user=False
             else:
-                current_user = UserModel(currentUserID = user.user_id(), questions_played=0,questions_correct=0, is_new_user=True)
-            current_user.put()
-            template_values={"is_new_user":current_user.is_new_user,"logout_url":users.create_logout_url('/')}
+                current_user = UserModel(currentUserID = user.user_id(), questions_played=0,questions_correct=0)
+                current_user.put()
+                is_new_user=True
+            template_values={"is_new_user":is_new_user,"logout_url":users.create_logout_url('/')}
             if current_user.nickname:
                 template_values["nickname"]=current_user.nickname
             template = JINJA_ENVIRONMENT.get_template('templates/setup.html')
@@ -249,11 +249,6 @@ class QuizHandler(webapp2.RequestHandler):
                 count+=1
         template_values = {"songs":selected_songs,"genre":genre, "logout_url":users.create_logout_url('/')}
         user=users.get_current_user()
-        user_in_datastore=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()[0]
-        nickname=self.request.get("nickname")
-        if nickname:
-            user_in_datastore.nickname=nickname
-            user_in_datastore.put()
         users_current_songs[user.user_id()]=selected_songs
 
         template = JINJA_ENVIRONMENT.get_template('templates/quiz.html')
@@ -296,18 +291,19 @@ class FriendsHandler(webapp2.RequestHandler):
         if user_in_datastore.friends_ids:
             friends_list=[]
             for friend_id in user_in_datastore.friends_ids:
-                friends_list.append(UserModel.query().filter(UserModel.currentUserID==friend_id).fetch())
+                friends_list.append(UserModel.query().filter(UserModel.currentUserID==friend_id).fetch()[0])
             template_values["friends"]=friends_list
         template_values["logout_url"]=users.create_logout_url('/')
         template = JINJA_ENVIRONMENT.get_template('templates/friends.html')
         self.response.write(template.render(template_values))
     def post(self):
         friend_nickname=self.request.get("friend_nickname")
-        friend=UserModel.query().filter(UserModel.nickname==friend_nickname).fetch()[0]
+        friends=UserModel.query().filter(UserModel.nickname==friend_nickname).fetch()
         user=users.get_current_user()
         user_in_datastore=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()[0]
         template_values={}
-        if friend:
+        if friends:
+            friend=friends[0]
             user_in_datastore.friends_ids.append(friend.currentUserID)
             user_in_datastore.put()
         if user_in_datastore.friends_ids:
@@ -328,6 +324,10 @@ class SearchNicknameHandler(webapp2.RequestHandler):
             is_unique=False
         else:
             is_unique=True
+            user=users.get_current_user()
+            user_in_datastore=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()[0]
+            user_in_datastore.nickname=nickname
+            user_in_datastore.put()
         response={"is_unique":is_unique}
         self.response.headers['Content-Type'] = "application/json"
         self.response.out.write(json.dumps(response))

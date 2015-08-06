@@ -5,8 +5,8 @@
 body{
   background-size: cover;
   background-position: 0px 0px;
-  background-image: url("tumblr-backgrounds-design-ideas-9.jpg");
-  /*background-image: url('/images/background.JPG');*/
+  /*background-image: url("tumblr-backgrounds-design-ideas-9.jpg");*/
+  background-image: url('/images/background.JPG');
   background-size: cover;
   /*background-size: 100% 100%;*/
   background-size: 1400px;
@@ -50,17 +50,25 @@ body{
 #videoContainer {
   float: right;
 }
+#questions_played {
+  margin-left: 200px;
+}
+#friend_nickname {
+  margin-right: 300px;
+  font-size: 30px;
+  font-weight: bold;
+
+}
 .logout_buttons {
   float: right;
   font-family: 'Lobster', cursive;
-  text-size: 20px
+  font-size: 25px;
   text-decoration: none;
   padding: 2px 6px 2px 6px;
   border-top: 1px solid #CCCCCC;
   border-right: 1px solid #333333;
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC;
-  -webkit-border-radius: 20;
   -moz-border-radius: 20;
   border-radius: 20px;
   color: #000000;
@@ -70,14 +78,13 @@ body{
 .left_buttons {
   float: left;
   font-family: 'Lobster', cursive;
-  text-size: 20px
+  font-size: 25px;
   text-decoration: none;
   padding: 2px 6px 2px 6px;
   border-top: 1px solid #CCCCCC;
   border-right: 1px solid #333333;
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC;
-  -webkit-border-radius: 20;
   -moz-border-radius: 20;
   border-radius: 20px;
   color: #000000;
@@ -86,7 +93,6 @@ body{
 }
 
 .big_btn {
-  -webkit-border-radius: 20;
   -moz-border-radius: 20;
   border-radius: 20px;
   font-family: 'Lobster', cursive;
@@ -100,21 +106,18 @@ body{
 }
 .small_btn {
   font-family: 'Lobster', cursive;
-  text-size: 20px
+  font-size: 25px;
   text-decoration: none;
   padding: 2px 6px 2px 6px;
   border-top: 1px solid #CCCCCC;
   border-right: 1px solid #333333;
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC;
-  -webkit-border-radius: 20;
   -moz-border-radius: 20;
   border-radius: 20px;
   color: #000000;
   background: #ffffff;
   text-decoration: none;
-
-  width: 100px;
 
 }
 .labels {
@@ -125,14 +128,13 @@ body{
 #home_large {
   margin-left: 483px;
   font-family: 'Lobster', cursive;
-  text-size: 20px
+  font-size: 20px;
   text-decoration: none;
   padding: 2px 6px 2px 6px;
   border-top: 1px solid #CCCCCC;
   border-right: 1px solid #333333;
   border-bottom: 1px solid #333333;
   border-left: 1px solid #CCCCCC;
-  -webkit-border-radius: 20;
   -moz-border-radius: 20;
   border-radius: 20px;
   color: #000000;
@@ -147,6 +149,5 @@ body{
 
 #tester {
   float:left;
-
   width: 520px;
 }

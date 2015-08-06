@@ -8,14 +8,26 @@
 </head>
   <body>
     <p class="logout_buttons"> <a  href="{{logout_url}}">Logout Here</a></p>
-    <p class="left_buttons"> <a  href="/friends">View Your Friends</a></p>
+    <!-- <form class="logout" action="{{logout_url}}" method="">
+    <p><div><input class="logout_buttons" type="submit" value="Logout Here"></div></p>
+    </form> -->
+    <form action="/friends" method="get">
+    <p><div><input class="left_buttons" type="submit" value="View Your Friends"></div></p>
+    </form>
     <div class="spacer">
     </div>
     <div id= "content">
     <div class="small_spacer">
     </div>
-    <div class="background">
     <h1 class="titles">Welcome {{nickname}} to the Guess That Song Game!</h1>
+    <div class="small_spacer">
+    </div>
+  </div>
+  <div class="spacer">
+  </div>
+    <div id= "content">
+    <div class="small_spacer">
+    </div>
     <form id="setup_form" action="/quiz" method="post">
       {%if is_new_user%}
         <div>New users should enter a unique nickname:<input name="nickname" id="nickname"></input></div>
@@ -35,6 +47,5 @@
     <div class="spacer">
     </div>
     </div>
-  </div>
   </body>
 </html>
