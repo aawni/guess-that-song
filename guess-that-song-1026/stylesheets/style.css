@@ -193,14 +193,10 @@ form {
 /*miscellaneous*/
 #videoContainer {
   float: right;
-
 }
-
 #musicPlayer {
   float: center;
-
 }
-
 #questions_played {
   margin-left: 200px;
   color: #808080;
@@ -209,11 +205,16 @@ form {
   margin-right: 300px;
   font-size: 30px;
   font-weight: bold;
-
 }
 #artist_name {
   margin-right: 300px;
 }
 #song_title {
   margin-left: 300px;
+}
+.img {
+  height: 42px;
+  width: 42px;
+  margin-left: 200px;
+  display: inline;
 }
