@@ -2,7 +2,7 @@ function Verify(e){
   e.preventDefault();
   var nickname = $("#nickname").val();
   var is_new_user = $("#is_new_user").val();
-  if (is_new_user){
+  if (is_new_user=="True"){
     if (nickname == "")
     {
       $("#error").text("Please provide a nickname!");
@@ -15,12 +15,17 @@ function Verify(e){
       return Verify_Unique(nickname);
     }
   }
+  else {
+    var genre = $("#genre").val();
+    window.location.href = "/quiz?genre="+genre;
+  }
 }
 
 function Verify_Unique(nickname){
   $.post("/searchnickname", {"nickname": nickname}, function(data){
     if (data.is_unique){
-      window.location.href = "/quiz";
+      var genre = $("#genre").val();
+      window.location.href = "/quiz?genre="+genre;
     }
     else {
       $("#not_unique_error").text("That nickname is taken. Please enter another!");
