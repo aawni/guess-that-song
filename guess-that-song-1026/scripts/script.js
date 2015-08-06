@@ -47,6 +47,21 @@ function Show_Answers(e){
   $("#show_answers").fadeOut(0);
   return false;
 }
+function Show_Jordan(e){
+  e.preventDefault();
+  $("#jordan_div").toggle();
+  return false;
+}
+function Show_Alia(e){
+  e.preventDefault();
+  $("#alia_div").toggle();
+  return false;
+}
+function Show_Jewel(e){
+  e.preventDefault();
+  $("#jewel_div").toggle();
+  return false;
+}
 
 
 $(document).ready(
@@ -64,6 +79,9 @@ $(document).ready(
     }, function(){
       $(this).css("background", "white");
     });
+    $('#show_jordan').on('submit', Show_Jordan)
+    $('#show_alia').on('submit', Show_Alia)
+    $('#show_jewel').on('submit', Show_Jewel)
 });
 // $('#imageTag').click(function() {
 //   $("#youTUBE").attr('src', $("#videoContainer iframe", parent).attr('src') + '?autoplay=0');
