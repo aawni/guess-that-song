@@ -29,7 +29,7 @@ function Verify_Unique(nickname){
     }
     else {
       $("#not_unique_error").text("That nickname is taken. Please enter another!");
-      $("#not_unique_error").fadeIn(3000);
+      $("#not_unique_error").fadeIn(1000);
       $("#not_unique_error").fadeOut(3000);
     }
   });
