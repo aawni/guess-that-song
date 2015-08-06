@@ -153,6 +153,11 @@ body.stew {
   /*float: left;*/
 }
 
+form {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
 #buttons p {
   display: inline;
 }
