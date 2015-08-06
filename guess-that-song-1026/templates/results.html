@@ -45,6 +45,11 @@
     {% set counter=1 %}
     {% for song in selected_songs%}
     <div class="labels">Question {{counter}}</div>
+      {%if counter in correct_question_nums%}
+      <img src="http://ecx.images-amazon.com/images/I/31WTkre7yTL._SY300_.jpg" class="img" height="42" width="42">
+      {%else%}
+      <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Red_X.gif" class="img" height="42" width="42">
+      {%endif%}
     <div style="position:relative;width:267px;height:25px;overflow:hidden;">
     <div style="position:absolute;top:-276px;left:-5px">
     <div id="tester"></div>
