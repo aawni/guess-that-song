@@ -346,11 +346,17 @@ class SearchNicknameHandler(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = "application/json"
         self.response.out.write(json.dumps(response))
 
+class AboutHandler(webapp2.RequestHandler):
+    def get(self):
+        template = JINJA_ENVIRONMENT.get_template('templates/about.html')
+        self.response.write(template.render())
+
 app = webapp2.WSGIApplication([
     ('/', WelcomeHandler),
     ('/home', HomeHandler),
     ('/quiz', QuizHandler),
     ('/results', ResultsHandler),
     ('/friends',FriendsHandler),
-    ('/searchnickname',SearchNicknameHandler)
+    ('/searchnickname',SearchNicknameHandler),
+    ('/about', AboutHandler)
 ], debug=True)
