@@ -54,6 +54,16 @@ $(document).ready(
     $('#setup_form').on('submit', Verify)
     $('#show_add_friends').on('submit', Show_Add_Friends)
     $('#show_answers').on('submit', Show_Answers)
+    $(".big_btn").hover(function(){
+    $(this).css("background", "#6495ED");
+    }, function(){
+    $(this).css("background", "white");
+  });
+    $("#show_answers_button").hover(function(){
+      $(this).css("background", "#6495ED");
+    }, function(){
+      $(this).css("background", "white");
+    });
 });
 // $('#imageTag').click(function() {
 //   $("#youTUBE").attr('src', $("#videoContainer iframe", parent).attr('src') + '?autoplay=0');
