@@ -5,6 +5,8 @@
   <title>Guess That Song</title>
 <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<script src= "http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+<script src="scripts/script.js"></script>
 </head>
   <body>
     <p class="right_buttons"> <a  href="{{logout_url}}">Logout Here</a></p>
@@ -52,7 +54,7 @@
         <input name="genre" type="hidden" value={{genre}}>
         </input>
         <div class="spacer"></div>
-      <div><input class="big_btn"type="submit" value="Submit Quiz"></div>
+      <div><input class="big_btn" id="submit_quiz" type="submit" value="Submit Quiz"></div>
     </p>
     <div class="spacer"></div>
   </div>
