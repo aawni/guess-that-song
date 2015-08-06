@@ -8,23 +8,11 @@
 </head>
   <body>
     <div id="buttons">
-      <form action="/friends" method="get">
-      <p><div><input class="left_buttons" type="submit" value="View Your Friends"></div></p>
-      </form>
-      <form id="begin" action="/about" method="get">
-      <div><input class="small_btn" type="submit" value="Meet The Creators"></div>
-      </form>
-      <form action={{logout_url}}>
-        <div><input class="right_buttons" type="submit" value="Logout Here"></div>
-      </form>
+      <p class="left_buttons"> <a  href="/friends">View Your Friends</a></p>
+      <p class="small_btn"> <a  href="/about">Meet The Creators</a></p>
+      <p class="right_buttons"> <a  href="{{logout_url}}">Logout Here</a></p>
     </div>
-    <!-- <form class="logout" action="{{logout_url}}" method="">
-    <p><div><input class="logout_buttons" type="submit" value="Logout Here"></div></p>
-    </form> -->
   </br>
-    <!-- <form action="/settings" method="get">
-    <p><div><input class="right_buttons" type="submit" value="My Account Settings"></div></p>
-    </form> -->
     <div class="spacer">
     </div>
     <div class= "content">
