@@ -1,30 +1,38 @@
-function Verify(){
+function Verify(e){
+  e.preventDefault();
   var nickname = $("#nickname").val();
-  if (nickname == "")
-  {
-    $("#error").text("Please provide a nickname!");
-    $("#error").fadeIn();
-    return false;
+  var is_new_user = $("#is_new_user").val();
+  if (is_new_user=="True"){
+    if (nickname == "")
+    {
+      $("#error").text("Please provide a nickname!");
+      $("#error").fadeIn(3000);
+      $("#error").fadeOut(3000);
+      return false;
+    }
+    else
+    {
+      return Verify_Unique(nickname);
+    }
   }
-  else
-  {
-    $("#error").text(" ");
-    $("#error").fadeOut();
-    Verify_Unique_Send(nickname);
+  else {
+    var genre = $("#genre").val();
+    window.location.href = "/quiz?genre="+genre;
   }
 }
 
-function Verify_Unique_Send(nickname) {
+function Verify_Unique(nickname){
   $.post("/searchnickname", {"nickname": nickname}, function(data){
     if (data.is_unique){
-      return true;
+      var genre = $("#genre").val();
+      window.location.href = "/quiz?genre="+genre;
     }
-    else (
+    else {
       $("#not_unique_error").text("That nickname is taken. Please enter another!");
-      $("#not_unique_error").fadeIn();
-      return false;
-    )
-  })
+      $("#not_unique_error").fadeIn(3000);
+      $("#not_unique_error").fadeOut(3000);
+    }
+  });
 }
 
 function Show_Add_Friends() {
@@ -33,20 +41,35 @@ function Show_Add_Friends() {
   return false;
 }
 
+// function Show_Answers(){
+//   return false;
+//   alert("you made it to show users answers")
+//   $("#users_answers").fadeIn(0);
+//   $("#show_answers").fadeOut(0);
+//   return false;
+// }
+
+
 $(document).ready(
   function() {
     $('#setup_form').on('submit', Verify)
-    $('#show_add_friends').click(Show_Add_Friends)
-  }
-);
-$('#imageTag').click(function() {
-  $("#youTUBE").attr('src', $("#videoContainer iframe", parent).attr('src') + '?autoplay=0');
-});
+    $('#show_add_friends').on('submit', Show_Add_Friends)
+    // $('#show_answers').on('submit', Show_Answers)
 
-// jQuery('a.introVid').click(function(){
-//   autoPlayVideo(  "#videoContainer",'450','283');
+    });
+);
+// $('#imageTag').click(function() {
+//   $("#youTUBE").attr('src', $("#videoContainer iframe", parent).attr('src') + '?autoplay=0');
 // });
-// function autoPlayVideo(vcode, width, height){
-//   "use strict";
-//   $("#videoContainer").html('<iframe width="'+width+'" height="'+height+'" src="https://www.youtube.com/embed/'+vcode+'?autoplay=1&loop=1&rel=0&wmode=transparent" frameborder="0" allowfullscreen wmode="Opaque"></iframe>');
-// }
+$( '#timer-countup' ).countdown( {
+  from: 0,
+  to: 180,
+  autostart: true
+} );
+
+
+
+$( '#timer-outputpattern' ).countdown( {
+  outputPattern: '$day Days $hour Hours $minute Miniuts $second Seconds',
+  from: 60 * 60 * 24 * 3
+} );

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guess That Song</title>
+  <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+  <script src= "http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="scripts/script.js"></script>
+</head>
+  <body>
+    <div class= "content">
+    <div class="small_spacer"></div>
+    <h1 class="titles">Welcome to Guess That Song</h1>
+    <p class="sub_titles">Where you can test yours and your friends' music knowledge!</p>
+    <div class="small_spacer"></div>
+
+
+    <form id="begin" action="/home" method="get">
+      <div><input class="big_btn" type="submit" value="Let's Begin"></div>
+    </form>
+    <div class="spacer"></div>
+    </div>
+
+    <div id="videoContainer">
+    <iframe id="youTUBE" width="1" height="1"
+      src="https://www.youtube.com/embed/{{song_ID}}?wmode=transparent&autoplay=1">
+    </iframe>
+    </div>
+
+  </body>
+</html>

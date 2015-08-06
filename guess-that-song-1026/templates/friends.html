@@ -7,17 +7,33 @@
   <script src="scripts/script.js"></script>
 </head>
   <body>
-    <p class="logout_buttons"> <a  href="{{logout_url}}">Logout Here</a></p>
-    <p class="left_buttons"> <a href="/">Home</a></p>
-    <div class="spacer">
-    </div>
+    <p class="right_buttons"> <a  href="{{logout_url}}">Logout Here</a></p>
+    <!-- <form class="logout" action="{{logout_url}}" method="">
+    <p><div><input class="logout_buttons" type="submit" value="Logout Here"></div></p>
+    </form> -->
+    <form action="/home" method="get">
+    <p><div><input class="left_buttons" type="submit" value="Home"></div></p>
+    </form>
+
+    <div class="spacer"></div>
+
+    <div class= "content">
+    <div class="small_spacer"></div>
     <h1 class="titles">Your Friends</h1>
+    <div class="small_spacer"></div>
+  </div>
+
+  <div class="spacer"></div>
+
+  <div class="content">
+  <div class="small_spacer"></div>
     {%if friends%}
       {%for friend in friends%}
-        {%if friend.nickname%}
-        <p>{{friend.nickname}}</p>
+        <p id="friend_nickname">{{friend.nickname}}</p>
+        {% if friend.questions_played>0 %}
+        <p id="questions_played"> won {{(friend.questions_correct/friend.questions_played)*100}}% of the time</p>
         {%endif%}
-        {%endfor%}
+      {%endfor%}
     {%else%}
       <p>You have no friends!</p>
     {%endif%}
@@ -25,12 +41,16 @@
     <p>
       <div><input class="small_btn" type="submit" value="Find Friends"></div>
     </p>
+    <div class="spacer">
+    </div>
     </form>
     <form id="add_friends_form" action="/friends" method="post" style="display: none">
     <p>
-      <div class="labels">Enter their email: <input name="friend_email"></input></div>
+      <div class="labels">Enter their nickname: <input name="friend_nickname"></input></div>
       <div><input class="small_btn" type="submit" value="Add Friend"></div>
     </p>
+    <div class="spacer"></div>
     </form>
+  </div>
   </body>
 </html>

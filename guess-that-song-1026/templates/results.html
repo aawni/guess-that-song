@@ -4,23 +4,66 @@
     <title>Guess That Song</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="scripts/script.js"></script>
   </head>
   <body>
-    <p class="logout_buttons"> <a href="{{logout_url}}">Logout Here</a></p>
-    <div class="spacer">
-    </div>
-    <div id= "content">
+    <p class="right_buttons"> <a href="{{logout_url}}">Logout Here</a></p>
+    <form action="/home" method="get">
+    <p><div><input class="left_buttons" type="submit" value="Home"></div></p>
+    </form>
+
+    <div class="spacer"></div>
+
+    <div class= "content">
+    <div class="small_spacer"></div>
     <h1 class="titles">Your Results</h1>
+
+
+
+
+ <div id="timer" class="countdown">
+   <h1>{{minutes}} : {{seconds}}</h1>
+   <p>minutes seconds</p>
+
+ </div>
+
+
+    <div class="small_spacer"></div>
     {%if amount_right!=1%}
-    <p class="labels"> You got {{amount_right}} questions correct </p>
+    <p class="sub_labels"> You got {{amount_right}} questions correct </p>
     {%else%}
-    <p class="labels"> You got {{amount_right}} question correct </p>
+    <p class="sub_labels"> You got {{amount_right}} question correct </p>
     {%endif%}
-    <p class="labels">You got {{percent_correct}}% correct</p>
+    <p class="sub_labels">You got {{percent_correct}}% correct</p>
     <p class="labels">Overall, you have gotten {{total_percent_correct}}% of questions you've played correct!</p>
-    <p class="big_btn" id="home_large"><a href="/">Back to Home</a></p>
-    <div class="spacer">
+    <div class="small_spacer"></div>
     </div>
+
+    <div class="spacer"></div>
+    <div class="content">
+    <div class="small_spacer"></div>
+    <p class="titles">Correct Answers</p>
+
+    <div id="users_answers" >
+    {% set counter=1 %}
+    {% for song in selected_songs%}
+    <div class="labels">Question {{counter}}</div>
+    <div style="position:relative;width:267px;height:25px;overflow:hidden;">
+    <div style="position:absolute;top:-276px;left:-5px">
+    <div id="tester"></div>
+    <div id="videoContainer">
+    <iframe id="youTUBE" width="300" height="300"
+      src="https://www.youtube.com/embed/{{song.youtube_ID}}?wmode=transparent&autoplay=0">
+    </iframe>
+    </div>
+    </div>
+    </div>
+    <p class="sub_labels">{{song.artist}}</p>
+    <p class="sub_labels">{{song.title}}</p>
+    {% set counter=counter+1 %}
+    {%endfor%}
+    </div>
+    <div class="spacer"></div>
   </div>
   </body>
 </html>
