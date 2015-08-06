@@ -29,7 +29,7 @@ function Verify_Unique(nickname){
     }
     else {
       $("#not_unique_error").text("That nickname is taken. Please enter another!");
-      $("#not_unique_error").fadeIn(3000);
+      $("#not_unique_error").fadeIn(1000);
       $("#not_unique_error").fadeOut(3000);
     }
   });
@@ -41,23 +41,48 @@ function Show_Add_Friends() {
   return false;
 }
 
-// function Show_Answers(){
-//   return false;
-//   alert("you made it to show users answers")
-//   $("#users_answers").fadeIn(0);
-//   $("#show_answers").fadeOut(0);
-//   return false;
-// }
+function Show_Answers(e){
+  e.preventDefault();
+  $("#users_answers").fadeIn(0);
+  $("#show_answers").fadeOut(0);
+  return false;
+}
+function Show_Jordan(e){
+  e.preventDefault();
+  $("#jordan_div").toggle();
+  return false;
+}
+function Show_Alia(e){
+  e.preventDefault();
+  $("#alia_div").toggle();
+  return false;
+}
+function Show_Jewel(e){
+  e.preventDefault();
+  $("#jewel_div").toggle();
+  return false;
+}
 
 
 $(document).ready(
   function() {
     $('#setup_form').on('submit', Verify)
     $('#show_add_friends').on('submit', Show_Add_Friends)
-    // $('#show_answers').on('submit', Show_Answers)
-
+    $('#show_answers').on('submit', Show_Answers)
+    $(".big_btn").hover(function(){
+    $(this).css("background", "#6495ED");
+    }, function(){
+    $(this).css("background", "white");
+  });
+    $("#show_answers_button").hover(function(){
+      $(this).css("background", "#6495ED");
+    }, function(){
+      $(this).css("background", "white");
     });
-);
+    $('#show_jordan').on('submit', Show_Jordan)
+    $('#show_alia').on('submit', Show_Alia)
+    $('#show_jewel').on('submit', Show_Jewel)
+});
 // $('#imageTag').click(function() {
 //   $("#youTUBE").attr('src', $("#videoContainer iframe", parent).attr('src') + '?autoplay=0');
 // });

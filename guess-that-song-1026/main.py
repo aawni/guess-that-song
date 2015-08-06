@@ -271,11 +271,6 @@ class QuizHandler(webapp2.RequestHandler):
                 count+=1
         user=users.get_current_user()
         users_current_songs[user.user_id()]=selected_songs
-        print("hello1")
-        print(selected_songs)
-        print("hello2")
-        print(user.user_id())
-        print("hello3")
         template_values = {"songs":selected_songs,"genre":genre, "logout_url":users.create_logout_url('/')}
 
         template = JINJA_ENVIRONMENT.get_template('templates/quiz.html')
@@ -298,14 +293,15 @@ class ResultsHandler(webapp2.RequestHandler):
         genre=self.request.get("genre")
         counter=1
         user=users.get_current_user()
+        correct_question_nums=[]
         selected_songs = users_current_songs[user.user_id()]
-        print (users_current_songs)
         for song in selected_songs:
             artist_answer=self.request.get("artist"+str(counter)).lower()
             song_answer=self.request.get("song_title"+str(counter)).lower()
             if artist_answer!="" and song_answer!="":
                 if artist_answer==selected_songs[counter-1].artist.lower() and song_answer==selected_songs[counter-1].title.lower():
                     amount_right+=1
+                    correct_question_nums.append(counter)
             counter+=1
 
         # users_current_songs[user.user_id()]=[]
@@ -371,11 +367,35 @@ class SearchNicknameHandler(webapp2.RequestHandler):
         self.response.headers['Content-Type'] = "application/json"
         self.response.out.write(json.dumps(response))
 
+class AboutHandler(webapp2.RequestHandler):
+    def get(self):
+        template = JINJA_ENVIRONMENT.get_template('templates/about.html')
+        self.response.write(template.render())
+
+class JordanHandler(webapp2.RequestHandler):
+    def get(self):
+        template = JINJA_ENVIRONMENT.get_template('templates/jordan.html')
+        self.response.write(template.render())
+
+class AliaHandler(webapp2.RequestHandler):
+    def get(self):
+        template = JINJA_ENVIRONMENT.get_template('templates/alia.html')
+        self.response.write(template.render())
+
+class JewelHandler(webapp2.RequestHandler):
+    def get(self):
+        template = JINJA_ENVIRONMENT.get_template('templates/jewel.html')
+        self.response.write(template.render())
+
 app = webapp2.WSGIApplication([
     ('/', WelcomeHandler),
     ('/home', HomeHandler),
     ('/quiz', QuizHandler),
     ('/results', ResultsHandler),
     ('/friends',FriendsHandler),
-    ('/searchnickname',SearchNicknameHandler)
+    ('/searchnickname',SearchNicknameHandler),
+    ('/about', AboutHandler),
+    ('/jordan', JordanHandler),
+    ('/alia', AliaHandler),
+    ('/jewel', JewelHandler),
 ], debug=True)

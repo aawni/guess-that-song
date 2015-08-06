@@ -7,10 +7,17 @@
   <script src="scripts/script.js"></script>
 </head>
   <body>
-    <form action="/friends" method="get">
-    <p><div><input class="left_buttons" type="submit" value="View Your Friends"></div></p>
-    </form>
-    <p class="right_buttons"> <a  href="{{logout_url}}">Logout Here</a></p>
+    <div id="buttons">
+      <form action="/friends" method="get">
+      <p><div><input class="left_buttons" type="submit" value="View Your Friends"></div></p>
+      </form>
+      <form id="begin" action="/about" method="get">
+      <div><input class="small_btn" type="submit" value="Meet The Creators"></div>
+      </form>
+      <form action={{logout_url}}>
+        <div><input class="right_buttons" type="submit" value="Logout Here"></div>
+      </form>
+    </div>
     <!-- <form class="logout" action="{{logout_url}}" method="">
     <p><div><input class="logout_buttons" type="submit" value="Logout Here"></div></p>
     </form> -->
@@ -40,16 +47,17 @@
         <div>New users should enter a unique nickname:<input name="nickname" id="nickname"></input></div>
       {%endif%}
       <p>Choose your genre:
-        <select id ="genre" name="genre">
+        <select id ="genre" class="styled-select" name="genre">
           <option value="hiphop">Hip Hop</option>
           <option value="pop">Pop</option>
           <option value="rock">Rock</option>
           <option value="country">Country</option>
         </select>
       </p>
+      <p class="sub_labels">You will hear 15 seconds of each song. You must get the artist and song title correct to get the question correct. </p>
       <input name="is_new_user" type="hidden" value={{is_new_user}} id="is_new_user">
       </input>
-      <div><input class="big_btn" type="submit" value="continue to quiz"></div>
+      <div><input class="big_btn" type="submit" value="continue to quiz"></input></div>
     </form>
         <p id="error" style="display: none"></p>
         <p id="not_unique_error" style="display: none"></p>
