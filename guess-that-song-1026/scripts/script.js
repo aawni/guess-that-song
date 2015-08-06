@@ -1,17 +1,17 @@
-function Verify(){
+function Verify(e){
+  e.preventDefault();
   var nickname = $("#nickname").val();
   var is_new_user = $("#is_new_user").val();
   if (is_new_user){
     if (nickname == "")
     {
       $("#error").text("Please provide a nickname!");
-      $("#error").fadeIn();
+      $("#error").fadeIn(3000);
+      $("#error").fadeOut(3000);
       return false;
     }
     else
     {
-      $("#error").text(" ");
-      $("#error").fadeOut();
       return Verify_Unique(nickname);
     }
   }
@@ -20,15 +20,12 @@ function Verify(){
 function Verify_Unique(nickname){
   $.post("/searchnickname", {"nickname": nickname}, function(data){
     if (data.is_unique){
-      alert("it is unique!")
-      return true;
+      window.location.href = "/quiz";
     }
     else {
-      alert("it is not unique!")
       $("#not_unique_error").text("That nickname is taken. Please enter another!");
-      $("#not_unique_error").fadeIn();
-      return false;
-
+      $("#not_unique_error").fadeIn(3000);
+      $("#not_unique_error").fadeOut(3000);
     }
   });
 }

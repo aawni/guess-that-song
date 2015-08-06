@@ -7,7 +7,7 @@
   </head>
   <body>
     <p class="logout_buttons"> <a href="{{logout_url}}">Logout Here</a></p>
-    <form action="/" method="get">
+    <form action="/home" method="get">
     <p><div><input class="left_buttons" type="submit" value="Home"></div></p>
     </form>
 
@@ -30,7 +30,7 @@
     {%endif%}
     <p class="sub_labels">You got {{percent_correct}}% correct</p>
     <p class="labels">Overall, you have gotten {{total_percent_correct}}% of questions you've played correct!</p>
-    <!-- <p class="big_btn" id="home_large"><a href="/">Back to Home</a></p> -->
+    <!-- <p class="big_btn" id="home_large"><a href="/home">Back to Home</a></p> -->
     <div class="spacer"></div>
   </div>
   </body>

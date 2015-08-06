@@ -211,7 +211,21 @@ users_current_songs={}
 
 
 
-class MainHandler(webapp2.RequestHandler):
+class WelcomeHandler(webapp2.RequestHandler):
+    def get(self):
+        user = users.get_current_user()
+        # if not user:
+        #     users.create_login_url('/')
+
+        songs=Song.query().fetch()
+        rand_ind=random.randint(0,len(songs))
+        song_ID=songs[rand_ind].youtube_ID
+        template_values={"song_ID":song_ID}
+
+        template = JINJA_ENVIRONMENT.get_template('templates/welcome.html')
+        self.response.write(template.render(template_values))
+
+class HomeHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         if user:
@@ -226,7 +240,7 @@ class MainHandler(webapp2.RequestHandler):
             template_values={"is_new_user":is_new_user,"logout_url":users.create_logout_url('/')}
             if current_user.nickname:
                 template_values["nickname"]=current_user.nickname
-            template = JINJA_ENVIRONMENT.get_template('templates/setup.html')
+            template = JINJA_ENVIRONMENT.get_template('templates/home.html')
             self.response.write(template.render(template_values))
 
         else:
@@ -333,7 +347,8 @@ class SearchNicknameHandler(webapp2.RequestHandler):
         self.response.out.write(json.dumps(response))
 
 app = webapp2.WSGIApplication([
-    ('/', MainHandler),
+    ('/', WelcomeHandler),
+    ('/home', HomeHandler),
     ('/quiz', QuizHandler),
     ('/results', ResultsHandler),
     ('/friends',FriendsHandler),
