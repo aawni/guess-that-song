@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Guess That Song</title>
+  <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
+  <script src= "http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="scripts/script.js"></script>
+</head>
+  <body>
+    <form action="/friends" method="get">
+    <p><div><input class="left_buttons" type="submit" value="View Your Friends"></div></p>
+    </form>
+    <p class="right_buttons"> <a  href="{{logout_url}}">Logout Here</a></p>
+    <!-- <form class="logout" action="{{logout_url}}" method="">
+    <p><div><input class="logout_buttons" type="submit" value="Logout Here"></div></p>
+    </form> -->
+  </br>
+    <!-- <form action="/settings" method="get">
+    <p><div><input class="right_buttons" type="submit" value="My Account Settings"></div></p>
+    </form> -->
+    <div class="spacer">
+    </div>
+    <div class= "content">
+    <div class="small_spacer">
+    </div>
+    <h1 class="titles">Guess That Song</h1>
+    {%if not is_new_user%}
+    <p class="sub_titles">Signed in as {{nickname}}</p>
+    {%endif%}
+    <div class="small_spacer">
+    </div>
+  </div>
+  <div class="spacer">
+  </div>
+    <div class= "content">
+    <div class="small_spacer">
+    </div>
+    <form id="setup_form" action="/quiz" method="post">
+      {%if is_new_user%}
+        <div>New users should enter a unique nickname:<input name="nickname" id="nickname"></input></div>
+      {%endif%}
+      <p>Choose your genre:
+        <select name="genre">
+          <option value="hiphop">Hip Hop</option>
+          <option value="pop">Pop</option>
+          <option value="rock">Rock</option>
+          <option value="country">Country</option>
+        </select>
+      </p>
+      <div><input class="big_btn" type="submit" value="continue to quiz"></div>
+    </form>
+        <p id="error" style="display: none"></p>
+        <p id="not_unique_error" style="display: none"></p>
+    <div class="spacer">
+    </div>
+    </div>
+    <input name="is_new_user" type="hidden" value={{is_new_user}} id="is_new_user">
+    </input>
+  </body>
+</html>
