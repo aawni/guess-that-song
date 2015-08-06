@@ -41,12 +41,23 @@ function Show_Add_Friends() {
   return false;
 }
 
+// function Show_Answers(){
+//   return false;
+//   alert("you made it to show users answers")
+//   $("#users_answers").fadeIn(0);
+//   $("#show_answers").fadeOut(0);
+//   return false;
+// }
+
+
 $(document).ready(
   function() {
     $('#setup_form').on('submit', Verify)
     $('#show_add_friends').on('submit', Show_Add_Friends)
-  }
+    // $('#show_answers').on('submit', Show_Answers)
+
+    });
 );
-$('#imageTag').click(function() {
-  $("#youTUBE").attr('src', $("#videoContainer iframe", parent).attr('src') + '?autoplay=0');
-});
+// $('#imageTag').click(function() {
+//   $("#youTUBE").attr('src', $("#videoContainer iframe", parent).attr('src') + '?autoplay=0');
+// });
