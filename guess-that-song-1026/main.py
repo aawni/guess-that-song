@@ -182,6 +182,19 @@ pop_song23=Song(youtube_ID="hnIeRkCqD-E", title="Bitch Better Have My Money", ar
 pop_song24=Song(youtube_ID="e-ORhEE9VVg", title="Blank Space", artist="Taylor Swift", genre="pop")
 pop_song25=Song(youtube_ID="xo1VInw-SKc", title="Fight Song", artist="Rachel Platten", genre="pop")
 pop_song26=Song(youtube_ID="nSDgHBxUbVQ", title="Photograph", artist="Ed Sheeran", genre="pop")
+pop_song27 = Song(youtube_ID="dqt8Z1k0oWQ", title="Can't Feel My Face", artist="The Weeknd", genre="pop")
+pop_song28 = Song(youtube_ID="DCNd-TgfOAo", title="Freedom", artist="Allen Stone", genre="pop")
+pop_song29 = Song(youtube_ID="48VSP-atSeI", title="Sugar", artist="Maroon 5", genre="pop")
+pop_song30 = Song(youtube_ID="h12oDyv-1as", title="Shut Up and Dance", artist="Walk the Moon", genre="pop")
+pop_song31 = Song(youtube_ID="HAlz5TiKOCM", title="All About that  Bass", artist="Meghan Trainor", genre="pop")
+pop_song32 = Song(youtube_ID="ABhDiXbUaBE", title="Break the Rules", artist="Charlie XCX", genre="pop")
+pop_song33 = Song(youtube_ID="O4uD6o9XxLs", title="Young and Beautiful", artist="Lana Del Rey", genre="pop")
+pop_song34 = Song(youtube_ID="_SoWPGzeN30", title="Love Me Like You Do", artist="Ellie Goulding", genre="pop")
+pop_song35 = Song(youtube_ID="2XY3AvVgDns", title="Countdown", artist="Beyonce", genre="pop")
+pop_song36= Song(youtube_ID="up9frWH_hjk", title="Drunk in Love", artist="Beyonce", genre="pop")
+pop_song37 = Song(youtube_ID="zoJAcgmOS4Q", title="Roar", artist="Amy Whinehouse", genre="pop")
+
+
 # pop_song1.put()
 # pop_song2.put()
 # pop_song3.put()
@@ -208,6 +221,17 @@ pop_song26=Song(youtube_ID="nSDgHBxUbVQ", title="Photograph", artist="Ed Sheeran
 # pop_song24.put()
 # pop_song25.put()
 # pop_song26.put()
+# pop_song27.put()
+# pop_song28.put()
+# pop_song29.put()
+# pop_song30.put()
+# pop_song31.put()
+# pop_song32.put()
+# pop_song33.put()
+# pop_song34.put()
+# pop_song35.put()
+# pop_song36.put()
+# pop_song37.put()
 
 
 users_current_songs={}
