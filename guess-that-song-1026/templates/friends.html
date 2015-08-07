@@ -24,6 +24,7 @@
 
   <div class="content">
   <div class="small_spacer"></div>
+  <div id="friends">
     {%if friends%}
       {%for friend in friends%}
         <p id="friend_nickname">{{friend.nickname}}</p>
@@ -39,6 +40,7 @@
     {%else%}
       <p>You have no friends!</p>
     {%endif%}
+    </div>
     <form id="show_add_friends" action="/friends" method="post">
     <p>
       <div><input class="small_btn_center" type="submit" value="Find Friends"></div>

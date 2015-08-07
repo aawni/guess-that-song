@@ -215,11 +215,10 @@ form {
   float: center;
 }
 #questions_played {
-  margin-left: 200px;
+  margin-left: 15px;
   color: #808080;
 }
 #friend_nickname {
-  margin-right: 300px;
   font-size: 30px;
   font-weight: bold;
 }
@@ -294,4 +293,9 @@ word-spacing: 20px;
 #jewel_div {
   width:400px;
   margin-left: 350px;
+}
+
+
+#friends p {
+  display: inline;
 }

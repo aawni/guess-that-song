@@ -90,17 +90,17 @@ hiphop_song7=Song(youtube_ID="vKzwbsI7ISQ", title="We Dem Boyz", artist="Wiz Kha
 hiphop_song8=Song(youtube_ID="Bo0WMtwoqtY", title="Blessings", artist="Big Sean",genre="hiphop")
 hiphop_song9=Song(youtube_ID="Cvu0Q4Cl7pU", title="My Way", artist="Fetty Wap",genre="hiphop")
 hiphop_song10=Song(youtube_ID="-M3vZDL7Yfk", title="Back to Back", artist="Drake",genre="hiphop")
-hiphop_song12=Song(youtube_ID="_JZom_gVfuw", title="Juicy", artist="The Notorious B.I.G",genre="hiphop")
+hiphop_song12=Song(youtube_ID="_JZom_gVfuw", title="Juicy", artist="Biggie",genre="hiphop")
 hiphop_song13=Song(youtube_ID="RubBzkZzpUA", title="Started From The Bottom", artist="Drake",genre="hiphop")
 hiphop_song14=Song(youtube_ID="ucoK6KN1dzU", title="Nothing But A G Thang", artist="Snoop Dogg",genre="hiphop")
 hiphop_song15=Song(youtube_ID="fPTJLHjzyEo", title="Where Ya At", artist="Future",genre="hiphop")
 hiphop_song16=Song(youtube_ID="6vwNcNOTVzY", title="Gold Digger", artist="Kanye West",genre="hiphop")
 hiphop_song17=Song(youtube_ID="r_dh16HQkqQ", title="Hustle Hard", artist="Ace Hood",genre="hiphop")
 hiphop_song18=Song(youtube_ID="8UFIYGkROII", title="Crank That Soulja Boy", artist="Soulja Boy",genre="hiphop")
-hiphop_song19=Song(youtube_ID="LDZX4ooRsWs", title="Nicki Minaj", artist="Nicki Minaj",genre="hiphop")
+hiphop_song19=Song(youtube_ID="LDZX4ooRsWs", title="Anaconda", artist="Nicki Minaj",genre="hiphop")
 hiphop_song20=Song(youtube_ID="hGKK8eGQQEk", title="Nasty Freestyle", artist="T-Wayne",genre="hiphop")
 hiphop_song21=Song(youtube_ID="avFq9errZCk", title="Tuesday", artist="ILOVEMAKONNEN",genre="hiphop")
-hiphop_song23=Song(youtube_ID="RAzzv6Ks9nc", title="Check", artist="Young Thug",genre="hiphop")
+hiphop_song22=Song(youtube_ID="RAzzv6Ks9nc", title="Check", artist="Young Thug",genre="hiphop")
 # hiphop_song1.put()
 # hiphop_song2.put()
 # hiphop_song3.put()
@@ -111,7 +111,6 @@ hiphop_song23=Song(youtube_ID="RAzzv6Ks9nc", title="Check", artist="Young Thug",
 # hiphop_song8.put()
 # hiphop_song9.put()
 # hiphop_song10.put()
-# hiphop_song11.put()
 # hiphop_song12.put()
 # hiphop_song13.put()
 # hiphop_song14.put()
@@ -124,7 +123,6 @@ hiphop_song23=Song(youtube_ID="RAzzv6Ks9nc", title="Check", artist="Young Thug",
 # hiphop_song20.put()
 # hiphop_song21.put()
 # hiphop_song22.put()
-# hiphop_song23.put()
 
 rock_song1=Song(youtube_ID="BcL---4xQYA", title="Stairway To Heaven", artist="Led Zeppelin",genre="rock")
 rock_song2=Song(youtube_ID="6JCLY0Rlx6Q", title="Shut Up and Dance", artist="Walk The Moon",genre="rock")
@@ -168,7 +166,7 @@ pop_song7=Song(youtube_ID="QA8ZbxS5dFs", title="Lips are Movin", artist="Megan T
 pop_song8=Song(youtube_ID="bfC0IkLkL8o", title="The Night Is Still Young", artist="Nicki Minaj", genre="pop")
 pop_song9=Song(youtube_ID="8zqdo_Umd5c", title="Somebody", artist="Natalie La Rose", genre="pop")
 pop_song10=Song(youtube_ID="7hPMmzKs62w", title="Bitch Im Madonna", artist="Madonna", genre="pop")
-pop_song11=Song(youtube_ID="rC8RRXcfeo", title="Stay With Me", artist="Sam Smith", genre="pop")
+pop_song11=Song(youtube_ID="-rC8RRXcfeo", title="Stay With Me", artist="Sam Smith", genre="pop")
 pop_song12=Song(youtube_ID="WpyfrixXBqU", title="Thinking Out Loud", artist="Ed Sheeran", genre="pop")
 pop_song13=Song(youtube_ID="wg6J-_fTJ44", title="Cheerleader", artist="Omi", genre="pop")
 pop_song14=Song(youtube_ID="rn9AQoI7mYU", title="Lean On", artist="Major Lazor", genre="pop")
@@ -332,15 +330,20 @@ class ResultsHandler(webapp2.RequestHandler):
                 seconds="0"+seconds
             minutes = str(total_time.seconds//60)
             if amount_right==len(selected_songs):
-                if user_in_datastore.best_min>minutes:
-                    if user_in_datastore.best_sec>seconds:
-                        user_in_datastore.best_min=minutes
-                        user_in_datastore.best_sec=seconds
-                        is_best_time=True
+                if user_in_datastore.best_min:
+                    if int(user_in_datastore.best_min)>int(minutes):
+                        if int(user_in_datastore.best_sec)>int(seconds):
+                            user_in_datastore.best_min=minutes
+                            user_in_datastore.best_sec=seconds
+                            is_best_time=True
+                        else:
+                            is_best_time=False
                     else:
                         is_best_time=False
                 else:
-                    is_best_time=False
+                    user_in_datastore.best_min=minutes
+                    user_in_datastore.best_sec=seconds
+                    is_best_time=True
             else:
                 is_best_time=False
         else:
