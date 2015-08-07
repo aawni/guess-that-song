@@ -192,9 +192,7 @@ pop_song33 = Song(youtube_ID="O4uD6o9XxLs", title="Young and Beautiful", artist=
 pop_song34 = Song(youtube_ID="_SoWPGzeN30", title="Love Me Like You Do", artist="Ellie Goulding", genre="pop")
 pop_song35 = Song(youtube_ID="2XY3AvVgDns", title="Countdown", artist="Beyonce", genre="pop")
 pop_song36= Song(youtube_ID="up9frWH_hjk", title="Drunk in Love", artist="Beyonce", genre="pop")
-pop_song37 = Song(youtube_ID="zoJAcgmOS4Q", title="Roar", artist="Amy Whinehouse", genre="pop")
-
-
+pop_song37 = Song(youtube_ID="zoJAcgmOS4Q", title="Roar", artist="Katy Perry", genre="pop")
 # pop_song1.put()
 # pop_song2.put()
 # pop_song3.put()
@@ -233,6 +231,16 @@ pop_song37 = Song(youtube_ID="zoJAcgmOS4Q", title="Roar", artist="Amy Whinehouse
 # pop_song36.put()
 # pop_song37.put()
 
+welcome_song1 = Song(youtube_ID="x7478agjfPQ", title="Crazy in Love", artist="Beyonce", genre="welcome")
+welcome_song2= Song(youtube_ID="2XY3AvVgDns", title="Countdown", artist="Beyonce", genre="welcome")
+welcome_song3 = Song(youtube_ID="OsTTacH0jx0", title="La La", artist="Sam Smith", genre="welcome")
+welcome_song4 = Song(youtube_ID="ZUQPdd8zIMA", title="ah yo", artist="Chris Brown", genre="welcome")
+welcome_song5 = Song(youtube_ID="zp7NtW_hKJI", title="Sky full of stars", artist="Coldplay", genre="welcome")
+welcome_song1.put()
+welcome_song2.put()
+welcome_song3.put()
+welcome_song4.put()
+welcome_song5.put()
 
 users_current_songs={}
 
@@ -242,7 +250,7 @@ class WelcomeHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         if user:
-            songs=Song.query().fetch()
+            songs=Song.query().filter(Song.genre=="welcome").fetch()
             rand_ind=random.randint(0,len(songs))
             song_ID=songs[rand_ind].youtube_ID
             template_values={"song_ID":song_ID}
