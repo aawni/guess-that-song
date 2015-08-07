@@ -22,6 +22,11 @@ from google.appengine.api import users
 import random
 import logging
 import json
+from datetime import datetime
+
+start = None
+# start = datetime.now()
+
 
 
 
@@ -74,17 +79,16 @@ country_song13 = Song(youtube_ID="ULYOUCjhVZw", title="Kick the Dust Up", artist
 
 
 hiphop_song1=Song(youtube_ID="Z-48u_uWMHY", title="Alright", artist="Kendrick Lamar",genre="hiphop")
-hiphop_song2=Song(youtube_ID="frOjjVDb8R8", title="Commas", artist="Future",genre="hiphop")
+hiphop_song2=Song(youtube_ID="L-RlmxyCB2k", title="Commas", artist="Future",genre="hiphop")
 hiphop_song3=Song(youtube_ID="NtTLfSOujTI", title="Planes", artist="Jeremih",genre="hiphop")
 hiphop_song4=Song(youtube_ID="YWyHZNBz6FE", title="Love Sosa", artist="Chief Keef",genre="hiphop")
 hiphop_song5=Song(youtube_ID="rF-hq_CHNH0", title="Versace", artist="Migos",genre="hiphop")
 hiphop_song6=Song(youtube_ID="C0U4aDOjr_M", title="Look At Me Now", artist="Chris Brown",genre="hiphop")
 hiphop_song7=Song(youtube_ID="vKzwbsI7ISQ", title="We Dem Boyz", artist="Wiz Khalifa",genre="hiphop")
-hiphop_song8=Song(youtube_ID="Bo0WMtwoqtY", title="Blessed", artist="Big Sean",genre="hiphop")
+hiphop_song8=Song(youtube_ID="Bo0WMtwoqtY", title="Blessings", artist="Big Sean",genre="hiphop")
 hiphop_song9=Song(youtube_ID="Cvu0Q4Cl7pU", title="My Way", artist="Fetty Wap",genre="hiphop")
 hiphop_song10=Song(youtube_ID="pVhYGC2CdJo", title="Back to Back", artist="Drake",genre="hiphop")
-hiphop_song11=Song(youtube_ID="Z-48u_uWMHY", title="Alright", artist="Kendrick Lamar",genre="hiphop")
-hiphop_song12=Song(youtube_ID="_JZom_gVfuw", title="Juicy", artist="Biggie",genre="hiphop")
+hiphop_song12=Song(youtube_ID="_JZom_gVfuw", title="Juicy", artist="The Notorious B.I.G",genre="hiphop")
 hiphop_song13=Song(youtube_ID="RubBzkZzpUA", title="Started From The Bottom", artist="Drake",genre="hiphop")
 hiphop_song14=Song(youtube_ID="ucoK6KN1dzU", title="Nothing But A G Thang", artist="Snoop Dogg",genre="hiphop")
 hiphop_song15=Song(youtube_ID="fPTJLHjzyEo", title="Where Ya At", artist="Future",genre="hiphop")
@@ -94,7 +98,6 @@ hiphop_song18=Song(youtube_ID="8UFIYGkROII", title="Crank Thank Soulja Boy", art
 hiphop_song19=Song(youtube_ID="LDZX4ooRsWs", title="Nicki Minaj", artist="Nicki Minaj",genre="hiphop")
 hiphop_song20=Song(youtube_ID="hGKK8eGQQEk", title="Nasty Freestyle", artist="T-Wayne",genre="hiphop")
 hiphop_song21=Song(youtube_ID="avFq9errZCk", title="Tuesday", artist="ILOVEMAKONNEN",genre="hiphop")
-hiphop_song22=Song(youtube_ID="hGKK8eGQQEk", title="Nasty Freestyle", artist="T-Wayne",genre="hiphop")
 hiphop_song23=Song(youtube_ID="RAzzv6Ks9nc", title="Check", artist="Young Thug",genre="hiphop")
 # hiphop_song1.put()
 # hiphop_song2.put()
@@ -157,7 +160,7 @@ pop_song1=Song(youtube_ID="kMsHEKy8N14", title="Cool For The Summer", artist="De
 pop_song2=Song(youtube_ID="Wp0hWIO8DiU", title="Good For You", artist="Selena Gomez", genre="pop")
 pop_song3=Song(youtube_ID="ncObwOWDT0Q", title="The Hills", artist="The Weeknd", genre="pop")
 pop_song4=Song(youtube_ID="vFKpy59h5fM", title="Fun", artist="Chris Brown", genre="pop")
-pop_song5=Song(youtube_ID="nlYbDjwBe2Y", title="Talking Body", artist="Tove Lo", genre="pop")
+pop_song5=Song(youtube_ID="O8tDTsjTqKs", title="Talking Body", artist="Tove Lo", genre="pop")
 pop_song6=Song(youtube_ID="gdf5XaHU11U", title="Waves", artist="Mr Probz", genre="pop")
 pop_song7=Song(youtube_ID="QA8ZbxS5dFs", title="Lips are Movin", artist="Megan Trainor", genre="pop")
 pop_song8=Song(youtube_ID="bfC0IkLkL8o", title="The Night Is Still Young", artist="Nicki Minaj", genre="pop")
@@ -250,6 +253,9 @@ class HomeHandler(webapp2.RequestHandler):
 
 class QuizHandler(webapp2.RequestHandler):
     def get(self):
+        global start
+        start = datetime.now()
+
         genre=self.request.get("genre")
         songs=Song.query().filter(Song.genre==genre).fetch()
         song_indexs=[]
@@ -270,6 +276,17 @@ class QuizHandler(webapp2.RequestHandler):
 
 class ResultsHandler(webapp2.RequestHandler):
     def post(self):
+        stop = datetime.now()
+        if start:
+            total_time = stop - start
+            seconds = str(total_time.seconds%60)
+            minutes = str(total_time.seconds//60)
+            time = (minutes, seconds)
+            print time
+
+        print "minutes: ", minutes , " seconds: " , seconds
+
+
         amount_right=0
         genre=self.request.get("genre")
         counter=1
@@ -294,7 +311,8 @@ class ResultsHandler(webapp2.RequestHandler):
         total_percent_correct=int((user_in_datastore.questions_correct * 1.0/user_in_datastore.questions_played)*100)
         percent_correct=int((amount_right*1.0/len(selected_songs))*100)
 
-        template_values = {"amount_right":amount_right,"total_percent_correct":total_percent_correct,"percent_correct":percent_correct,"logout_url":users.create_logout_url('/'),"selected_songs":selected_songs, "correct_question_nums":correct_question_nums}
+        template_values = {"amount_right":amount_right,"total_percent_correct":total_percent_correct,"minutes": minutes, "seconds":seconds,
+        "percent_correct":percent_correct,"logout_url":users.create_logout_url('/'),"selected_songs":selected_songs}
         template = JINJA_ENVIRONMENT.get_template('templates/results.html')
         self.response.write(template.render(template_values))
 

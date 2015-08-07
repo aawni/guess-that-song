@@ -7,13 +7,10 @@
   <script src="scripts/script.js"></script>
 </head>
   <body>
+    <div id="buttons">
+    <p class="left_buttons"> <a  href="/home">Home</a></p>
     <p class="right_buttons"> <a  href="{{logout_url}}">Logout Here</a></p>
-    <!-- <form class="logout" action="{{logout_url}}" method="">
-    <p><div><input class="logout_buttons" type="submit" value="Logout Here"></div></p>
-    </form> -->
-    <form action="/home" method="get">
-    <p><div><input class="left_buttons" type="submit" value="Home"></div></p>
-    </form>
+  </div>
 
     <div class="spacer"></div>
 
@@ -39,7 +36,7 @@
     {%endif%}
     <form id="show_add_friends" action="/friends" method="post">
     <p>
-      <div><input class="small_btn" type="submit" value="Find Friends"></div>
+      <div><input class="small_btn_center" type="submit" value="Find Friends"></div>
     </p>
     <div class="spacer">
     </div>
@@ -47,7 +44,7 @@
     <form id="add_friends_form" action="/friends" method="post" style="display: none">
     <p>
       <div class="labels">Enter their nickname: <input name="friend_nickname"></input></div>
-      <div><input class="small_btn" type="submit" value="Add Friend"></div>
+      <div><input class="small_btn_center" type="submit" value="Add Friend"></div>
     </p>
     <div class="spacer"></div>
     </form>

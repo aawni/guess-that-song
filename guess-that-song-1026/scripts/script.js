@@ -29,7 +29,7 @@ function Verify_Unique(nickname){
     }
     else {
       $("#not_unique_error").text("That nickname is taken. Please enter another!");
-      $("#not_unique_error").fadeIn(3000);
+      $("#not_unique_error").fadeIn(1000);
       $("#not_unique_error").fadeOut(3000);
     }
   });
@@ -86,3 +86,15 @@ $(document).ready(
 // $('#imageTag').click(function() {
 //   $("#youTUBE").attr('src', $("#videoContainer iframe", parent).attr('src') + '?autoplay=0');
 // });
+$( '#timer-countup' ).countdown( {
+  from: 0,
+  to: 180,
+  autostart: true
+} );
+
+
+
+$( '#timer-outputpattern' ).countdown( {
+  outputPattern: '$day Days $hour Hours $minute Miniuts $second Seconds',
+  from: 60 * 60 * 24 * 3
+} );
