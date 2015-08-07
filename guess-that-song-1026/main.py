@@ -41,6 +41,8 @@ class UserModel(ndb.Model):
     questions_played = ndb.IntegerProperty()
     nickname = ndb.StringProperty()
     friends_ids = ndb.StringProperty(repeated=True)
+    best_min = ndb.StringProperty()
+    best_sec = ndb.StringProperty()
 
 
 class Song(ndb.Model):
@@ -259,12 +261,14 @@ class HomeHandler(webapp2.RequestHandler):
             previous_user_query=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()
             if previous_user_query:
                 current_user = previous_user_query[0]
-                is_new_user=False
             else:
                 current_user = UserModel(currentUserID = user.user_id(), questions_played=0,questions_correct=0)
                 current_user.put()
-                is_new_user=True
-            template_values={"is_new_user":is_new_user,"logout_url":users.create_logout_url('/')}
+            if current_user.nickname is None:
+                no_nickname=True
+            else:
+                no_nickname=False
+            template_values={"no_nickname":no_nickname,"logout_url":users.create_logout_url('/')}
             if current_user.nickname:
                 template_values["nickname"]=current_user.nickname
             template = JINJA_ENVIRONMENT.get_template('templates/home.html')
@@ -301,22 +305,15 @@ class QuizHandler(webapp2.RequestHandler):
 class ResultsHandler(webapp2.RequestHandler):
     def post(self):
         stop = datetime.now()
-        if start:
-            total_time = stop - start
-            seconds = str(total_time.seconds%60)
-            minutes = str(total_time.seconds//60)
-            time = (minutes, seconds)
-            print time
-
-        print "minutes: ", minutes , " seconds: " , seconds
-
-
-        amount_right=0
         genre=self.request.get("genre")
-        counter=1
         user=users.get_current_user()
+        user_query=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()
+        user_in_datastore=user_query[0]
+
         correct_question_nums=[]
         selected_songs = users_current_songs[user.user_id()]
+        amount_right=0
+        counter=1
         for song in selected_songs:
             artist_answer=self.request.get("artist"+str(counter)).lower()
             song_answer=self.request.get("song_title"+str(counter)).lower()
@@ -326,9 +323,28 @@ class ResultsHandler(webapp2.RequestHandler):
                     correct_question_nums.append(counter)
             counter+=1
 
+
         # users_current_songs[user.user_id()]=[]
-        user_query=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()
-        user_in_datastore=user_query[0]
+        if start:
+            total_time = stop - start
+            seconds = str(total_time.seconds%60)
+            if int(seconds)<10:
+                seconds="0"+seconds
+            minutes = str(total_time.seconds//60)
+            if amount_right==len(selected_songs):
+                if user_in_datastore.best_min>minutes:
+                    if user_in_datastore.best_sec>seconds:
+                        user_in_datastore.best_min=minutes
+                        user_in_datastore.best_sec=seconds
+                        is_best_time=True
+                    else:
+                        is_best_time=False
+                else:
+                    is_best_time=False
+            else:
+                is_best_time=False
+        else:
+            is_best_time=False
         user_in_datastore.questions_played+=len(selected_songs)
         user_in_datastore.questions_correct+=amount_right
         user_in_datastore.put()
@@ -336,7 +352,7 @@ class ResultsHandler(webapp2.RequestHandler):
         percent_correct=int((amount_right*1.0/len(selected_songs))*100)
 
         template_values = {"amount_right":amount_right,"total_percent_correct":total_percent_correct,"minutes": minutes, "seconds":seconds,
-        "percent_correct":percent_correct,"logout_url":users.create_logout_url('/'),"selected_songs":selected_songs}
+        "percent_correct":percent_correct,"logout_url":users.create_logout_url('/'),"selected_songs":selected_songs,"is_best_time":is_best_time,"correct_question_nums":correct_question_nums}
         template = JINJA_ENVIRONMENT.get_template('templates/results.html')
         self.response.write(template.render(template_values))
 
@@ -355,23 +371,22 @@ class FriendsHandler(webapp2.RequestHandler):
         self.response.write(template.render(template_values))
     def post(self):
         friend_nickname=self.request.get("friend_nickname")
-        friends=UserModel.query().filter(UserModel.nickname==friend_nickname).fetch()
         user=users.get_current_user()
         user_in_datastore=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()[0]
+        friends=UserModel.query().filter(UserModel.nickname==friend_nickname).fetch()
         template_values={}
         if friends:
             friend=friends[0]
-            user_in_datastore.friends_ids.append(friend.currentUserID)
-            user_in_datastore.put()
-        if user_in_datastore.friends_ids:
-            friends_list=[]
-            for friend_id in user_in_datastore.friends_ids:
-                friends_list.append(UserModel.query().filter(UserModel.currentUserID==friend_id).fetch()[0])
-            template_values["friends"]=friends_list
-        template_values["logout_url"]=users.create_logout_url('/')
-        template = JINJA_ENVIRONMENT.get_template('templates/friends.html')
-        self.response.write(template.render(template_values))
+            if friend.currentUserID not in user_in_datastore.friends_ids:
+                user_in_datastore.friends_ids.append(friend.currentUserID)
+                user_in_datastore.put()
+                repeat=False
+            else:
+                repeat=True
 
+        response={"repeat":repeat}
+        self.response.headers['Content-Type'] = "application/json"
+        self.response.out.write(json.dumps(response))
 
 class SearchNicknameHandler(webapp2.RequestHandler):
     def post(self):
@@ -394,20 +409,6 @@ class AboutHandler(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('templates/about.html')
         self.response.write(template.render())
 
-class JordanHandler(webapp2.RequestHandler):
-    def get(self):
-        template = JINJA_ENVIRONMENT.get_template('templates/jordan.html')
-        self.response.write(template.render())
-
-class AliaHandler(webapp2.RequestHandler):
-    def get(self):
-        template = JINJA_ENVIRONMENT.get_template('templates/alia.html')
-        self.response.write(template.render())
-
-class JewelHandler(webapp2.RequestHandler):
-    def get(self):
-        template = JINJA_ENVIRONMENT.get_template('templates/jewel.html')
-        self.response.write(template.render())
 
 app = webapp2.WSGIApplication([
     ('/', WelcomeHandler),
@@ -416,8 +417,5 @@ app = webapp2.WSGIApplication([
     ('/results', ResultsHandler),
     ('/friends',FriendsHandler),
     ('/searchnickname',SearchNicknameHandler),
-    ('/about', AboutHandler),
-    ('/jordan', JordanHandler),
-    ('/alia', AliaHandler),
-    ('/jewel', JewelHandler),
+    ('/about', AboutHandler)
 ], debug=True)

@@ -13,13 +13,13 @@
       <p class="right_buttons"> <a  href="{{logout_url}}">Logout Here</a></p>
     </div>
   </br>
-    <div class="spacer">
+    <div class="large_spacer">
     </div>
     <div class= "content">
     <div class="small_spacer">
     </div>
     <h1 class="titles">Guess That Song</h1>
-    {%if not is_new_user%}
+    {%if not no_nickname%}
     <p class="sub_titles">Signed in as {{nickname}}</p>
     {%endif%}
     <div class="small_spacer">
@@ -31,8 +31,8 @@
     <div class="small_spacer">
     </div>
     <form id="setup_form" action="/quiz" method="get">
-      {%if is_new_user%}
-        <div>New users should enter a unique nickname:<input name="nickname" id="nickname"></input></div>
+      {%if no_nickname%}
+        <div>Please enter a unique nickname:<input name="nickname" id="nickname"></input></div>
       {%endif%}
       <p>Choose your genre:
         <select id ="genre" class="styled-select" name="genre">
@@ -43,7 +43,8 @@
         </select>
       </p>
       <p class="sub_labels">You will hear 15 seconds of each song. You must get the artist and song title correct to get the question correct. </p>
-      <input name="is_new_user" type="hidden" value={{is_new_user}} id="is_new_user">
+      <p class="sub_labels">You will be timed! </p>
+      <input name="no_nickname" type="hidden" value={{no_nickname}} id="no_nickname">
       </input>
       <div><input class="big_btn" type="submit" value="continue to quiz"></input></div>
     </form>

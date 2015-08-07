@@ -12,12 +12,12 @@
     <p class="right_buttons"> <a  href="{{logout_url}}">Logout Here</a></p>
   </div>
 
-    <div class="spacer"></div>
+    <div class="large_spacer"></div>
+    <div class="small_spacer"></div>
 
     <div class= "content">
     <div class="small_spacer"></div>
     <h1 class="titles">Your Friends</h1>
-    <div class="small_spacer"></div>
   </div>
 
   <div class="spacer"></div>
@@ -29,6 +29,11 @@
         <p id="friend_nickname">{{friend.nickname}}</p>
         {% if friend.questions_played>0 %}
         <p id="questions_played"> won {{(friend.questions_correct/friend.questions_played)*100}}% of the time</p>
+        {%else%}
+        <p id="questions_played"> has not played any games yet</p>
+        {%endif%}
+        {% if friend.best_min %}
+        <p id="questions_played"> best time: {{friend.best_min}} : {{friend.best_sec}}</p>
         {%endif%}
       {%endfor%}
     {%else%}
@@ -43,11 +48,14 @@
     </form>
     <form id="add_friends_form" action="/friends" method="post" style="display: none">
     <p>
-      <div class="labels">Enter their nickname: <input name="friend_nickname"></input></div>
+      <div class="labels">Enter their nickname: <input name="friend_nickname" id="friend_nickname_jquery"></input></div>
       <div><input class="small_btn_center" type="submit" value="Add Friend"></div>
     </p>
     <div class="spacer"></div>
     </form>
+    <p id="friend_error" style="display: none"></p>
+    <p id="repeat_error" style="display: none"></p>
+    <p id="not_valid" style="display: none"></p>
   </div>
   </body>
 </html>
