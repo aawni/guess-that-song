@@ -13,23 +13,24 @@
     <p class="right_buttons"> <a href="{{logout_url}}">Logout Here</a></p>
     </div>
 
-    <div class="spacer"></div>
+    <div class="large_spacer"></div>
 
     <div class= "content">
     <div class="small_spacer"></div>
     <h1 class="titles">Your Results</h1>
 
+    <div id="timer" class="countdown">
+  <h1>{{minutes}} : {{seconds}}</h1>
+  <p>minutes seconds</p>
 
-
-
- <div id="timer" class="countdown">
-   <h1>{{minutes}} : {{seconds}}</h1>
-   <p>minutes seconds</p>
-
- </div>
-
+  </div>
 
     <div class="small_spacer"></div>
+    {%if is_best_time%}
+    <p class="labels">Your best time yet!</p>
+    {%else%}
+    <p class="sub_labels">Not your best time (it only counts if you get all of them right!)</p>
+    {%endif%}
     {%if amount_right!=1%}
     <p class="sub_labels"> You got {{amount_right}} questions correct </p>
     {%else%}

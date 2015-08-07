@@ -7,13 +7,26 @@
   <script src="scripts/script.js"></script>
 </head>
   <body>
-    <div class= "content">
-    <div class="large_spacer"></div>
-    <h1 class="titles">Meet The Creators</h1>
-    <p class="sub_titles">Who would you like to meet first?</p>
-    <div class="large_spacer"></div>
+    <div id="buttons">
+    <p class="left_buttons"> <a  href="/home">Home</a></p>
+    <p class="right_buttons"> <a  href="{{logout_url}}">Logout Here</a></p>
+  </div>
 
-<div class="about_style">
+    <div class="large_spacer"></div>
+    <div class="small_spacer"></div>
+
+    <div class= "content">
+    <div class="small_spacer"></div>
+    <h1 class="titles">Meet The Creators</h1>
+  </div>
+  <div class="spacer"></div>
+
+    <div class= "content">
+    <div class="small_spacer"></div>
+    <p class="sub_titles">Who would you like to meet first?</p>
+    <div class="spacer"></div>
+
+    <div class="about_style" id="jordan_section">
             <form id="show_jordan" action="/about" method="get">
               <div><input class="small_btn_center" type="submit" value="Jordan"></div>
             </form>
@@ -25,19 +38,19 @@
             <div class="spacer"></div>
 </div>
 
-<div class="about_style">
+<div class="about_style" id="alia_section">
             <form id="show_alia" action="/about" method="get">
               <div><input class="small_btn_center" type="submit" value="Alia"></div>
             </form>
             <div class="small_spacer"></div>
             <div id="alia_div" style="display: none">
               <img src="images/alias_picture.jpg" height="200" width="200">
-              <p>Get to know Alia!</p>
+              <p>Alia is from Libertyville, IL, and will be attending UC San Diego. She is passionate about coding and loves her dog Remy.</p>
             </div>
             <div class="spacer"></div>
 </div>
 
-<div class="about_style">
+<div class="about_style" id="jewel_section">
             <form id="show_jewel" action="/about" method="get">
               <div><input class="small_btn_center" type="submit" value="Jewel"></div>
             </form>
@@ -48,12 +61,6 @@
           </div>
             <div class="spacer"></div>
 </div>
-
-            <form id="begin" action="/home" method="get">
-              <div><input class="big_btn" type="submit" value="Home"></div>
-            </form>
-            <div class="spacer"></div>
-
     </div>
 
   </body>
