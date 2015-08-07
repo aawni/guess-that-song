@@ -96,7 +96,7 @@ hiphop_song14=Song(youtube_ID="ucoK6KN1dzU", title="Nothing But A G Thang", arti
 hiphop_song15=Song(youtube_ID="fPTJLHjzyEo", title="Where Ya At", artist="Future",genre="hiphop")
 hiphop_song16=Song(youtube_ID="6vwNcNOTVzY", title="Gold Digger", artist="Kanye West",genre="hiphop")
 hiphop_song17=Song(youtube_ID="r_dh16HQkqQ", title="Hustle Hard", artist="Ace Hood",genre="hiphop")
-hiphop_song18=Song(youtube_ID="8UFIYGkROII", title="Crank Thank Soulja Boy", artist="Soulja Boy",genre="hiphop")
+hiphop_song18=Song(youtube_ID="8UFIYGkROII", title="Crank That Soulja Boy", artist="Soulja Boy",genre="hiphop")
 hiphop_song19=Song(youtube_ID="LDZX4ooRsWs", title="Nicki Minaj", artist="Nicki Minaj",genre="hiphop")
 hiphop_song20=Song(youtube_ID="hGKK8eGQQEk", title="Nasty Freestyle", artist="T-Wayne",genre="hiphop")
 hiphop_song21=Song(youtube_ID="avFq9errZCk", title="Tuesday", artist="ILOVEMAKONNEN",genre="hiphop")
