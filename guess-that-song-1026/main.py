@@ -236,11 +236,11 @@ welcome_song2= Song(youtube_ID="2XY3AvVgDns", title="Countdown", artist="Beyonce
 welcome_song3 = Song(youtube_ID="OsTTacH0jx0", title="La La", artist="Sam Smith", genre="welcome")
 welcome_song4 = Song(youtube_ID="ZUQPdd8zIMA", title="ah yo", artist="Chris Brown", genre="welcome")
 welcome_song5 = Song(youtube_ID="zp7NtW_hKJI", title="Sky full of stars", artist="Coldplay", genre="welcome")
-welcome_song1.put()
-welcome_song2.put()
-welcome_song3.put()
-welcome_song4.put()
-welcome_song5.put()
+# welcome_song1.put()
+# welcome_song2.put()
+# welcome_song3.put()
+# welcome_song4.put()
+# welcome_song5.put()
 
 users_current_songs={}
 
