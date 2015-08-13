@@ -23,6 +23,7 @@ import random
 import logging
 import json
 from datetime import datetime
+# import requests
 
 start = None
 # start = datetime.now()
@@ -35,8 +36,8 @@ JINJA_ENVIRONMENT = jinja2.Environment(
     extensions=['jinja2.ext.autoescape'],
     autoescape=True)
 
-class UserModel(ndb.Model):
-    currentUserID = ndb.StringProperty(required = True)
+class User(ndb.Model):
+    user_id = ndb.StringProperty(required = True)
     questions_correct = ndb.IntegerProperty()
     questions_played = ndb.IntegerProperty()
     nickname = ndb.StringProperty()
@@ -89,6 +90,7 @@ hiphop_song6=Song(youtube_ID="C0U4aDOjr_M", title="Look At Me Now", artist="Chri
 hiphop_song7=Song(youtube_ID="vKzwbsI7ISQ", title="We Dem Boyz", artist="Wiz Khalifa",genre="hiphop")
 hiphop_song8=Song(youtube_ID="Bo0WMtwoqtY", title="Blessings", artist="Big Sean",genre="hiphop")
 hiphop_song9=Song(youtube_ID="Cvu0Q4Cl7pU", title="My Way", artist="Fetty Wap",genre="hiphop")
+#get rid of drake back to back (doesn't work)
 hiphop_song10=Song(youtube_ID="-M3vZDL7Yfk", title="Back to Back", artist="Drake",genre="hiphop")
 hiphop_song12=Song(youtube_ID="_JZom_gVfuw", title="Juicy", artist="Biggie",genre="hiphop")
 hiphop_song13=Song(youtube_ID="RubBzkZzpUA", title="Started From The Bottom", artist="Drake",genre="hiphop")
@@ -243,6 +245,7 @@ welcome_song5 = Song(youtube_ID="zp7NtW_hKJI", title="Sky full of stars", artist
 # welcome_song5.put()
 
 users_current_songs={}
+all_genres=["country", "pop", "rock", "hiphop"]
 
 
 
@@ -264,11 +267,11 @@ class HomeHandler(webapp2.RequestHandler):
     def get(self):
         user = users.get_current_user()
         if user:
-            previous_user_query=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()
+            previous_user_query=User.query().filter(User.user_id==user.user_id()).fetch()
             if previous_user_query:
                 current_user = previous_user_query[0]
             else:
-                current_user = UserModel(currentUserID = user.user_id(), questions_played=0,questions_correct=0)
+                current_user = User(user_id = user.user_id(), questions_played=0,questions_correct=0)
                 current_user.put()
             if current_user.nickname is None:
                 no_nickname=True
@@ -291,7 +294,14 @@ class QuizHandler(webapp2.RequestHandler):
         start = datetime.now()
 
         genre=self.request.get("genre")
-        songs=Song.query().filter(Song.genre==genre).fetch()
+        if genre=="all":
+            songs=Song.query().fetch()
+        elif genre=="random":
+            rand_genre_ind=random.randint(0,len(all_genres)-1)
+            genre=all_genres[rand_genre_ind]
+            songs=Song.query().filter(Song.genre==genre).fetch()
+        else:
+            songs=Song.query().filter(Song.genre==genre).fetch()
         song_indexs=[]
         selected_songs=[]
         count=1
@@ -313,21 +323,28 @@ class ResultsHandler(webapp2.RequestHandler):
         stop = datetime.now()
         genre=self.request.get("genre")
         user=users.get_current_user()
-        user_query=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()
+        user_query=User.query().filter(User.user_id==user.user_id()).fetch()
         user_in_datastore=user_query[0]
 
         correct_question_nums=[]
         selected_songs = users_current_songs[user.user_id()]
         amount_right=0
-        counter=1
+        counterQ=1
+        counterA=1
         for song in selected_songs:
-            artist_answer=self.request.get("artist"+str(counter)).lower()
-            song_answer=self.request.get("song_title"+str(counter)).lower()
-            if artist_answer!="" and song_answer!="":
-                if artist_answer==selected_songs[counter-1].artist.lower() and song_answer==selected_songs[counter-1].title.lower():
+            artist_answer=self.request.get("artist"+str(counterQ)).lower()
+            song_answer=self.request.get("song_title"+str(counterQ)).lower()
+            if artist_answer!="":
+                if artist_answer==selected_songs[counterQ-1].artist.lower():
                     amount_right+=1
-                    correct_question_nums.append(counter)
-            counter+=1
+                    correct_question_nums.append(counterA)
+            counterA+=1
+            if song_answer!="":
+                 if song_answer==selected_songs[counterQ-1].title.lower():
+                    amount_right+=1
+                    correct_question_nums.append(counterA)
+            counterA+=1
+            counterQ+=1
 
 
         # users_current_songs[user.user_id()]=[]
@@ -356,7 +373,7 @@ class ResultsHandler(webapp2.RequestHandler):
                 is_best_time=False
         else:
             is_best_time=False
-        user_in_datastore.questions_played+=len(selected_songs)
+        user_in_datastore.questions_played+=len(selected_songs)*2
         user_in_datastore.questions_correct+=amount_right
         user_in_datastore.put()
         total_percent_correct=int((user_in_datastore.questions_correct * 1.0/user_in_datastore.questions_played)*100)
@@ -371,11 +388,12 @@ class FriendsHandler(webapp2.RequestHandler):
     def get(self):
         user=users.get_current_user()
         template_values={}
-        user_in_datastore=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()[0]
+        user_in_datastore=User.query().filter(User.user_id==user.user_id()).fetch()[0]
+        template_values["user_in_datastore"]=user_in_datastore
         if user_in_datastore.friends_ids:
             friends_list=[]
             for friend_id in user_in_datastore.friends_ids:
-                friends_list.append(UserModel.query().filter(UserModel.currentUserID==friend_id).fetch()[0])
+                friends_list.append(User.query().filter(User.user_id==friend_id).fetch()[0])
             template_values["friends"]=friends_list
         template_values["logout_url"]=users.create_logout_url('/')
         template = JINJA_ENVIRONMENT.get_template('templates/friends.html')
@@ -383,32 +401,42 @@ class FriendsHandler(webapp2.RequestHandler):
     def post(self):
         friend_nickname=self.request.get("friend_nickname")
         user=users.get_current_user()
-        user_in_datastore=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()[0]
-        friends=UserModel.query().filter(UserModel.nickname==friend_nickname).fetch()
-        template_values={}
+        user_in_datastore=User.query().filter(User.user_id==user.user_id()).fetch()[0]
+        friends=User.query().filter(User.nickname==friend_nickname).fetch()
         if friends:
+            is_valid=True
             friend=friends[0]
-            if friend.currentUserID not in user_in_datastore.friends_ids:
-                user_in_datastore.friends_ids.append(friend.currentUserID)
-                user_in_datastore.put()
+            if friend.user_id not in user_in_datastore.friends_ids:
                 repeat=False
+                if friend.user_id is user_in_datastore.user_id:
+                    is_self=True
+                else:
+                    is_self=False
+                    user_in_datastore.friends_ids.append(friend.user_id)
+                    user_in_datastore.put()
             else:
                 repeat=True
+                is_self=False
 
-        response={"repeat":repeat}
+        else:
+            is_self=False
+            repeat=False
+            is_valid=False
+
+        response={"repeat":repeat, "is_self":is_self,"is_valid":is_valid}
         self.response.headers['Content-Type'] = "application/json"
         self.response.out.write(json.dumps(response))
 
 class SearchNicknameHandler(webapp2.RequestHandler):
     def post(self):
         nickname=self.request.get("nickname")
-        nickname_results=UserModel.query().filter(UserModel.nickname==nickname).fetch()
+        nickname_results=User.query().filter(User.nickname==nickname).fetch()
         if nickname_results:
             is_unique=False
         else:
             is_unique=True
             user=users.get_current_user()
-            user_in_datastore=UserModel.query().filter(UserModel.currentUserID==user.user_id()).fetch()[0]
+            user_in_datastore=User.query().filter(User.user_id==user.user_id()).fetch()[0]
             user_in_datastore.nickname=nickname
             user_in_datastore.put()
         response={"is_unique":is_unique}
@@ -420,6 +448,18 @@ class AboutHandler(webapp2.RequestHandler):
         template = JINJA_ENVIRONMENT.get_template('templates/about.html')
         self.response.write(template.render())
 
+class DeleteHandler(webapp2.RequestHandler):
+    def post(self):
+        delete_friend_id=self.request.get("delete_friend_id")
+        user=users.get_current_user()
+        user_in_datastore=User.query().filter(User.user_id==user.user_id()).fetch()[0]
+        user_in_datastore.friends_ids.remove(delete_friend_id)
+        user_in_datastore.put()
+        friend_nickname=User.query().filter(User.user_id==delete_friend_id).fetch()[0].nickname
+
+        response={"friend_nickname":friend_nickname}
+        self.response.headers['Content-Type'] = "application/json"
+        self.response.out.write(json.dumps(response))
 
 app = webapp2.WSGIApplication([
     ('/', WelcomeHandler),
@@ -428,5 +468,6 @@ app = webapp2.WSGIApplication([
     ('/results', ResultsHandler),
     ('/friends',FriendsHandler),
     ('/searchnickname',SearchNicknameHandler),
-    ('/about', AboutHandler)
+    ('/about', AboutHandler),
+    ('/delete', DeleteHandler)
 ], debug=True)

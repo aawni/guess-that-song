@@ -3,9 +3,8 @@
   <head>
     <title>Guess That Song</title>
     <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
     <script src= "http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-    <script src="scripts/script.js"></script>
+    <script src="scripts/results.js"></script>
   </head>
   <body>
     <div id="buttons">
@@ -14,6 +13,7 @@
     </div>
 
     <div class="large_spacer"></div>
+    <div class="spacer"></div>
 
     <div class= "content">
     <div class="small_spacer"></div>
@@ -53,15 +53,11 @@
     </form>
 
     <div id="users_answers" style="display: none">
-    {% set counter=1 %}
+    {% set counterQ=1 %}
+    {% set counterA=1 %}
     {% for song in selected_songs%}
     <div id="questions">
-    {%if counter in correct_question_nums%}
-    <img src="http://ecx.images-amazon.com/images/I/31WTkre7yTL._SY300_.jpg" class="img">
-    {%else%}
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Red_X.gif" class="img">
-    {%endif%}
-    <div class="labels" id="question_num">Question {{counter}}</div>
+    <div class="labels">Question {{counterQ}}</div>
     <div style="position:relative;width:267px;height:25px;overflow:hidden;margin-left:14%" id="what_is_this">
     <div style="position:absolute;top:-276px;left:-5px">
     <div id="tester"></div>
@@ -72,9 +68,23 @@
     </div>
     </div>
     </div>
-    <p class="sub_labels">{{song.artist}}</p>
-    <p class="sub_labels">{{song.title}}</p>
-    {% set counter=counter+1 %}
+    {%if counterA in correct_question_nums%}
+    <img src="http://ecx.images-amazon.com/images/I/31WTkre7yTL._SY300_.jpg" class="img">
+    {%else%}
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Red_X.gif" class="img">
+    {%endif%}
+    <p class="sub_labels" id="results_inline">{{song.artist}}</p>
+    </br>
+    {%set counterA=counterA+1 %}
+    
+    {%if counterA in correct_question_nums%}
+    <img src="http://ecx.images-amazon.com/images/I/31WTkre7yTL._SY300_.jpg" class="img">
+    {%else%}
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Red_X.gif" class="img">
+    {%endif%}
+    <p class="sub_labels" id="results_inline">{{song.title}}</p>
+    {% set counterQ=counterQ+1 %}
+    {% set counterA=counterA+1 %}
   </div>
     {%endfor%}
     </div>

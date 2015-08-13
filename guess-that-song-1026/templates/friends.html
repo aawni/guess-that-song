@@ -4,7 +4,7 @@
   <title>Guess That Song</title>
   <link rel="stylesheet" type="text/css" href="stylesheets/style.css">
   <script src= "http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-  <script src="scripts/script.js"></script>
+  <script src="scripts/friends.js"></script>
 </head>
   <body>
     <div id="buttons">
@@ -15,27 +15,27 @@
     <div class="large_spacer"></div>
     <div class="small_spacer"></div>
 
-    <div class= "content">
-    <div class="small_spacer"></div>
-    <h1 class="titles">Your Friends</h1>
-  </div>
-
-  <div class="spacer"></div>
-
   <div class="content">
   <div class="small_spacer"></div>
+  <h1 class="titles">Your Friends</h1>
   <div id="friends">
     {%if friends%}
       {%for friend in friends%}
         <p id="friend_nickname">{{friend.nickname}}</p>
         {% if friend.questions_played>0 %}
-        <p id="questions_played"> won {{(friend.questions_correct/friend.questions_played)*100}}% of the time</p>
+        <p id="questions_played"> won {{(friend.questions_correct/friend.questions_played)*100}}% of questions played</p>
         {%else%}
         <p id="questions_played"> has not played any games yet</p>
         {%endif%}
         {% if friend.best_min %}
         <p id="questions_played"> best time: {{friend.best_min}} : {{friend.best_sec}}</p>
         {%endif%}
+        <form id="delete" action="/delete" method="post">
+        <p>
+          <input name="delete_friend_id" type="hidden" value={{friend.user_id}} id="delete_friend_id"></input>
+          <div><input class="delete" type="submit" value="Delete This Friend"></div>
+        </p>
+        </form>
       </br>
       {%endfor%}
     {%else%}
@@ -58,7 +58,23 @@
     </form>
     <p id="friend_error" style="display: none"></p>
     <p id="repeat_error" style="display: none"></p>
-    <p id="not_valid" style="display: none"></p>
+    <p id="valid_error" style="display: none"></p>
+    <p id="self_error" style="display: none"></p>
   </div>
+
+  <div class="spacer"></div>
+
+  <div class= "content">
+  <div class="small_spacer"></div>
+  <h1 class="titles">Your Record</h1>
+  {% if user_in_datastore.questions_played>0 %}
+  <p id="questions_played">You won {{(user_in_datastore.questions_correct/user_in_datastore.questions_played)*100}}% of questions played</p>
+  {%else%}
+  <p id="questions_played"> You have not played any games yet</p>
+  {%endif%}
+  {% if user_in_datastore.best_min %}
+  <p id="questions_played"> best time: {{friend.best_min}} : {{friend.best_sec}}</p>
+  {%endif%}
+</div>
   </body>
 </html>
